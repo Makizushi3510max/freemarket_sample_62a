@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
   def index
-    render "products/_product"
+    render "products/product"
   end
 end
