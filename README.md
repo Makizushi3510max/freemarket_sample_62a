@@ -90,7 +90,6 @@ ER図
 ## categories
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null: false, foreign_key: true|
 |name|string|null: false|
 
 ### Association
@@ -109,7 +108,8 @@ ER図
 
 ### Association
 - has_many :items
-- belongs_to :category
+- has_many :category_brands
+- has_many :categories, through: :category_brands
 
 ## category_brands
 |Column|Type|Options|
@@ -130,7 +130,7 @@ ER図
 
 ### Association
 - has_many :category_size
-- belongs_to :size
+- has_many :categories, through: :category_sizes
 
 ## category_sizes table
 |Column|Type|Options|
