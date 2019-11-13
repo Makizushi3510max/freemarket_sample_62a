@@ -8,8 +8,13 @@ set :application, 'freemarket_sample_62a'
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:Error4577/freemarket_sample_62a.git'
 
+# どのブランチからpullするかを指定する
+# bundle exec cap production deploy BRANCH=pullしたいブランチ名
+set :branch, ENV['BRANCH'] || "master"
+
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'
