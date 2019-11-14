@@ -3,9 +3,18 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FreemarketSample62a
+    %script{:src => "/js/slick.js", :type => "text/javascript"}
+
     = csrf_meta_tags
-    = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js", :type => "text/javascript"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csp_meta_tag
+    
+    %link{href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css", rel: "stylesheet", type: "text/css"}/
+    %script{src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js", type: "text/javascript"}
+    %link{href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css", rel: "stylesheet", type: "text/css"}/
+    
+
   %body
     = yield
