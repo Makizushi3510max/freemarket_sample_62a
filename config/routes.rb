@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'products#index'
-
-  resources :signup do
+  # resources :users, only: [:create, :index, :edit, :update]
+  resources :signup,only: [:create] do
     collection do
       get 'registration'
       get 'sms_authentication'
