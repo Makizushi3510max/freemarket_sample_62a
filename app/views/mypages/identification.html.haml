@@ -1,0 +1,201 @@
+-# 本人情報　ユーザー本人確認ページ
+
+.mypage.clearfix
+  .mypage__content
+    %section.chapter-container.mypage-identification
+      %h2.chapter-head 本人情報の登録
+      %form.single-inner{:action => "#", :method => "POST", :novalidate => ""}
+        %div
+          %p
+            お客さまの本人情報をご登録ください。
+            %br>/
+            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %p.text-right
+            %a{:href => "/jp/help_center/article/495/", :target => "_blank"}
+              本人確認書類のアップロードについて
+              %i.icon-arrow-right
+        .form-group
+          %label お名前
+          %p 高野 和樹
+        .form-group
+          %label お名前カナ
+          %p タカノ カズキ
+        .form-group
+          %label{:for => "birthday"} 生年月日
+          %p 1991/04/03
+        .form-group
+          %label{:for => "zip_code"} 郵便番号
+          %span.form-arbitrary 任意
+          %input.input-default{:name => "zip_code", :placeholder => "例）1234567", :type => "text", :value => ""}/
+        .form-group
+          %label{:for => "prefecture"} 都道府県
+          %span.form-arbitrary 任意
+          .select-wrap
+            = fa_icon "chevron-down"
+            %select.select-wrap__default{:name => "prefecture"}
+              %option --
+              %option 北海道
+              %option 青森県
+              %option 岩手県
+              %option 宮城県
+              %option 秋田県
+              %option 山形県
+              %option 福島県
+              %option 東京都
+              %option 神奈川県
+              %option 埼玉県
+              %option 千葉県
+              %option 茨城県
+              %option 栃木県
+              %option 群馬県
+              %option 山梨県
+              %option 新潟県
+              %option 長野県
+              %option 富山県
+              %option 石川県
+              %option 福井県
+              %option 愛知県
+              %option 岐阜県
+              %option 静岡県
+              %option 三重県
+              %option 大阪府
+              %option 兵庫県
+              %option 京都府
+              %option 滋賀県
+              %option 奈良県
+              %option 和歌山県
+              %option 鳥取県
+              %option 島根県
+              %option 岡山県
+              %option 広島県
+              %option 山口県
+              %option 徳島県
+              %option 香川県
+              %option 愛媛県
+              %option 高知県
+              %option 福岡県
+              %option 佐賀県
+              %option 長崎県
+              %option 熊本県
+              %option 大分県
+              %option 宮崎県
+              %option 鹿児島県
+              %option 沖縄県
+        .form-group
+          %label{:for => "city"} 市区町村
+          %span.form-arbitrary 任意
+          %input.input-default{:name => "city", :placeholder => "例) 横浜市緑区", :type => "text", :value => ""}/
+        .form-group
+          %label{:for => "address1_label"} 番地
+          %span.form-arbitrary 任意
+          %input.input-default{:name => "address1", :placeholder => "例) 青山1−1−1", :type => "text", :value => ""}/
+        .form-group
+          %label{:for => "address2_label"} 建物名
+          %span.form-arbitrary 任意
+          %input.input-default{:name => "address2", :placeholder => "例) 柳ビル103", :type => "text", :value => ""}/
+        %button.btn-default.btn-red{:type => "submit"} 登録する
+        .form-group.text-right
+          %p
+            %a{:href => "#", :target => "_blank"}
+              本人情報の登録について
+              = fa_icon "chevron-right"
+        %input{:name => "__csrf_value", :type => "hidden", :value => "e25de7fc5b53da4b096a14245f2377622c69d2219719c76e776f141210d6b3b411e1ef8ae264d9834317e62fc87fe26e8189f7f161a0d58b079f995c2da8649ac"}/
+  .mypage-side
+    %nav.mypage-nav
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item{:href => "/mypage/"}
+            マイページ
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            お知らせ
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            やることリスト
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            いいね！一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品する
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 出品中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 取引中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 売却済み
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            購入した商品 - 取引中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            購入した商品 - 過去の取引
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ニュース一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => ""}
+            評価一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ガイド
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            お問い合わせ
+            = fa_icon "chevron-right"
+      %h3.mypage-nav-head メルペイ
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            売上・振込申請
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ポイント
+            = fa_icon "chevron-right"
+      %h3.mypage-nav-head 設定
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item.active{:href => "/mypage/profile/"}
+            プロフィール
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            発送元・お届け先住所変更
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            支払い方法
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            メール/パスワード
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item.active{:href => "#"}
+            本人情報
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            電話番号の確認
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ログアウト
+            = fa_icon "chevron-right"

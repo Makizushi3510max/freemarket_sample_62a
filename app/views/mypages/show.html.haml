@@ -1,0 +1,190 @@
+-# マイページ
+= render"products/header"
+
+.mypage.clearfix
+  .mypage__content
+    %section.user-icon
+      %a{:href => "https://www.mercari.com/jp/u/407546974/"}
+        %figure
+          %img{:alt => "", :height => "60", :src => "//static.mercdn.net/images/member_photo_noimage_thumb.png", :width => "60"}/
+        %h2.bold 高野和樹
+        .mypage-number
+          %div
+            評価
+            %span.bold 0
+          %div
+            出品数
+            %span.bold 0
+    %section.mypage-tab
+      %ul.mypage-tabs
+        %li.active
+          %h3
+            %a{"data-toggle" => "tab", :href => "#mypage-tab-notification"}
+              お知らせ
+              %span.hidden-large.nav-number
+                1
+        %li
+          %h3
+            %a{"data-toggle" => "tab", :href => "#mypage-tab-todo"}
+              やることリスト
+              %span.hidden-large.nav-number
+                1
+      .tab-content
+        %ul.mypage-item-list.tab-pane.active
+          -# %li
+          -#   %a.mypage-item-link{"data-modal" => "banner", "data-open" => "modal", :href => ""}
+              -# %figure
+              -#   %img.lazyload{:alt => "", "data-src" => "https://static.mercdn.net/images/mercari_profile.png"}/
+              -# .mypage-item-body
+              -#   .mypage-item-text 【1,000円分のポイントが必ずもらえる】新規登録者限定キャンペーン開催中！
+              -#   %time
+              -#     %i.icon-time
+              -#     %span 4 時間前
+              -# %i.icon-arrow-right
+          %li.mypage-go-list
+            %a{:href => "/jp/mypage/notification/"} 一覧を見る
+        -# %ul.mypage-item-list.tab-pane
+        -#   %li
+        -#     %a.mypage-item-link{:href => "https://www.mercari.com/jp/help_center/article/759/"}
+        -#       %figure
+        -#         %img.lazyload{:alt => "", "data-src" => "//static.mercdn.net/images/mercari_profile.png"}/
+        -#       .mypage-item-body
+        -#         .mypage-item-text ご登録のメールアドレスに認証メールを送りました。メールに記載のURLをクリックして、メールアドレスを認証してください。
+        -#         %time
+        -#           %i.icon-time
+        -#           %span 22 時間前
+        -#       %i.icon-arrow-right
+        -#   %li.mypage-go-list
+        -#     %a{:href => "/jp/mypage/todo/"} 一覧を見る
+    -# %aside.modal{"data-close" => "modal", "data-modal" => "banner"}
+    -#   .modal-inner.modal-banner
+    -#     .modal-inner__eye-catch
+    -#       %img.first{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?2651893653"}/
+    -#       %img.last{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2651893653"}/
+    -#     .modal-inner__body
+    -#       %h2 今すぐ無料ダウンロード！
+    -#       %p.bold 全ての機能を使えるスマホアプリはこちら！
+    -#       .modal-banner-app.clearfix
+    -#         %a.pull-left{:href => "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", :target => "_blank"}
+    -#           %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?2651893653"}/
+    -#         %a.pull-left{:href => "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", :target => "_blank"}
+    -#           %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?2651893653"}/
+    -#       %a.modal-banner-app-open{"data-action" => "app/launch", "data-play-id" => "com.kouzoh.mercari", "data-toggle" => "open-app", "data-url-scheme" => "mercari://", :href => ""}
+    -#         アプリで開く
+    -#     %i.icon-close{"data-close" => "modal"}
+    %section.mypage-tab-container
+      %h2.mypage-tab-head 購入した商品
+      %ul.mypage-tabs
+        %li.active
+          %h3
+            %a{"data-toggle" => "tab", :href => "#mypage-tab-transaction-now"}
+              取引中
+        %li
+          %h3
+            %a{"data-toggle" => "tab", :href => "#mypage-tab-transaction-old"}
+              過去の取引
+      .tab-content
+        %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
+          %li.mypage-item-not-found.bold 取引中の商品がありません
+        %ul#mypage-tab-transaction-old.mypage-item-list.tab-pane
+          %li.mypage-item-not-found.bold 過去に取引した商品がありません
+  .mypage-side
+    %nav.mypage-nav
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item{:href => "/mypage/"}
+            マイページ
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            お知らせ
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            やることリスト
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            いいね！一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品する
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 出品中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 取引中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 売却済み
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            購入した商品 - 取引中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            購入した商品 - 過去の取引
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ニュース一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => ""}
+            評価一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ガイド
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            お問い合わせ
+            = fa_icon "chevron-right"
+      %h3.mypage-nav-head メルペイ
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            売上・振込申請
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ポイント
+            = fa_icon "chevron-right"
+      %h3.mypage-nav-head 設定
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item.active{:href => "/mypage/profile/"}
+            プロフィール
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            発送元・お届け先住所変更
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            支払い方法
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            メール/パスワード
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            本人情報
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            電話番号の確認
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ログアウト
+            = fa_icon "chevron-right"
+= render"products/footer"
