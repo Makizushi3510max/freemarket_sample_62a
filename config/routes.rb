@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'products#index'
+
+  resources :signup do
+    collection do
+      get 'registration'
+      get 'sms_authentication'
+      get 'sms_confirmation'
+      get 'address'
+      get 'creditcard'
+      get 'done'
+    end
+  end
 end
