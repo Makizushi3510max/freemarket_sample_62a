@@ -1,0 +1,117 @@
+-# ログアウト
+= render"products/header"
+
+.mypage.clearfix
+  .mypage__content
+    .chapter-container
+      %form.single-inner{:action => "https://www.mercari.com/jp/logout/", :method => "POST", :novalidate => "novalidate"}
+        .single-content
+          %button.btn-default.btn-red{:type => "submit"} ログアウト
+          %input{:name => "__csrf_value", :type => "hidden", :value => "cda431f0ccdcc2bf9d34b5fe72096b6270427c0033f7b48dcd40a149383086a9a87222f4fc6b2db43e0b24b336dfc32305f16f7f1559a6ef6bba89f3a344df1ae"}/
+  .mypage-side
+    %nav.mypage-nav
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item{:href => "/mypage/"}
+            マイページ
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            お知らせ
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            やることリスト
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            いいね！一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品する
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 出品中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 取引中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            出品した商品 - 売却済み
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            購入した商品 - 取引中
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            購入した商品 - 過去の取引
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ニュース一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => ""}
+            評価一覧
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ガイド
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            お問い合わせ
+            = fa_icon "chevron-right"
+      %h3.mypage-nav-head メルペイ
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            売上・振込申請
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            ポイント
+            = fa_icon "chevron-right"
+      %h3.mypage-nav-head 設定
+      %ul.mypage-nav-list
+        %li
+          %a.mypage-nav-list__item{:href => "/mypage/profile/"}
+            プロフィール
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            発送元・お届け先住所変更
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "/mypage/card/"}
+            支払い方法
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            メール/パスワード
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "/mypage/identification/"}
+            本人情報
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item{:href => "#"}
+            電話番号の確認
+            = fa_icon "chevron-right"
+        %li
+          %a.mypage-nav-list__item.active{:href => "/mypage/logout/"}
+            ログアウト
+            = fa_icon "chevron-right"
+.exhibit
+  %a.exhibit__link{:href => "/jp/sell/"}
+    .exhibit__link__circle
+      .exhibit__link__circle__text 出品
+      %svg.exhibit__link__circle__text__svg{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 18 16", :width => "18"}
+        %path{:d => "M6.3 0L4.653 1.778H1.8c-.99 0-1.8.8-1.8 1.778v10.666C0 15.2.81 16 1.8 16h14.4c.99 0 1.8-.8 1.8-1.778V3.556c0-.978-.81-1.778-1.8-1.778h-2.853L11.7 0H6.3zM9 13.333c-2.484 0-4.5-1.99-4.5-4.444 0-2.453 2.016-4.445 4.5-4.445s4.5 1.992 4.5 4.445c0 2.453-2.016 4.444-4.5 4.444zm0-1.6c1.59 0 2.88-1.273 2.88-2.844S10.59 6.044 9 6.044c-1.59 0-2.88 1.274-2.88 2.845 0 1.57 1.29 2.844 2.88 2.844z", :fill => "currentColor", "fill-rule" => "nonzero"}
+
+= render"products/footer"

@@ -246,7 +246,7 @@
             }
           }
         }
-        .mypage {
+        .mypage-link {
           list-style: none;
           height: 44px;
           position: relative;
@@ -254,7 +254,7 @@
           &:last-child{
             padding-right: 0px;
           }
-          .mypage__box {
+          &__box {
             text-decoration: none;
             -webkit-box-align: center;
             align-items: center;
@@ -263,14 +263,14 @@
             height: 32px;
             transform: scale(1);
             transition: all 0.3s ease-out 0s;
-            .mypage__box__img {
+            &__img {
               margin-right: 10px;
               width: 32px;
               border-radius: 50%;
               overflow: hidden;
               vertical-align: middle;
             }
-            .mypage__box__text {
+            &__text {
               letter-spacing: 0.1em;
               text-align: left;
               font-size: 13px;
@@ -1185,7 +1185,7 @@
     .exhibit__link__circle {
       width: 160px;
       height: 160px;
-      padding-top: 25px;
+      padding-top: 35px;
       text-align: center;
       background-color: rgb(234, 53, 45);
       border-radius: 50%;
@@ -1210,6 +1210,7 @@
 .footer-img {
   background-position: center center;
   background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg");
+  background-size: cover;
   .footer-img__wrapper {
     position: relative;
     width: 100%;
