@@ -173,6 +173,16 @@
     // display: inline-block;
     background: #fff;
     position: relative;
+    icon-arrow-bottom{
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      z-index: 2;
+      color: #888;
+      font-size: 8px;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+    }
     select{
       width: 100%;
     }
@@ -249,6 +259,10 @@
   font-weight: 600;
 }
 
+.img{
+  vertical-align: middle;
+}
+
 .icon{
   &-check{
     position: absolute;
@@ -282,6 +296,9 @@
 .form{
   &__group{
     margin: 40px 0 0;
+    .select-wrap{
+      margin: 8px 0 0;
+    }
     label{
       font-weight: 600;
     }
@@ -333,13 +350,39 @@
   }
 }
 
-.signup-bar{
-  padding: 40px 0 0 44px;
-  border: 0;
-  display: inline-block;
-  vertical-align: top;
-  font-size: 0;
-  text-align: center;
+.signup{
+  &-bar{
+    padding: 40px 0 0 44px;
+    border: 0;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    text-align: center;
+  }
+  &__card-list{
+    margin: 8px 0 0;
+    font-size: 0;
+    li{
+      display: inline-block;
+      margin: 0 0 0 8px;
+      vertical-align: middle;
+    }
+    li:first-child{
+      margin: 0;
+    }
+  }
+  &__form--expire{
+    margin: 24px 0 0;
+    .select-wrap{
+      select{
+        width: calc(100% - 38px);
+      }
+    }
+    .select-wrap.half{
+      // display: inline-block;
+      width: calc(50% - 2px);
+    }
+  }
 }
 
 .progress-bar{
