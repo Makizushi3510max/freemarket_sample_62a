@@ -50,6 +50,10 @@
     }
     li{
       display: inline-block;
+      margin: 0 0 0 16px;
+      &:first-child{
+        margin: 0;
+      }
     }
     a{
       display: block;
@@ -115,6 +119,31 @@
     max-width: 456px;
     margin: 0 auto;
     background: #fff;
+    a{
+      display: block;
+      margin: 40px 0 0;
+    }
+  }
+  &__no-account{
+    padding: 40px 64px;
+    // padding: 24px 32px;
+    text-align: center;
+    a{
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid #0099e8;
+      background: #0099e8;
+      color: #fff;
+      line-height: 40px;
+    }
+  }
+  &__inner{
+    padding: 32px 64px;
+    // padding: 24px 32px;
+    border-top: 1px solid #eee;
+    &:first-child{
+      padding: 24px 64px 32px;
+    }
   }
 }
 
@@ -233,6 +262,9 @@
       margin: 16px 0 0;
       background: #385185;
       color: #fff;
+      &:first-child{
+        margin: 0;
+      }
     }
     &-google{
       margin: 16px 0 0;

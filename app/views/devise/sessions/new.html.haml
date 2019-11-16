@@ -12,11 +12,17 @@
         %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
           %i.icon-facebook
             Facebookでログイン
-        %butotn#google-login.btn-default.btn-sns.btn-sns-google
+        %butotn#google-login.btn-default.btn-sns.btn-sns-google Googleでログイン
       %form{action: "#", method: "POST", novelidate: "novalidate"}
         .login__inner
           .form__group
+            %input.input-default.login__input--text{name: "email", type: "email", placeholder: "メールアドレス"}
           .form__group
+            %input.input-default.login__input--text{name: "password", type: "password", placeholder: "パスワード"}
           .form__group
+            .g-recaptcha.login__captcha
           %button.login__submit.btn-default.btn-red{type: "submit"} ログイン
+          %input{name: "login__callback", type: "hidden", value: ""}
+          %input{name: "#", type: "hidden", value: "#"}
+          %a{href: "#"} パスワードをお忘れの方
   = render partial: "iFooter"
