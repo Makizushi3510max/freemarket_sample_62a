@@ -12,7 +12,9 @@ Rails.application.routes.draw do
       get   'sms_confirmation'
       post  'sms_confirmation'      =>  'signup#sms_confirmation_validates'
       get   'address'
+      post  'address'               =>  'signup#address_validates'
       get   'creditcard'
+      post  'screditcard'           =>  'signup#creditcard_validates'
       get   'done'
     end
   end

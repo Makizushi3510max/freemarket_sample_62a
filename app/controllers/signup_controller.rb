@@ -28,17 +28,30 @@ class SignupController < ApplicationController
 
   def sms_authentication_validates
     session[:phone_number] = user_params[:phone_number]
-    binding.pry
-    redirect_to sms_confirmation_signup_index_pathexit
+    # binding.pry
+    redirect_to sms_confirmation_signup_index_path
   end
 
   def sms_confirmation
+    @user = User.new
+  end
+
+  def sms_confirmation_validates
+    binding.pry
+    redirect_to address_signup_index_path
   end
 
   def address
+    
+  end
+
+  def address_validates
   end
 
   def creditcard
+  end
+
+  def creditcard_validates
   end
 
   def done

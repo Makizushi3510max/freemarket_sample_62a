@@ -23,12 +23,12 @@
   %main.single__main
     %section.l-single__container
       %h2.l-single__head.registration 認証番号の確認
-      %form.l-single__inner{action: "#", method: "POST", novalidate: "novalidate"}
+      = form_with model: @user, url: sms_confirmation_signup_index_path, method: :post, local: true do |f|
         .l-single__content
           %p ***-****-****にSMSでお送りした6桁の認証番号を入力してください。
           .form__group
-            %label{for: "code"} 認証番号
-            %input.input-default{name: "code", type: "text", placeholder: "6桁の認証番号を入力", maxlength: "6"}
+            = f.label :code, "認証番号"
+            = f.telephone_field :code, class: "input-default", placeholder: "6桁の認証番号を入力", maxlength: "6"
           .btn-default.btn-red{type: "submit"} 認証して続行
       .l-single__inner
         .l-single__content
