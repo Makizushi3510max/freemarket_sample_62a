@@ -1,0 +1,14 @@
+$(document).on("turbolinks:load", function() {
+  $('.slider-list').slick({
+    // ドットにクラスを追加
+    // ドットの有無
+    dots: true,
+    // 自動再生
+    autoplay: true,
+    autoplaySpeed:4000,
+    speed: 800,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+    pauseOnDotsHover: false
+  });
+});
