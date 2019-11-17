@@ -115,6 +115,31 @@
     max-width: 456px;
     margin: 0 auto;
     background: #fff;
+    a{
+      display: block;
+      margin: 40px 0 0;
+    }
+  }
+  &__no-account{
+    padding: 40px 64px;
+    // padding: 24px 32px;
+    text-align: center;
+    a{
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid #0099e8;
+      background: #0099e8;
+      color: #fff;
+      line-height: 40px;
+    }
+  }
+  &__inner{
+    padding: 32px 64px;
+    // padding: 24px 32px;
+    border-top: 1px solid #eee;
+    &:first-child{
+      padding: 24px 64px 32px;
+    }
   }
 }
 
@@ -173,6 +198,16 @@
     // display: inline-block;
     background: #fff;
     position: relative;
+    icon-arrow-bottom{
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      z-index: 2;
+      color: #888;
+      font-size: 8px;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+    }
     select{
       width: 100%;
     }
@@ -282,12 +317,12 @@
 .form{
   &__group{
     margin: 40px 0 0;
+    .select-wrap{
+      margin: 8px 0 0;
+    }
     label{
       font-weight: 600;
     }
-    // select{
-    //   width: 100%;
-    // }
   }
   &__group:first-child{
     margin: 0;
@@ -333,13 +368,38 @@
   }
 }
 
-.signup-bar{
-  padding: 40px 0 0 44px;
-  border: 0;
-  display: inline-block;
-  vertical-align: top;
-  font-size: 0;
-  text-align: center;
+signup{
+  &-bar{	
+    padding: 40px 0 0 44px;	padding: 40px 0 0 44px;
+    border: 0;	border: 0;
+    display: inline-block;	display: inline-block;
+    vertical-align: top;	vertical-align: top;
+    font-size: 0;	font-size: 0;
+    text-align: center;	text-align: center;
+  }	
+  &__card-list{	
+    margin: 8px 0 0;	
+    font-size: 0;	
+    li{	
+      display: inline-block;	
+      margin: 0 0 0 8px;	
+      vertical-align: middle;	
+    }	
+    li:first-child{	
+      margin: 0;	
+    }	
+  }	
+  &__form--expire{	
+    margin: 24px 0 0;	
+    .select-wrap{	
+      select{	
+        width: calc(100% - 38px);	
+      }	
+    }	
+    .select-wrap.half{	
+      width: calc(50% - 2px);	
+    }	
+  }	
 }
 
 .progress-bar{

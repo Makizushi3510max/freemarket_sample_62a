@@ -1,9 +1,10 @@
-@import "./reset";
+@import "./config/reset";
 @import "./products";
 @import "font-awesome";
 @import "./mypages/mypages.scss";
 @import "./mypages/profile.scss";
 @import "./mypages/card.scss";
 @import "./mypages/identification.scss";
-@import "./ishiharas.scss";
-@import "./tagDifine.scss"
+@import "./signup.scss";
+@import "./config/tagDifine.scss";
+@import "./new.scss"
