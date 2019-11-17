@@ -1,4 +1,4 @@
-@import "./reset";
+@import "./config/reset";
 @import "./products";
 @import "font-awesome";
 @import "./slick-theme.scss";
@@ -7,3 +7,6 @@
 @import "./mypages/profile.scss";
 @import "./mypages/card.scss";
 @import "./mypages/identification.scss";
+@import "./signup.scss";
+@import "./config/tagDifine.scss";
+@import "./new.scss"
