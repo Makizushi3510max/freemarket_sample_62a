@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'products#index'
 
-  resources :products, only: :new 
+  resources :products, only: :new do
+    member do
+      get 'purchase'
+    end
+  end
 
 
-  resources :mypage, only: :show do
+  resources :mypages, only: :show do
     member do
       get 'profile'
       get 'card'
