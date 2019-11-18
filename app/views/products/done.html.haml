@@ -1,54 +1,60 @@
-%main.single-main
-  %section.l-single-container.buy-item-container
-    .transact-attention
-      %h3
-        %i.icon-time
-        %span 発送をお待ちください
-      %p 出品者からの発送通知をお待ちください
-    %h2.l-single-head 購入が完了しました
-    %section.buy-content.buy-item
-      .buy-content-inner
-        %h3.buy-item-image
-          %img.lazyloaded{:alt => "", "data-src" => "https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459", :src => "https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459"}/
-        %p.buy-item-name.bold コンピュータはなぜ動くのか 知っておきたいハードウエア&amp;ソフトウエアの基礎知識
-    %section.buy-content.buy-user-info.buy-item
-      .buy-content-inner
-        %p.buy-price-ja.bold
-          ¥1,111
-          %span.item-shipping-fee.f14.bold 送料込み
-    %section.buy-content.buy-user-info
-      .buy-content-inner
-        %h3 配送先
-        %address.buy-user-info-text
-          〒810-0014
-          %br/
-          福岡県 福岡市中央区平尾一丁目
-          *-**-***
-          %br/
-          高野 和樹
-        %p.buy-user-info-text
-    %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
-      .buy-content-inner
-        %h3 支払い方法
-        %p.buy-user-info-text
-          ************0437
-          %br/
-          06 / 23
-        %figure
-          %img{:alt => "jcb", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2749976048", :width => "26"}/
+.single__container
+  %header.single__header
+    %h1
+      %a{:href => "https://www.mercari.com/jp/"}
+        %img{:alt => "mercari", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?210491352"}/
+  %main.single-main
+    %section.l-single__container.buy-item-container
+      .transact-attention
+        %h3
+          %i.icon-time
+          %span 発送をお待ちください
+        %p 出品者からの発送通知をお待ちください
+      %h2.l-single-head 購入が完了しました
+      %section.buy-content.buy-item
+        .buy-content-inner
+          %h3.buy-item-image
+            %img.lazyloaded{:alt => "", "data-src" => "https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459", :src => "https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459"}/
+          %p.buy-item-name.bold コンピュータはなぜ動くのか 知っておきたいハードウエア&amp;ソフトウエアの基礎知識
+      %section.buy-content.buy-user-info.buy-item
+        .buy-content-inner
+          %p.buy-price-ja.bold
+            ¥1,111
+            %span.item-shipping-fee.f14.bold 送料込み
+      %section.buy-content.buy-user-info
+        .buy-content-inner
+          %h3 配送先
+          %address.buy-user-info-text
+            〒810-0801
+            %br/
+            福岡県 福岡市博多区中洲4丁目
+            6-12 プラート中洲　8F
+            %br/
+            高野 和樹
+          %p.buy-user-info-text
+      %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
+        .buy-content-inner
+          %h3 支払い方法
+          %p.buy-user-info-text
+            ************0437
+            %br/
+            06 / 23
+          %figure
+            %img{:alt => "jcb", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2749976048", :width => "26"}/
+          %p
+      %section.buy-content.buy-done-flow
+        %h3 発送通知後の流れ
+        %div
+          %i.icon-good
+          %i.icon-normal
+          %i.icon-bad
         %p
-    %section.buy-content.buy-done-flow
-      %h3 発送通知後の流れ
-      %div
-        %i.icon-good
-        %i.icon-normal
-        %i.icon-bad
-      %p
-        商品を受け取ったら
-        %br>/
-        出品者の評価をしましょう。
-        %br>/
-        購入代金が出品者に振り込まれます。
-        %br>/
-        評価後に取引は完了です。
-      %a.bold{:href => "https://www.mercari.com/jp/mypage/"} マイページへもどる
+          商品を受け取ったら
+          %br>/
+          出品者の評価をしましょう。
+          %br>/
+          購入代金が出品者に振り込まれます。
+          %br>/
+          評価後に取引は完了です。
+        %a.bold{:href => "https://www.mercari.com/jp/mypage/"} マイページへもどる
+  = render partial: "iFooter"
