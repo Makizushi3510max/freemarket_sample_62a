@@ -29,7 +29,7 @@
           .form__group
             = f.label :code, "認証番号"
             = f.telephone_field :code, class: "input-default", placeholder: "6桁の認証番号を入力", maxlength: "6"
-          .btn-default.btn-red{type: "submit"} 認証して続行
+          = f.submit '認証して続行',class: "btn-default btn-red"
       .l-single__inner
         .l-single__content
           %p.bold.login-authen__sub-head 60秒たっても認証番号が届かない方へ
