@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'card/new'
+  get 'card/show'
   devise_for :users
   root to: 'products#index'
   # resources :users, only: [:create, :index, :edit, :update]
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
       get   'address'
       post  'address'               =>  'signup#address_validates'
       get   'creditcard'
-      post  'screditcard'           =>  'signup#creditcard_validates'
+      post  'creditcard'           =>  'signup#creditcard_validates'
       get   'done'
     end
   end

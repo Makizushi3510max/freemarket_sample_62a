@@ -231,6 +231,8 @@
 }
 
 .year,.month,.day{
+  display: inline-block;
+  margin-top: 8px;
   position: relative;
   z-index: 2;
   height: 48px;
