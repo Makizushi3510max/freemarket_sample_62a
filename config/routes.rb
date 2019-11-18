@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :products, only: :new do
     member do
       get 'purchase'
+      get 'done'
     end
   end
 
