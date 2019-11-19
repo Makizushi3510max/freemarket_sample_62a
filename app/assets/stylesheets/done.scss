@@ -34,7 +34,7 @@
     }
   }
   .buy-content{
-    .buy-content__inner{
+    &__inner{
       max-width: 320px;
       margin: 0 auto;
       .buy-item-image{
@@ -70,19 +70,20 @@
       display: block;
       margin: 16px 0 0;
     }
+    >div {
+      margin: 16px 0 0;
+      background: url(/jp/assets/img/transaction/bg-buy-done-flow.png?33127105);
+      background-position: center;
+      background-repeat: no-repeat;
+      font-size: 0;
+      text-align: center;
+      i {
+        margin: 0 0 0 8px;
+        font-size: 20px;
+      }    
+    }
+  
   } 
-  .buy-done-flow>div {
-    margin: 16px 0 0;
-    background: url(/jp/assets/img/transaction/bg-buy-done-flow.png?33127105);
-    background-position: center;
-    background-repeat: no-repeat;
-    font-size: 0;
-    text-align: center;
-  }
-  .buy-done-flow>div i {
-    margin: 0 0 0 8px;
-    font-size: 20px;
-  }
   .fa-smile-o{
     color: #ef5185;
   }
