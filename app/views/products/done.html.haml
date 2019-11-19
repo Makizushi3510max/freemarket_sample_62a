@@ -7,22 +7,22 @@
     %section.l-single__container.buy-item-container
       .transact-attention
         %h3
-          %i.icon-time
+          = fa_icon "clock-o"
           %span 発送をお待ちください
         %p 出品者からの発送通知をお待ちください
-      %h2.l-single-head 購入が完了しました
+      %h2.single-head 購入が完了しました
       %section.buy-content.buy-item
-        .buy-content-inner
+        .buy-content__inner
           %h3.buy-item-image
             %img.lazyloaded{:alt => "", "data-src" => "https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459", :src => "https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459"}/
           %p.buy-item-name.bold コンピュータはなぜ動くのか 知っておきたいハードウエア&amp;ソフトウエアの基礎知識
       %section.buy-content.buy-user-info.buy-item
-        .buy-content-inner
+        .buy-content__inner
           %p.buy-price-ja.bold
             ¥1,111
             %span.item-shipping-fee.f14.bold 送料込み
       %section.buy-content.buy-user-info
-        .buy-content-inner
+        .buy-content__inner
           %h3 配送先
           %address.buy-user-info-text
             〒810-0801
@@ -33,7 +33,7 @@
             高野 和樹
           %p.buy-user-info-text
       %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
-        .buy-content-inner
+        .buy-content__inner
           %h3 支払い方法
           %p.buy-user-info-text
             ************0437
@@ -45,9 +45,9 @@
       %section.buy-content.buy-done-flow
         %h3 発送通知後の流れ
         %div
-          %i.icon-good
-          %i.icon-normal
-          %i.icon-bad
+          = fa_icon "smile-o"
+          = fa_icon "meh-o"
+          = fa_icon "frown-o"
         %p
           商品を受け取ったら
           %br>/
@@ -56,5 +56,5 @@
           購入代金が出品者に振り込まれます。
           %br>/
           評価後に取引は完了です。
-        %a.bold{:href => "https://www.mercari.com/jp/mypage/"} マイページへもどる
+        %a.bold{:href => "#"} マイページへもどる
   = render partial: "iFooter"
