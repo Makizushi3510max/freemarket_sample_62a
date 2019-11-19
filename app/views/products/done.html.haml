@@ -1,7 +1,7 @@
 .single__container
   %header.single__header
     %h1
-      %a{:href => "https://www.mercari.com/jp/"}
+      = link_to root_path do
         = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?210491352', alt: 'mercari'
   %main.single__main
     %section.l-single__container.buy-item-container
@@ -56,5 +56,6 @@
           購入代金が出品者に振り込まれます。
           %br>/
           評価後に取引は完了です。
-        %a.bold{:href => "#"} マイページへもどる
+        = link_to mypage_path, class: 'bold' do
+          マイページへもどる
   = render partial: "iFooter"
