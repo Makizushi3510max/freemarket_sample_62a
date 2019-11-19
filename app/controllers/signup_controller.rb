@@ -19,8 +19,19 @@ class SignupController < ApplicationController
     session[:last_name_kana] = user_params[:last_name_kana]
     session[:first_name_kana] = user_params[:first_name_kana]
     # binding.pry
+    @user = User.new(
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      last_name: session[:last_name],
+      first_name: session[:first_name],
+      last_name_kana: session[:last_name_kana],
+      first_name_kana: session[:first_name_kana],
+      date_of_birth: session[:date_of_birth],
+      phone_number: "仮登録"
+    )
+    # binding.pry
     redirect_to sms_authentication_signup_index_path
-    
   end
 
   def sms_authentication
@@ -29,6 +40,7 @@ class SignupController < ApplicationController
 
   def sms_authentication_validates
     session[:phone_number] = user_params[:phone_number]
+    
     # binding.pry
     redirect_to sms_confirmation_signup_index_path
   end
