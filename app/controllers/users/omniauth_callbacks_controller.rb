@@ -32,11 +32,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:facebook)
   end
 
-  def google_auth2
+  def google_oauth2
     callback_for(:google)
+    binding.pry
   end
 
-  def callback_for
+  def callback_for(provider)
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.presisted?
       sign_in_and_redirect @user, event: :authentication
