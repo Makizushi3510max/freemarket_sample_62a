@@ -50,6 +50,10 @@
     }
     li{
       display: inline-block;
+      margin: 0 0 0 16px;
+      &:first-child{
+        margin: 0;
+      }
     }
     a{
       display: block;
@@ -226,6 +230,21 @@
   }
 }
 
+.year,.month,.day{
+  display: inline-block;
+  margin-top: 8px;
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
 .btn{
   &-default{
     display: block;
@@ -258,6 +277,9 @@
       margin: 16px 0 0;
       background: #385185;
       color: #fff;
+      &:first-child{
+        margin: 0;
+      }
     }
     &-google{
       margin: 16px 0 0;
@@ -282,6 +304,10 @@
 
 .bold{
   font-weight: 600;
+}
+
+.img{
+  vertical-align: middle;
 }
 
 .icon{
@@ -323,6 +349,9 @@
     label{
       font-weight: 600;
     }
+    // select{
+    //   width: 100%;
+    // }
   }
   &__group:first-child{
     margin: 0;
@@ -368,38 +397,39 @@
   }
 }
 
-signup{
-  &-bar{	
-    padding: 40px 0 0 44px;	padding: 40px 0 0 44px;
-    border: 0;	border: 0;
-    display: inline-block;	display: inline-block;
-    vertical-align: top;	vertical-align: top;
-    font-size: 0;	font-size: 0;
-    text-align: center;	text-align: center;
-  }	
-  &__card-list{	
-    margin: 8px 0 0;	
-    font-size: 0;	
-    li{	
-      display: inline-block;	
-      margin: 0 0 0 8px;	
-      vertical-align: middle;	
-    }	
-    li:first-child{	
-      margin: 0;	
-    }	
-  }	
-  &__form--expire{	
-    margin: 24px 0 0;	
-    .select-wrap{	
-      select{	
-        width: calc(100% - 38px);	
-      }	
-    }	
-    .select-wrap.half{	
-      width: calc(50% - 2px);	
-    }	
-  }	
+.signup{
+  &-bar{
+    padding: 40px 0 0 44px;
+    border: 0;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    text-align: center;
+  }
+  &__card-list{
+    margin: 8px 0 0;
+    font-size: 0;
+    li{
+      display: inline-block;
+      margin: 0 0 0 8px;
+      vertical-align: middle;
+    }
+    li:first-child{
+      margin: 0;
+    }
+  }
+  &__form--expire{
+    margin: 24px 0 0;
+    .select-wrap{
+      select{
+        width: calc(100% - 38px);
+      }
+    }
+    .select-wrap.half{
+      // display: inline-block;
+      width: calc(50% - 2px);
+    }
+  }
 }
 
 .progress-bar{
