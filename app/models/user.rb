@@ -4,18 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :addresses
+  has_one :card
   has_one_attached :avatar
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i          # emailの正規表現
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}\z/i   # passwordの正規表現
   VALID_NAME_REGEX = /\A[一-龥ぁ-ん]/
   VALID_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/
+  VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
+
 
   # nicknameのバリデーション
   validates :nickname,
     presence: true,                             # 存在していることを検証
     length: { minimum: 1, maximum: 20 }         # 最小1文字,最大20文字の間に納まっているかを検証
-  
+
   # emailのバリデーション
   validates :email,
     presence: true,                             # 存在していることを検証
@@ -55,4 +58,16 @@ class User < ApplicationRecord
   # date_of_birthのバリデーション
   validates :date_of_birth,
     presence: true
+
+  # phone_numberのバリデーション
+  validates :phone_number,
+    presence: true,
+    format: { with: VALID_PHONE_NUMBER_REGEX }
+
+  # バリデーションの条件分岐を後々実装したい
+  # with_options on: :registration do |registration|
+  # end
+
+  # with_options on: :sms do |sms|
+  # end
 end

@@ -130,21 +130,35 @@ class SignupController < ApplicationController
   end
 
   def creditcard_validates
-    session[:payment_card_no] = creditcard_params[:payment_card_no]
-    session[:payment_card_security_code] = creditcard_params[:payment_card_security_code]
-    session[:expiration_date] = Date.new(
-      creditcard_params["expiration_date(1i)"].to_i + 2000,
-      creditcard_params["expiration_date(2i)"].to_i,
-      creditcard_params["expiration_date(3i)"].to_i)
-    # @card = Card.new(
-    #   payment_card_no: session[:payment_card_no],
-    #   payment_card_security_code: session[:payment_card_security_code],
-    #   expiration_date: session[:expiration_date]
-    # )
-    binding.pry
+    # session[:payment_card_no] = creditcard_params[:payment_card_no]
+    # session[:payment_card_security_code] = creditcard_params[:payment_card_security_code]
+    # session[:expiration_date] = Date.new(
+    #   creditcard_params["expiration_date(1i)"].to_i + 2000,
+    #   creditcard_params["expiration_date(2i)"].to_i,
+    #   creditcard_params["expiration_date(3i)"].to_i)
+    # binding.pry
     
+    # binding.pry
+    Payjp.api_key = Rails.application.credentials.payjp[:private_key]
+    if params['payjp-token'].blank?
+      redirect_to action: "creditcard"
+    else
+      customer = Payjp::Customer.create(
+        description: '登録テスト',
+        email: "test@test.com",
+        card: params['payjp-token']
+      )
+      # binding.pry
+      session[:customer_id] = customer.id
+      session[:card_id] = customer.default_card
+      # binding.pry
+      redirect_to done_signup_index_path
+    end
+    # binding.pry
+
+
     # session[:]
-    redirect_to done_signup_index_path
+    # redirect_to done_signup_index_path
   end
 
   def done
@@ -171,6 +185,11 @@ class SignupController < ApplicationController
       block_number:     session[:address_block_number],
       building_name:    session[:address_building_name],
       phone_number:     session[:address_phone_number]
+    )
+    @card = Card.create(
+      user:             @user,
+      customer_id:      session[:customer_id],
+      card_id:          session[:card_id]
     )
     binding.pry
   end

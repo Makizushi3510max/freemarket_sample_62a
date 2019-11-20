@@ -1,22 +1,33 @@
 document.addEventListener(
   "DOMContentLoaded", e => {
     if (document.getElementById("token_submit") != null ){
+      // console.log("hoge")
       Payjp.setPublicKey("pk_test_1f10168ec7287f0734a4a25e");
       let btn = document.getElementById("token_submit");
-      btn.addEventListener("ckick", e => {
+      // console.log(btn);
+      btn.addEventListener("click", e => {
         e.preventDefault();
+        // console.log("fuga")
         let card = {
-          number: document.getElementById("payment_card_no").nodeValue,
-          cvc: document.getElementById("payment_card_security_code").value,
+          number: document.getElementById("card_payment_card_no").value,
+          cvc: document.getElementById("card_payment_card_security_code").value,
           exp_month: document.getElementById("card_expiration_date_2i").value,
-          exp_year: document.getElementById("card_expiration_date_1i").value
+          exp_year: 20 + document.getElementById("card_expiration_date_1i").value
+          // number: Number(document.getElementById("card_payment_card_no").value),
+          // cvc: Number(document.getElementById("card_payment_card_security_code").value),
+          // exp_month: Number(document.getElementById("card_expiration_date_2i").value),
+          // exp_year: Number(20 + document.getElementById("card_expiration_date_1i").value)
         };
-        Payjp.createToken(card, (status, response) => {
-          if (status == 200){
-            $("#card_number").removeAttr("name");
-            $("#cvc").removeAttr("name");
-            $("#exp_month").removeAttr("name");
-            $("#exp_year").removeAttr("name");
+        // console.log(status)
+        console.log(card);
+        Payjp.createToken(card, function(status, response){
+          console.log(status)
+          console.log(response);
+          if (status === 200){
+            $("#card_payment_card_no").removeAttr("name");
+            $("#card_payment_card_security_code").removeAttr("name");
+            $("#card_expiration_date_2i").removeAttr("name");
+            $("#card_expiration_date_1i").removeAttr("name");
             $("#card_token").append(
               $('<input type="hidden" name="payjp-token">').val(response.id)
             );
@@ -28,6 +39,27 @@ document.addEventListener(
         });
       });
     }
+    // if (document.getElementById("test") != null ){
+    //   console.log("hoge");
+    //   Payjp.setPublicKey("pk_test_1f10168ec7287f0734a4a25e");
+    //   let btn = document.getElementById("test");
+    //   console.log(btn);
+    //   btn.addEventListener("click", e => {
+    //     e.preventDefault();
+    //     console.log("発火")
+    //     let card = {
+    //       number: "4242424242424242",
+    //       cvc: "123",
+    //       exp_month: "12",
+    //       exp_year: "2020"
+    //     };
+    //     console.log(card);
+    //     Payjp.createToken(card, function(status, response){
+    //       console.log(status);
+    //       console.log(response);
+    //     })
+    //   })
+    // }
   },
   false
 );
