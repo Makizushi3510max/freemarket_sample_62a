@@ -13,6 +13,7 @@
           %i.icon-facebook
             Facebookでログイン
         %butotn#google-login.btn-default.btn-sns.btn-sns-google Googleでログイン
+        = render "devise/shared/links"
       %form{action: "#", method: "POST", novelidate: "novalidate"}
         .login__inner
           .form__group
@@ -25,4 +26,5 @@
           %input{name: "login__callback", type: "hidden", value: ""}
           %input{name: "#", type: "hidden", value: "#"}
           %a{href: "#"} パスワードをお忘れの方
-  = render partial: "iFooter"
+  = render partial: "signup/iFooter"
+
