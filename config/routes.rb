@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   get 'card/new'
   get 'card/show'
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root to: 'products#index'
   # resources :users, only: [:create, :index, :edit, :update]
   resources :signup, only: [:index, :create] do
     collection do
+      get   'index'
       get   'registration'
       post  'registration'          =>  'signup#registration_validates'
       get   'sms_authentication'
