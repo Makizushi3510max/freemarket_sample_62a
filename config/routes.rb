@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   # resources :users, only: [:create, :index, :edit, :update]
   resources :signup, only: [:index, :create] do
     collection do
-      get   'login' # マークアップ作業の為の仮置です by E07ZK
       get   'registration'
       post  'registration'          =>  'signup#registration_validates'
       get   'sms_authentication'
