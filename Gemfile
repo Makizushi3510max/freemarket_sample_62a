@@ -78,4 +78,5 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem "font-awesome-rails"
 gem 'active_hash'
+gem 'jquery-rails'
 gem 'payjp'
