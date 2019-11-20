@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       get   'creditcard'
       post  'creditcard'           =>  'signup#creditcard_validates'
       get   'done'
+    end
+  end
 
   resources :products, only: :new do
     member do
