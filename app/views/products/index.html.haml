@@ -1,9 +1,14 @@
-= render"products/header"
+%script{:src => "//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js", :type => "text/javascript"}
+
+
+.header
+  = render"products/header"
 
 .main
   %ul.slider-list
     %li.slider-slide
-      
+      %img.slider-slide__img{:src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg"}/
+
     %li.slider-slide.slide-visible
       .sc-dliRfk.lnMXqm
         .sc-kLIISr.fqOIIb
@@ -58,7 +63,7 @@
 
                   .main__main__product__box__item__link__figure__figcaption__style
                     %span.main__main__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
-                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://static.mercdn.net/item/detail/orig/photos/m59788728488_1.jpg?1573560112"}/
+                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192948M180064_1/wacko-maria------.jpg"}/
 
           %li.main__main__product__div__box__item
 
@@ -70,7 +75,7 @@
 
                   .main__main__product__box__item__link__figure__figcaption__style
                     %span.main__main__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
-                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://static.mercdn.net/item/detail/orig/photos/m59788728488_1.jpg?1573560112"}/
+                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192138M213022_1/y-3---t-.jpg"}/
 
           %li.main__main__product__div__box__item
 
@@ -82,7 +87,7 @@
 
                   .main__main__product__box__item__link__figure__figcaption__style
                     %span.main__main__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
-                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://static.mercdn.net/item/detail/orig/photos/m59788728488_1.jpg?1573560112"}/
+                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192138M180009_1/y-3---.jpg"}/
 
           %li.main__main__product__div__box__item
 
@@ -94,7 +99,7 @@
 
                   .main__main__product__box__item__link__figure__figcaption__style
                     %span.main__main__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
-                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://static.mercdn.net/item/detail/orig/photos/m59788728488_1.jpg?1573560112"}/
+                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192138M140001_1/y-3--adizero--.jpg"}/
 
           %li.main__main__product__div__box__item
 
@@ -106,7 +111,7 @@
 
                   .main__main__product__box__item__link__figure__figcaption__style
                     %span.main__main__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
-                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://static.mercdn.net/item/detail/orig/photos/m59788728488_1.jpg?1573560112"}/
+                    %img.main__main__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192138M139004_1/y-3--dad-.jpg"}/
 
   .main__bottom
     %h2.main__bottom_brand 人気のブランド
@@ -127,6 +132,69 @@
         %h3.main__foot__connect__new__text ルイヴィトン新着アイテム
         .main__foot__connect__new__motto
           %a.main__foot__connect__new__motto__details{:href => "/jp/category/1/"} もっと見る ＞
+    
+    .main__foot__product
+      %div
+        %ul.main__foot__product__div__box
+          %li.main__foot__product__div__box__item
+
+            %div.main__foot__product__box__item__div{:style => "visibility: visible; transition: all 0.5s ease 0s; opacity: 1;"}
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span ニットセットアップ   お値下げします！
+
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://res.cloudinary.com/ssenseweb/image/upload/w_768,q_90,f_auto,dpr_auto/v1573498651/qa2slrbtmergvw4ptzbr.jpg"}/
+
+          %li.main__foot__product__div__box__item
+
+            %div.main__foot__product__box__item__div{:style => "visibility: visible; transition: all 0.5s ease 0s; opacity: 1;"}
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span ニットセットアップ   お値下げします！
+
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192896M176001_1/rochambeau---.jpg"}/
+
+          %li.main__foot__product__div__box__item
+
+            %div.main__foot__product__box__item__div{:style => "visibility: visible; transition: all 0.5s ease 0s; opacity: 1;"}
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span ニットセットアップ   お値下げします！
+
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192065M180002_1/lhomme-rouge--story-check-.jpg"}/
+
+          %li.main__foot__product__div__box__item
+
+            %div.main__foot__product__box__item__div{:style => "visibility: visible; transition: all 0.5s ease 0s; opacity: 1;"}
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span ニットセットアップ   お値下げします！
+
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201693M138179_1/fendi----forever-fendi--.jpg"}/
+                    
+          %li.main__foot__product__div__box__item
+
+            %div.main__foot__product__box__item__div{:style => "visibility: visible; transition: all 0.5s ease 0s; opacity: 1;"}
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span ニットセットアップ   お値下げします！
+
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span{"aria-label" => "Price"} ¥3,600
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img{:alt => "Thumbnail of \"ニットセットアップ   お値下げします！\"", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201948M192013_1/wacko-maria-tim-lehi-edition------.jpg"}/
 
 .exhibit
   %a.exhibit__link{:href => "/jp/sell/"}
@@ -135,4 +203,5 @@
       %svg.exhibit__link__circle__text__svg{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 18 16", :width => "18"}
         %path{:d => "M6.3 0L4.653 1.778H1.8c-.99 0-1.8.8-1.8 1.778v10.666C0 15.2.81 16 1.8 16h14.4c.99 0 1.8-.8 1.8-1.778V3.556c0-.978-.81-1.778-1.8-1.778h-2.853L11.7 0H6.3zM9 13.333c-2.484 0-4.5-1.99-4.5-4.444 0-2.453 2.016-4.445 4.5-4.445s4.5 1.992 4.5 4.445c0 2.453-2.016 4.444-4.5 4.444zm0-1.6c1.59 0 2.88-1.273 2.88-2.844S10.59 6.044 9 6.044c-1.59 0-2.88 1.274-2.88 2.845 0 1.57 1.29 2.844 2.88 2.844z", :fill => "currentColor", "fill-rule" => "nonzero"}
 
-= render"products/footer"
+%aside.footer-img
+  = render"products/footer"

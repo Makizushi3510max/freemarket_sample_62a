@@ -1,0 +1,96 @@
+.transact-attention{
+  position: relative;
+  padding: 24px 8px;
+  background: #fff6de;
+  text-align: center;
+  font-size: 0;
+  h3{
+    font-size: 16px;
+    color: #ea352d;
+    .fa{
+      margin: 0 8px 0 0;
+      font-size: 32px;
+      color: #ea352d;
+      vertical-align: middle;
+    }
+  }
+  span{
+    vertical-align: middle;
+  }
+  p{
+    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+.buy-item-container{
+  .single-head{
+    padding: 32px 16px;
+    font-size: 22px;
+  }
+  .buy-item-image{
+    img{
+      width: 148px;
+    }
+  }
+  .buy-content{
+    &__inner{
+      max-width: 320px;
+      margin: 0 auto;
+      .buy-item-image{
+        font-size: 22px;
+      }
+      .buy-item-name{
+        margin: 8px 0 0;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .buy-price-ja.bold{
+        margin: 16px 0 0;
+        font-size: 28px;
+      }
+      .item-shipping-fee{
+        margin: 0 0 0 8px;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+  .buy-done-flow{
+    text-align: center;
+    h3 {
+      font-size: 14px;
+    }
+    p{
+      margin: 16px 0 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    a{
+      display: block;
+      margin: 16px 0 0;
+    }
+    >div {
+      margin: 16px 0 0;
+      background: url(/jp/assets/img/transaction/bg-buy-done-flow.png?33127105);
+      background-position: center;
+      background-repeat: no-repeat;
+      font-size: 0;
+      text-align: center;
+      i {
+        margin: 0 0 0 8px;
+        font-size: 20px;
+      }    
+    }
+  
+  } 
+  .fa-smile-o{
+    color: #ef5185;
+  }
+  .fa-meh-o{
+    color: #fba933;
+  }
+  .fa-frown-o{
+    color: #6ab5d8;
+  }
+}
