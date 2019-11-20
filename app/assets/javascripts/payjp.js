@@ -1,24 +1,16 @@
 document.addEventListener(
   "DOMContentLoaded", e => {
     if (document.getElementById("token_submit") != null ){
-      // console.log("hoge")
       Payjp.setPublicKey("pk_test_1f10168ec7287f0734a4a25e");
       let btn = document.getElementById("token_submit");
-      // console.log(btn);
       btn.addEventListener("click", e => {
         e.preventDefault();
-        // console.log("fuga")
         let card = {
           number: document.getElementById("card_payment_card_no").value,
           cvc: document.getElementById("card_payment_card_security_code").value,
           exp_month: document.getElementById("card_expiration_date_2i").value,
           exp_year: 20 + document.getElementById("card_expiration_date_1i").value
-          // number: Number(document.getElementById("card_payment_card_no").value),
-          // cvc: Number(document.getElementById("card_payment_card_security_code").value),
-          // exp_month: Number(document.getElementById("card_expiration_date_2i").value),
-          // exp_year: Number(20 + document.getElementById("card_expiration_date_1i").value)
         };
-        // console.log(status)
         console.log(card);
         Payjp.createToken(card, function(status, response){
           console.log(status)
@@ -39,27 +31,6 @@ document.addEventListener(
         });
       });
     }
-    // if (document.getElementById("test") != null ){
-    //   console.log("hoge");
-    //   Payjp.setPublicKey("pk_test_1f10168ec7287f0734a4a25e");
-    //   let btn = document.getElementById("test");
-    //   console.log(btn);
-    //   btn.addEventListener("click", e => {
-    //     e.preventDefault();
-    //     console.log("発火")
-    //     let card = {
-    //       number: "4242424242424242",
-    //       cvc: "123",
-    //       exp_month: "12",
-    //       exp_year: "2020"
-    //     };
-    //     console.log(card);
-    //     Payjp.createToken(card, function(status, response){
-    //       console.log(status);
-    //       console.log(response);
-    //     })
-    //   })
-    // }
   },
   false
 );

@@ -7,6 +7,7 @@ class SignupController < ApplicationController
   end
 
   def registration_validates
+    # sessionにとりあえず格納
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -18,7 +19,8 @@ class SignupController < ApplicationController
     session[:first_name] = user_params[:first_name]
     session[:last_name_kana] = user_params[:last_name_kana]
     session[:first_name_kana] = user_params[:first_name_kana]
-    # binding.pry
+
+    # バリデーション用のインスタンスを準備
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -28,12 +30,11 @@ class SignupController < ApplicationController
       last_name_kana: session[:last_name_kana],
       first_name_kana: session[:first_name_kana],
       date_of_birth: session[:date_of_birth],
-      phone_number: "0000000000"
+      phone_number: "0000000000"        # 仮のphone_numberを代入
     )
-    # binding.pry
+    # @user.valid?がtrueを返せば次のページに進む。falseを返せば同じページをレンダーする。
     if @user.valid?
-      @user.phone_number = nil
-      # binding.pry
+      @user.phone_number = nil          # 仮のphone_numberをリセット
       redirect_to sms_authentication_signup_index_path
     else
       render 'signup/registration'
@@ -59,20 +60,17 @@ class SignupController < ApplicationController
       phone_number: session[:phone_number]
     )
 
-    # binding.pry
     if @user.valid?
       redirect_to sms_confirmation_signup_index_path
     else
       render 'signup/sms_authentication'
     end
-    # binding.pry
   end
 
   def sms_confirmation
   end
 
   def sms_confirmation_validates
-    # binding.pry
     redirect_to address_signup_index_path
   end
 
@@ -91,7 +89,6 @@ class SignupController < ApplicationController
     session[:address_block_number] = address_params[:block_number]
     session[:address_building_name] = address_params[:building_name]
     session[:address_phone_number] = address_params[:phone_number]
-    # binding.pry
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -126,19 +123,9 @@ class SignupController < ApplicationController
 
   def creditcard
     @card = Card.new
-    # binding.pry
   end
 
   def creditcard_validates
-    # session[:payment_card_no] = creditcard_params[:payment_card_no]
-    # session[:payment_card_security_code] = creditcard_params[:payment_card_security_code]
-    # session[:expiration_date] = Date.new(
-    #   creditcard_params["expiration_date(1i)"].to_i + 2000,
-    #   creditcard_params["expiration_date(2i)"].to_i,
-    #   creditcard_params["expiration_date(3i)"].to_i)
-    # binding.pry
-    
-    # binding.pry
     Payjp.api_key = Rails.application.credentials.payjp[:private_key]
     if params['payjp-token'].blank?
       redirect_to action: "creditcard"
@@ -148,17 +135,10 @@ class SignupController < ApplicationController
         email: "test@test.com",
         card: params['payjp-token']
       )
-      # binding.pry
       session[:customer_id] = customer.id
       session[:card_id] = customer.default_card
-      # binding.pry
       redirect_to done_signup_index_path
     end
-    # binding.pry
-
-
-    # session[:]
-    # redirect_to done_signup_index_path
   end
 
   def done
@@ -191,7 +171,6 @@ class SignupController < ApplicationController
       customer_id:      session[:customer_id],
       card_id:          session[:card_id]
     )
-    binding.pry
   end
 
   private
