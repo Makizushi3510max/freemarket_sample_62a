@@ -13,9 +13,9 @@
             メールアドレスで登録する
           %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
             %i.icon-facebook
-            Facebookで登録する
+            = link_to "Facebookで登録する", user_facebook_omniauth_authorize_path, method: :post
           %button#google-login.btn-default.btn-sns.btn-sns-google
-            Googleで登録する
+            = link_to "Googleで登録する", user_google_oauth2_omniauth_authorize_path, method: :post
     -# 元からいた者たち
     %form#login_form_facebook{:action => "/jp/signup/facebook/", :method => "POST", :novalidate => "novalidate"}
       %input{:name => "__csrf_value", :type => "hidden", :value => "f7b3bdf78676dd47965dad0f8cd656dc579551f5dd875d3a8868db0cf4912052660d3d13ee57177b338709b92bc8eafa9d9601f557498b257f7b193711e9ded2d"}/

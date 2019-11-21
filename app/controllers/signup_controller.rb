@@ -7,6 +7,7 @@ class SignupController < ApplicationController
   end
 
   def registration_validates
+    # binding.pry
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -29,7 +30,7 @@ class SignupController < ApplicationController
 
   def sms_authentication_validates
     session[:phone_number] = user_params[:phone_number]
-    # binding.pry
+    binding.pry
     redirect_to sms_confirmation_signup_index_path
   end
 
@@ -96,7 +97,7 @@ class SignupController < ApplicationController
       building_name:    session[:address_building_name],
       phone_number:     session[:address_phone_number]
     )
-    binding.pry
+    # binding.pry
   end
 
   private
