@@ -25,8 +25,8 @@ Things you may want to cover:
 
 # Database Architecture
 
-ER図
-![ER図](https://imgur.com/GvGePy8.png)
+## ERD
+![ER図](https://imgur.com/hgNR4B2.png)
 
 ## users table
 |Column|Type|Options|
@@ -42,8 +42,8 @@ ER図
 |date_of_birth|date|null: false|
 
 ### Association
-- has_many :buyer_items, class_name: "Item"
-- has_many :seller_items, class_name: "Item"
+- has_many :buyer_products, class_name: "product"
+- has_many :seller_products, class_name: "product"
 - has_many :comments
 - has_many :messages
 - has_many :addresses
@@ -51,7 +51,7 @@ ER図
 - has_one :card
 - has_one_attached :avatar
 
-## items table
+## products table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -80,12 +80,12 @@ ER図
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
 |status|boolean|null: false|
 
 ### Association
 - belongs_to :user
-- belongs_to :item
+- belongs_to :product
 
 ## categories
 |Column|Type|Options|
@@ -93,7 +93,7 @@ ER図
 |name|string|null: false|
 
 ### Association
-- has_many :items
+- has_many :products
 - has_many :category_brands
 - has_many :brands, through: :category_brands
 - has_many :category_sizes
@@ -103,11 +103,11 @@ ER図
 |Column|Type|Options|
 |------|----|-------|
 |category_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
 |name|string|null: false|
 
 ### Association
-- has_many :items
+- has_many :products
 - has_many :category_brands
 - has_many :categories, through: :category_brands
 
@@ -146,22 +146,22 @@ ER図
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|item_id|references|null: false,foreign_key: true|
+|product_id|references|null: false,foreign_key: true|
 |user_id|references|null: false,foreign_key: true|
 
 ### Association
-- belongs_to :item
+- belongs_to :product
 - belongs_to :user
 
 ## messages
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|item_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :item
+- belongs_to :product
 - belongs_to :user
 
 ## addresses
