@@ -113,7 +113,6 @@ class SignupController < ApplicationController
       building_name: session[:address_building_name],
       phone_number: session[:address_phone_number]
     )
-    binding.pry
     if @address.valid?
       redirect_to creditcard_signup_index_path
     else
