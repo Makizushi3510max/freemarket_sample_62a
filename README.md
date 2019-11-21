@@ -26,7 +26,7 @@ Things you may want to cover:
 # Database Architecture
 
 ## ERD
-![ER図](https://imgur.com/hgNR4B2.png)
+![ER図](https://imgur.com/4fQA4wk.png)
 
 ## users table
 |Column|Type|Options|
@@ -57,10 +57,11 @@ Things you may want to cover:
 |name|string|null: false|
 |description|text|null: false|
 |seller_id|references|null: false, foreign_key: true|
-|buyer_id|references|null: false, foreign_key: true|
+|buyer_id|references|foreign_key: true|
 |category|references|null: false, foreign_key: true|
 |brand|references|foreign_key: true|
-|condition|integer|null: false, foreign_key: true|
+|size|references|null: false, foreign_key: true|
+|condition|integer|null: false|
 |shipping_cost|integer|null: false|
 |shipping_area|integer|null: false|
 |shipment_date|integer|null: false|
@@ -75,6 +76,7 @@ Things you may want to cover:
 - has_many_attached :images
 - belongs_to :category
 - belongs_to :brand
+- belongs_to :size
 
 ## likes
 |Column|Type|Options|
@@ -102,8 +104,6 @@ Things you may want to cover:
 ## brands
 |Column|Type|Options|
 |------|----|-------|
-|category_id|references|null: false, foreign_key: true|
-|product_id|references|null: false, foreign_key: true|
 |name|string|null: false|
 
 ### Association
@@ -124,12 +124,12 @@ Things you may want to cover:
 ## sizes table
 |Column|Type|Options|
 |------|----|-------|
-|category_id|references|null: false, foreign_key: true|
 |name|string|null: false|
 |ancestry|string|null: false|
 
 ### Association
-- has_many :category_size
+- has_many :products
+- has_many :category_sizes
 - has_many :categories, through: :category_sizes
 
 ## category_sizes table
