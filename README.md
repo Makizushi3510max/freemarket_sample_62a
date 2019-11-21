@@ -26,7 +26,7 @@ Things you may want to cover:
 # Database Architecture
 
 ## ERD
-![ER図](https://imgur.com/4fQA4wk.png)
+![ER図](https://imgur.com/n9fJpoL.png)
 
 ## users table
 |Column|Type|Options|
