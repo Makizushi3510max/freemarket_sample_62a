@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: :new do
+  resources :products, only: [:new, :show] do
     member do
       get 'purchase'
       get 'done'
