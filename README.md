@@ -117,6 +117,7 @@ Things you may want to cover:
 |------|----|-------|
 |category_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
+|ancestry|string|null: false|
 
 ### Association
 - belongs_to :category
@@ -126,7 +127,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string|null: false|
 
 ### Association
 - has_many :products
