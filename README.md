@@ -56,15 +56,16 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|seller_id|references|null: false, foreign_key: true|
-|buyer_id|references|foreign_key: true|
+|seller_id|references|null: false, foreign_key: { to_table: :users }|
+|buyer_id|references|foreign_key: { to_table: :users }|
 |category|references|null: false, foreign_key: true|
 |brand|references|foreign_key: true|
 |size|references|null: false, foreign_key: true|
 |condition|integer|null: false|
 |shipping_cost|integer|null: false|
 |shipping_area|integer|null: false|
-|shipment_date|integer|null: false|
+|shipping_date|integer|null: false|
+|shipping_address|references|foreign_key:{ to_table: :addresses }|
 |price|integer|null: false|
 
 ### Association
