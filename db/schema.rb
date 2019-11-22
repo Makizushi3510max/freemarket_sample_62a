@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_044315) do
+ActiveRecord::Schema.define(version: 2019_11_22_071951) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -89,6 +89,30 @@ ActiveRecord::Schema.define(version: 2019_11_22_044315) do
     t.index ["size_id"], name: "index_category_sizes_on_size_id"
   end
 
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id"
+    t.bigint "category_id", null: false
+    t.bigint "brand_id"
+    t.bigint "size_id", null: false
+    t.integer "condition", null: false
+    t.integer "shipping_cost", null: false
+    t.integer "shipping_area", null: false
+    t.integer "shipping_date", null: false
+    t.bigint "shipping_address_id"
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["buyer_id"], name: "index_products_on_buyer_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
+    t.index ["shipping_address_id"], name: "index_products_on_shipping_address_id"
+    t.index ["size_id"], name: "index_products_on_size_id"
+  end
+
   create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -120,4 +144,10 @@ ActiveRecord::Schema.define(version: 2019_11_22_044315) do
   add_foreign_key "category_brands", "categories"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "sizes"
+  add_foreign_key "products", "addresses", column: "shipping_address_id"
+  add_foreign_key "products", "brands"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "sizes"
+  add_foreign_key "products", "users", column: "buyer_id"
+  add_foreign_key "products", "users", column: "seller_id"
 end
