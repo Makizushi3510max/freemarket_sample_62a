@@ -1,4 +1,4 @@
-@import "./reset";
+@import "./config/reset";
 @import "./products";
 @import "./show.scss";
 @import "font-awesome";
@@ -8,4 +8,8 @@
 @import "./mypages/profile.scss";
 @import "./mypages/card.scss";
 @import "./mypages/identification.scss";
-
+@import "./signup.scss";
+@import "./config/tagDifine.scss";
+@import "./new.scss";
+@import "./products/purchase.scss";
+@import "./products/done.scss"
