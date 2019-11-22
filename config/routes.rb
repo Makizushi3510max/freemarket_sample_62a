@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
 
+  resource :products, only: :show
+  
   resource :mypage, only: :show do
     member do
       get 'profile'
