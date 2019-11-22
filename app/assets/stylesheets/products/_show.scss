@@ -28,22 +28,30 @@
       .item-photo {
         position: relative;
         .item-photobox {
-          display: block;
-          width: 300px;
-          height: 300px;
+          object-fit: cover;
+          opacity: 1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          width: auto;
+          height: 100%;
+          margin: auto;
           .images {
-            flex-wrap: wrap;
-            background: #fafafa;
-            display: flex;
-            li {
-              display: block;
-              width: 60px;
-              height: 60px;
-            }
+            height: 300px;
+            width: 300px;
           }
         }
       }
+      .item-image {
+        height: 60px;
+        width: 60px;
+        .image {
+          height: 100%;
+        }
+      }
     }
+  
     .item__product__table {
       max-width: 300px;
       height: 420px;
@@ -96,6 +104,7 @@
           
     }
   }
+
   .item-main__price {
     margin: 24px 0 0;
     clear: both;

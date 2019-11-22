@@ -1,6 +1,7 @@
 $(function() {
   $('.item-photobox').slick({
-    // console.log(ttt)
+    
+    // console.log('ttt')
     dots: true,
 
     customPaging: function(slider, i) {
