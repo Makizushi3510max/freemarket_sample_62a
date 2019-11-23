@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
 
   resources :mypages, only: :show do
-    member do
+    collection do
       get 'profile'
       get 'card'
       get 'identification'
