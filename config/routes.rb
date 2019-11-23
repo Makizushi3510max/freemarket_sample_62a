@@ -21,13 +21,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: :new do
-    member do
-      get 'purchase'
-      get 'done'
+  resources :products, only: :new 
+
+  resources :purchase, only: :index do
+    collection do
+      post 'buy'
+      get  'done'
     end
   end
-
 
   resources :mypages, only: :show do
     collection do
