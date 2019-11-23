@@ -10,7 +10,7 @@ class SignupController < ApplicationController
     # binding.pry
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
-    session[:password] = user_params[:password]
+    session[:password] = user_params[:password] if session[:password] == nil
     session[:date_of_birth] = Date.new(
       user_params["date_of_birth(1i)"].to_i,
       user_params["date_of_birth(2i)"].to_i,

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   # devise コールバック時にこいつが呼び出される
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+      user.nickname = auth.info.name
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
     end
