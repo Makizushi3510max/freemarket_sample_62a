@@ -25,29 +25,20 @@
       min-height: 375px;
       position: relative;
       background: #fafafa;
-      .item-photo {
+      .item-image.slick-slide.slick-current.slick-active {
+        height: 300px;
         position: relative;
-        .item-photobox {
-          object-fit: cover;
-          opacity: 1;
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          width: auto;
-          height: 100%;
-          margin: auto;
-          .images {
-            height: 300px;
-            width: 300px;
-          }
-        }
+        img {
+          height: 300px;
+        } 
       }
-      .item-image {
-        height: 60px;
-        width: 60px;
-        .image {
-          height: 100%;
+      .slick-dots {
+        
+        .slick-active {
+          height: 60px;
+          img {
+            height: 60px;
+          }
         }
       }
     }
