@@ -30,7 +30,7 @@ class SignupController < ApplicationController
 
   def sms_authentication_validates
     session[:phone_number] = user_params[:phone_number]
-    binding.pry
+    # binding.pry
     redirect_to sms_confirmation_signup_index_path
   end
 
@@ -82,7 +82,9 @@ class SignupController < ApplicationController
       first_name:       session[:first_name],
       last_name_kana:   session[:last_name_kana],
       first_name_kana:  session[:first_name_kana],
-      phone_number:     session[:phone_number]
+      phone_number:     session[:phone_number],
+      provider:         session[:provider],
+      uid:              session[:uid]
     )
     @address = Address.create(
       user:             @user,
