@@ -47,7 +47,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session[:password] = @user.password
       session[:provider] = @user.provider
       session[:uid] = @user.uid
-      # redirect_to registration_signup_index_path
       render registration_signup_index_path
     end
   end

@@ -33,17 +33,18 @@
             = f.label :email, "メールアドレス"
             %span.form__require 必須
             = f.text_field :email, class: "input-default", placeholder: "PC・携帯どちらでも可"
-          .form__group.form__password-revelation
-            = f.label :password, "パスワード"
-            %span.form__require 必須
-            = f.text_field :password, class: "input-default", placeholder: "7文字以上"
-            .form__password-revelation-toggle
-              .checkbox-default
-                = f.check_box class: "reveal_password"
-                %i.icon-check
-                = f.label :reveal_password, "パスワードを表示する"
-              .form-password-revelation-revealed-password-container
-                %span.form-password-revelation-revealed-password
+          - if @user.provider == nil 
+            .form__group.form__password-revelation
+              = f.label :password, "パスワード"
+              %span.form__require 必須
+              = f.text_field :password, class: "input-default", placeholder: "7文字以上"
+              .form__password-revelation-toggle
+                .checkbox-default
+                  = f.check_box class: "reveal_password"
+                  %i.icon-check
+                  = f.label :reveal_password, "パスワードを表示する"
+                .form-password-revelation-revealed-password-container
+                  %span.form-password-revelation-revealed-password
           .form__group
             %h3.text-left.l-chapter__sub-head 本人確認
             %p.l-chapter__text
