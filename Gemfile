@@ -80,3 +80,4 @@ gem "font-awesome-rails"
 gem 'active_hash'
 gem 'jquery-rails'
 gem 'payjp'
+gem "ancestry"
