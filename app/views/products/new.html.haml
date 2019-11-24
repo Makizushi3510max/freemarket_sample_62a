@@ -15,17 +15,20 @@
                   出品画像
                   %span.form-require 必須
                 %p 最大10枚までアップロードできます
-                .sell-dropbox-container.clearfix.state-image-number-10
-                  .sell-upload-items-container
-                    .sell-upload-items.have-item-0
-                      %ul
-                  .sell-upload-drop-box.have-item-0
-                    %input.sell-upload-drop-file{:multiple => "multiple", :name => "image1", :style => "display: none;", :type => "file"}/
-                    -# = f.file_field :images
-                    %pre.visible-pc
-                      :preserve
-                        ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード
+                = f.label :images, class: 'sell-upload-drop-file' do
+                  .sell-dropbox-container.clearfix.state-image-number-10
+                    .sell-upload-items-container
+                      .sell-upload-items.have-item-0
+                        %ul
+                      .sell-upload-drop-box.have-item-0
+                        = f.file_field :images, multiple: true, style: "display: none;" , class: "sell-upload-drop-file"
+                        %pre.visible-pc
+                          :preserve
+                            ドラッグアンドドロップ
+                            またはクリックしてファイルをアップロード
+                - if @product.images.any?
+                  - @product.images.each do |image|
+                    = image_tag image.variant(resize: "150x150")
               .sell-content
                 .form-group
                   %label
