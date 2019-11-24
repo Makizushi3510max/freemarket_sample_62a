@@ -5,9 +5,11 @@ $(document).on("turbolinks:load", function() {
     dots: true,
     // 自動再生
     autoplay: true,
-    autoplaySpeed:4000,
+    autoplaySpeed:4000,  //スライド間隔速さ
     speed: 800,
-    pauseOnFocus: false,
+    
+    // 止まらないように↓
+    pauseOnFocus: false,  
     pauseOnHover: false,
     pauseOnDotsHover: false
   });

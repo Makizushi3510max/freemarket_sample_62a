@@ -2,6 +2,9 @@ class ProductsController < ApplicationController
   def index
   end
 
+  def show
+  end
+  
   def new
     @product = Product.new
     @categories = Category.all

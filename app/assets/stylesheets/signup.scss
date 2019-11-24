@@ -141,6 +141,9 @@
     padding: 32px 64px;
     // padding: 24px 32px;
     border-top: 1px solid #eee;
+    button a{
+      margin: 0;
+    }
     &:first-child{
       padding: 24px 64px 32px;
     }
@@ -273,18 +276,24 @@
   }
   &-sns{
     position: relative;
+    &:first-child{
+      margin: 0;
+    }
     &-facebook{
       margin: 16px 0 0;
       background: #385185;
       color: #fff;
-      &:first-child{
-        margin: 0;
+      a{
+        color: #fff;
       }
     }
     &-google{
       margin: 16px 0 0;
       background: #fff;
       border: solid 1px #979797;
+      a{
+        color: #333;
+      }
     }
   }
 }
