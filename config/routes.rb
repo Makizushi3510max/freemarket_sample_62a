@@ -21,16 +21,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:new, :show] do
+  resources :products, only: [:index, :new, :create, :show] do
     member do
       get 'purchase'
       get 'done'
     end
   end
 
-
   resources :mypages, only: :show do
-    member do
+    collection do
       get 'profile'
       get 'card'
       get 'identification'
