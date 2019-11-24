@@ -7,22 +7,27 @@
     .login__panel
       .login__no-account
         %p アカウントをお持ちでない方はこちら
-        %a{href: "#"} 新規会員登録
+        = link_to "新規会員登録", signup_index_path
       .login__inner
         %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
           %i.icon-facebook
-            Facebookでログイン
-        %butotn#google-login.btn-default.btn-sns.btn-sns-google Googleでログイン
-      %form{action: "#", method: "POST", novelidate: "novalidate"}
+            = link_to "Facebookでログイン", user_facebook_omniauth_authorize_path, method: :post
+        %button#google-login.btn-default.btn-sns.btn-sns-google
+          %i.icon-google
+            = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .login__inner
           .form__group
-            %input.input-default.login__input--text{name: "email", type: "email", placeholder: "メールアドレス"}
+            -# %input.input-default.login__input--text{name: "email", type: "email", placeholder: "メールアドレス"}
+            = f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "input-default login__input--text"
           .form__group
-            %input.input-default.login__input--text{name: "password", type: "password", placeholder: "パスワード"}
+            -# %input.input-default.login__input--text{name: "password", type: "password", placeholder: "パスワード"}
+            = f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "input-default login__input--text"
           .form__group
             .g-recaptcha.login__captcha
           %button.login__submit.btn-default.btn-red{type: "submit"} ログイン
           %input{name: "login__callback", type: "hidden", value: ""}
           %input{name: "#", type: "hidden", value: "#"}
           %a{href: "#"} パスワードをお忘れの方
-  = render partial: "iFooter"
+  = render partial: "products/iFooter"
+

@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_113557) do
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
     t.date "date_of_birth", null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

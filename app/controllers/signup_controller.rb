@@ -7,10 +7,11 @@ class SignupController < ApplicationController
   end
 
   def registration_validates
+    # binding.pry
     # sessionにとりあえず格納
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
-    session[:password] = user_params[:password]
+    session[:password] = user_params[:password] if session[:password] == nil
     session[:date_of_birth] = Date.new(
       user_params["date_of_birth(1i)"].to_i,
       user_params["date_of_birth(2i)"].to_i,
@@ -150,7 +151,9 @@ class SignupController < ApplicationController
       first_name:       session[:first_name],
       last_name_kana:   session[:last_name_kana],
       first_name_kana:  session[:first_name_kana],
-      phone_number:     session[:phone_number]
+      phone_number:     session[:phone_number],
+      provider:         session[:provider],
+      uid:              session[:uid]
     )
     @address = Address.create(
       user:             @user,
@@ -165,6 +168,7 @@ class SignupController < ApplicationController
       building_name:    session[:address_building_name],
       phone_number:     session[:address_phone_number]
     )
+    # binding.pry
     @card = Card.create(
       user:             @user,
       customer_id:      session[:customer_id],
