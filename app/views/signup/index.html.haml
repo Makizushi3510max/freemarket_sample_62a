@@ -9,29 +9,9 @@
       .l-single__inner.registration-form
         .l-single__content
           = link_to "メールアドレスで登録する", registration_signup_index_path, class: "btn-default btn-mail"
-          -# %a.btn-default.btn-mail{href: "/ishiharas/step1"}
-          -#   %i.icon-mail
-          -#   メールアドレスで登録する
           %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
             %i.icon-facebook
             = link_to "Facebookで登録する", user_facebook_omniauth_authorize_path, method: :post
           %button#google-login.btn-default.btn-sns.btn-sns-google
             = link_to "Googleで登録する", user_google_oauth2_omniauth_authorize_path, method: :post
-    -# 元からいた者たち
-    -# %form#login_form_facebook{:action => "/jp/signup/facebook/", :method => "POST", :novalidate => "novalidate"}
-    -#   %input{:name => "__csrf_value", :type => "hidden", :value => "f7b3bdf78676dd47965dad0f8cd656dc579551f5dd875d3a8868db0cf4912052660d3d13ee57177b338709b92bc8eafa9d9601f557498b257f7b193711e9ded2d"}/
-    -#   %input{:name => "nickname", :type => "hidden", :value => ""}/
-    -#   %input{:name => "email", :type => "hidden", :value => ""}/
-    -#   %input{:name => "facebook_user_id", :type => "hidden", :value => ""}/
-    -#   %input{:name => "facebook_access_token", :type => "hidden", :value => ""}/
-    -#   %input{:name => "login_type", :type => "hidden", :value => "facebook"}/
-    -# %form#login_form_google{:action => "/jp/signup/google/", :method => "POST", :novalidate => "novalidate"}
-    -#   %input{:name => "__csrf_value", :type => "hidden", :value => "f7b3bdf78676dd47965dad0f8cd656dc579551f5dd875d3a8868db0cf4912052660d3d13ee57177b338709b92bc8eafa9d9601f557498b257f7b193711e9ded2d"}/
-    -#   %input{:name => "nickname", :type => "hidden", :value => ""}/
-    -#   %input{:name => "email", :type => "hidden", :value => ""}/
-    -#   %input{:name => "google_user_id", :type => "hidden", :value => ""}/
-    -#   %input{:name => "google_access_token", :type => "hidden", :value => ""}/
-    -#   %input{:name => "login_type", :type => "hidden", :value => "google"}/
-    -# %input#google_client_id{:type => "hidden", :value => "238694260676-l0gp5j3hs9p8l2hjmnt126q0b4iin34r.apps.googleusercontent.com"}/
-    -# %input#facebook_app_id{:type => "hidden", :value => "466308336793848"}/
   = render partial: "signup/iFooter"
