@@ -24,7 +24,7 @@
     %section.l-single__container
       %h2.l-single__head.registration 支払い方法
       %form.l-single__inner.registration-form{action: "#"}
-      = form_with model: @card, url: creditcard_signup_index_path, method: :post, local: true do |f|
+      = form_with model: @card, url: creditcard_signup_index_path, method: :post, local: true, html: { name: 'inputForm' } do |f|
         .l-single__content
           .form__group
             = f.label :payment_card_no, "カード番号"
@@ -60,5 +60,8 @@
                 カード背面の番号とは?
                 %i.icon-arrow-right
           .form__group
-          = f.submit '次へ進む',class: "btn-default btn-red"
+          #card_token
+          = f.submit '次へ進む',class: "btn-default btn-red", id: "token_submit"
+          -# %p
+          -#   %button.test{type: "button",id: "test", value: "ほげほげ", style:"width: 100px; height: 100px; background-color: black;" }
   = render partial: "iFooter"

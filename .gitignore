@@ -28,3 +28,5 @@
 /config/localhost-key.pem
 /config/localhost.pem
 .env
+
+.DS_Store
