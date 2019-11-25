@@ -34,13 +34,13 @@
             %div
               .item-user-ratings__smile
                 = fa_icon "smile-o"
-                %span 1
+                %span 7
               .item-user-ratings__meh
                 = fa_icon "meh-o"
-                %span 0
+                %span 7
               .item-user-ratings__frown
                 = fa_icon "frown-o"
-                %span 0
+                %span 7
         %tr
           %th.item__product__table__th カテゴリー
           %td.item__product__table__td
@@ -76,7 +76,7 @@
           %td.item__product__table__td 4~7日で発送
   .item-main__price
     %span.item-main__price__bold
-      = "¥#{@product.price}"
+      = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
     %span.item-main__price__tax (税込)
     %span.item-main__price__fee 送料込み
   = link_to "購入画面に進む", "#", class: "item-main__price__buy-btn"
@@ -121,11 +121,9 @@
     %li.social-media-box__li
       = link_to "#", class: "share-btn__facebook", "data-window-name": "facebook_window", target: "_blank" do
         = fa_icon "facebook"
-
     %li.social-media-box__li
       = link_to "#", class: "share-btn__twitter", "data-window-name": "twitter_window", target: "_blank" do
         = fa_icon "twitter"
-
     %li.social-media-box__li
       = link_to "#", class: "share-btn__pinterest", "data-window-name": "pinterest_window", target: "_blank" do
         = fa_icon "pinterest"
