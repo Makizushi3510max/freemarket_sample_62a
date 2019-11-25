@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       get 'purchase'
       get 'done'
     end
+    
+    collection do
+      get 'get_category_children'
+    end
   end
 
   resources :mypages, only: :show do

@@ -12,6 +12,20 @@ class ProductsController < ApplicationController
     # @root_categories = Category.roots
   end
 
+  def get_category_children
+    # @category_children = Category.find(params[:root_category_id]).children
+    # binding.pry
+    # respond_to do |format|
+    #   format.json
+    # end
+    @category_children = Category.find(params[:root_category_id]).children
+    respond_to do |format|
+      format.json
+    end
+    # binding.pry
+  end
+
+
   def create
     Product.create(product_params)
     redirect_to products_path
