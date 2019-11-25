@@ -45,7 +45,9 @@ class PurchaseController < ApplicationController
       currency: 'jpy'               #日本円
     )
 
-    
+    @product.update(
+      buyer_id: current_user.id
+    )
 
     redirect_to action: 'done'
   end
