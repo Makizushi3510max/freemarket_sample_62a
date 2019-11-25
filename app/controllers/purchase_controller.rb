@@ -34,6 +34,7 @@ class PurchaseController < ApplicationController
   end
 
   def pay
+    # binding.pry
     
   end
 
