@@ -11,7 +11,8 @@
       .item-photo
         .item-photobox
           .item-image
-            %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201342M176011_1/balenciaga------.jpg"}/
+            %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201342M176011_1/balenciaga------.jpg"}
+            -# = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201342M176011_1/balenciaga------.jpg", alt: "ルイビトン　タイガのカードケース"
 
           .item-image
             %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201451M150215_1/gucci-----.jpg"}/
@@ -28,32 +29,13 @@
           .item-image
             %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192216M176002_1/keenkee---.jpg"}/
 
-
-
-          -# .item-imgae__photo
-          -#   %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white/c_scale,h_820/f_auto,dpr_1.0/201342M176011_3/balenciaga------.jpg"}/
-
-          -# .item-imgae__photo
-          -#   %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white/c_scale,h_820/f_auto,dpr_1.0/201342M176011_4/balenciaga------.jpg"}/
-
-          -# .item-imgae__photo
-          -#   %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white/c_scale,h_820/f_auto,dpr_1.0/192677M176001_5/loewe----.jpg"}/
-
-          -# .item-imgae__photo
-          -#   %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white/c_scale,h_820/f_auto,dpr_1.0/192677M176001_4/loewe----.jpg"}/
-
-          -# .item-imgae__photo
-          -#   %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white/c_scale,h_820/f_auto,dpr_1.0/192677M176001_1/loewe----.jpg"}/
-
-         
-
     //ここから出品者情報
     %table.item__product__table
       %tbody
         %tr
           %th.item__product__table__th 出品者
           %td.item__product__table__td
-            %a{:href => "#"} 藪田狼
+            = link_to "薮田狼", root_path
             %div
               .item-user-ratings__smile
                 = fa_icon "smile-o"
@@ -116,7 +98,7 @@
         %span ♡　いいね!
       %a.item-button.item-button-report.clearfix{"data-modal" => "report-item", "data-open" => "modal", :href => ""}
         %i.icon-flag
-        %span ⚐　側不適切な商品の報告
+        %span ⚐　不適切な商品の報告
       %input{:name => "like_add_url", :type => "hidden", :value => "https://www.mercari.com/jp/like/add/m68241027780/"}/
       %input{:name => "like_del_url", :type => "hidden", :value => "https://www.mercari.com/jp/like/delete/m68241027780/"}/
       %input{:name => "__csrf_value", :type => "hidden", :value => "601cc8ee36906650a1132df5d4bcb07d1f59ea381ea07eae22023c627733c48e281d211a3de8d91788b282aed5a95a1daaeb6a5af3f417e0411f6a99d0b2c9bd6"}/
