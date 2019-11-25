@@ -11,23 +11,17 @@
       .item-photo
         .item-photobox
           .item-image
-            %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201342M176011_1/balenciaga------.jpg"}
-            -# = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201342M176011_1/balenciaga------.jpg", alt: "ルイビトン　タイガのカードケース"
-
+            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201342M176011_1/balenciaga------.jpg", alt: "ルイビトン　タイガのカードケース"
           .item-image
-            %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201451M150215_1/gucci-----.jpg"}/
-
+            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201451M150215_1/gucci-----.jpg", alt: "ルイビトン　タイガのカードケース"
           .item-image
-            %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201451M150223_1/gucci---gg-.jpg"}/
-
+            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201451M150223_1/gucci---gg-.jpg", alt: "ルイビトン　タイガのカードケース"
           .item-image
-            %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192044M176001_1/sss-world-corp------.jpg"}/
-
+            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192044M176001_1/sss-world-corp------.jpg", alt: "ルイビトン　タイガのカードケース"
           .item-image
-            %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192896M176001_1/rochambeau---.jpg"}/
-
+            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192896M176001_1/rochambeau---.jpg", alt: "ルイビトン　タイガのカードケース"
           .item-image
-            %img{:alt => "ルイビトン　タイガのカードケース", :src => "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192216M176002_1/keenkee---.jpg"}/
+            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192216M176002_1/keenkee---.jpg", alt: "ルイビトン　タイガのカードケース"
 
     //ここから出品者情報
     %table.item__product__table
@@ -49,8 +43,7 @@
         %tr
           %th.item__product__table__th カテゴリー
           %td.item__product__table__td
-            %a{:href => "https://www.mercari.com/jp/category/2/"}
-              %div メンズ
+            = link_to "メンズ", "https://www.mercari.com/jp/category/2/"
             %a{:href => "https://www.mercari.com/jp/category/38/"}
               .item__product__table__category
                 %i.icon-arrow-right
@@ -62,9 +55,7 @@
         %tr
           %th.item__product__table__th ブランド
           %td.item__product__table__td
-            %a{:href => "https://www.mercari.com/jp/brand/1326/"}
-              %div
-                ルイ ヴィトン
+            = link_to "ルイ ヴィトン", "https://www.mercari.com/jp/brand/1326/"
         %tr
           %th.item__product__table__th 商品の状態
           %td.item__product__table__td やや傷や汚れあり
@@ -77,7 +68,7 @@
         %tr
           %th.item__product__table__th 配送元地域
           %td.item__product__table__td
-            %a{:href => "https://www.mercari.com/jp/area/12/"} 千葉県
+            = link_to "千葉県", "https://www.mercari.com/jp/area/12/"
         %tr
           %th.item__product__table__th 発送日の目安
           %td.item__product__table__td 4~7日で発送
@@ -85,8 +76,7 @@
     %span.item-main__price__bold ¥6,000
     %span.item-main__price__tax (税込)
     %span.item-main__price__fee 送料込み
-  %a.item-main__price__buy-btn{:href => "#"}
-    購入画面に進む
+  = link_to "購入画面に進む", "#", class: "item-main__price__buy-btn"
   .item-main__price__description
     %p.item-main__price__description__text
       1996年、モノグラム･キャンバス誕生100周年を記念し、ルイ･ヴィトンは選りすぐりのデザイナーにそれぞれユニークなバッグの製作を依頼しました。完成したコレクションは世界の主要都市で展示され、世界中のファッション愛好家にブランドの革新的なエスプリとコラボレーションを届けました。
@@ -141,7 +131,7 @@
 .items-in-user-profile
   %section.items-box__top
     %h2.items-box__head
-      %a{:href => "#"} 藪田狼さんのその他の出品
+      = link_to "藪田狼さんのその他の出品", "#"
     .items-box-content
       %section.items-box
         %a.items-box__link{:href => "#"}
@@ -155,11 +145,10 @@
                 = fa_icon "heart-o"
                 %span 1
 
-  //ブランド関連商品             
+  //ブランド関連商品
   %section.items-box__bottom
     %h2.items-box-head
-      %a{:href => "https://www.mercari.com/jp/brand/1326/384/"}
-        ルイ ヴィトンの長財布 その他の商品
+      = link_to "ルイ ヴィトンの長財布 その他の商品", "https://www.mercari.com/jp/brand/1326/384/"
     .items-box-content.clearfix
       %section.items-box
         %a.items-box__link{:href => "https://item.mercari.com/jp/m44618610648/"}
@@ -181,11 +170,6 @@
       = fa_icon "chevron-right"
     %li.bread-crumbs__next{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
       %span{:itemprop => "title"} ルイビトン　タイガのカードケース
-
-
-
-
-
 
 %aside.footer-img
   = render"products/footer"
