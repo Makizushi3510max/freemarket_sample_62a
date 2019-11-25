@@ -35,11 +35,25 @@ class PurchaseController < ApplicationController
 
   def pay
     # binding.pry
+    @product = Product.find(params[:product_id])
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = Rails.application.credentials.payjp[:private_key]
+    # カード決済のアクション
+    Payjp::Charge.create(
+      amount: @product.price,        #支払金額
+      customer: card.customer_id,   #顧客ID
+      currency: 'jpy'               #日本円
+    )
+
     
+
+    redirect_to action: 'done'
   end
 
-  def done
+  # def done
     
-  end
+  # end
+
+  
 
 end
