@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   def index
+    # @products = Product.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    @products = Product.all.order("id DESC").limit(10)
   end
 
   def new

@@ -403,6 +403,7 @@
       text-align: center;
       white-space: nowrap;
       .main__top__category__item {
+        padding-top: 15px;
         display: block;
         text-align: center;
         width: 100%;
@@ -412,9 +413,9 @@
           vertical-align: middle;
           margin: 10px 0px 0px 10px;
           .main__top__category__item__ladies__text {
+            color: black;
             background-color: rgb(239, 239, 239);
             cursor: pointer;
-            font-size: 12px;
             font-weight: 600;
             border-radius: 15px;
             padding: 8px 20px;
@@ -425,9 +426,9 @@
           vertical-align: middle;
           margin: 10px 0px 0px 10px;
           .main__top__category__item__mens__text {
+            color: black;
             background-color: rgb(239, 239, 239);
             cursor: pointer;
-            font-size: 12px;
             font-weight: 600;
             border-radius: 15px;
             padding: 8px 16px;
@@ -438,9 +439,9 @@
           vertical-align: middle;
           margin: 10px 0px 0px 10px;
           .main__top__category__item__appliance__text {
+            color: black;
             background-color: rgb(239, 239, 239);
             cursor: pointer;
-            font-size: 12px;
             font-weight: 600;
             border-radius: 15px;
             padding: 8px 16px;
@@ -451,9 +452,9 @@
           vertical-align: middle;
           margin: 10px 0px 0px 10px;
           .main__top__category__item__toy__text {
+            color: black;
             background-color: rgb(239, 239, 239);
             cursor: pointer;
-            font-size: 12px;
             font-weight: 600;
             border-radius: 15px;
             padding: 8px 16px;
@@ -463,7 +464,7 @@
     }
   }
   .main__main {
-    padding: 42px 0px 100px;
+    padding: 42px 0px 0px;
     background-color: rgb(245, 245, 245);
     .main__main__connect {
       margin-bottom: 16px;
@@ -500,7 +501,6 @@
     }
 
     .main__main__product {
-      height: 544px;
       width: 100%;
       padding-left: 200px;
       padding-right: 200px;
@@ -512,13 +512,16 @@
             width: 20%;
             padding: 10px;
             .main__main__product__box__item__div {
-              visibility: visible;
-              transition: all 0.5s ease 0s;
-              opacity: 1;
+              a img ,a{
+                  border: 0;
+                  float: left;
+              }
+              a:hover{
+                border: 1px solid #0099FF;
+              }
               .main__main__product__box__item__div__link {
                 width: 100%;
                 cursor: pointer;
-                display: inline-block;
                 text-decoration: none;
                 vertical-align: top;
                 .main__main__product__box__item__div__link__figure {
@@ -602,10 +605,11 @@
   }
   
   .main__bottom {
+    margin-top: 100px;
+    margin-left: 0px;
     padding: 56px 0px 30px;
     background-color: rgb(255, 255, 255);
-    left: 50%;
-    margin-left: -50vw;
+    margin-left: 0px;
     position: relative;
     top: 0px;
     width: 100vw;
@@ -621,6 +625,7 @@
       text-align: center;
       white-space: nowrap;
       .main__bottom__category__item {
+        padding-top: 15px;
         display: block;
         text-align: center;
         width: 100%;
@@ -630,9 +635,9 @@
           vertical-align: middle;
           margin: 10px 0px 0px 10px;
           .main__bottom__category__item__chanel__text {
+            color: black;
             background-color: rgb(239, 239, 239);
             cursor: pointer;
-            font-size: 12px;
             font-weight: 600;
             border-radius: 15px;
             padding: 8px 20px;
@@ -643,9 +648,9 @@
           vertical-align: middle;
           margin: 10px 0px 0px 10px;
           .main__bottom__category__item__lv__text {
+            color: black;
             background-color: rgb(239, 239, 239);
             cursor: pointer;
-            font-size: 12px;
             font-weight: 600;
             border-radius: 15px;
             padding: 8px 16px;
@@ -656,9 +661,9 @@
           vertical-align: middle;
           margin: 10px 0px 0px 10px;
           .main__bottom__category__item__sup__text  {
+            color: black;
             background-color: rgb(239, 239, 239);
             cursor: pointer;
-            font-size: 12px;
             font-weight: 600;
             border-radius: 15px;
             padding: 8px 16px;
@@ -669,9 +674,9 @@
           vertical-align: middle;
           margin: 10px 0px 0px 10px;
           .main__bottom__category__item__nike__text {
+            color: black;
             background-color: rgb(239, 239, 239);
             cursor: pointer;
-            font-size: 12px;
             font-weight: 600;
             border-radius: 15px;
             padding: 8px 16px;
@@ -681,7 +686,7 @@
     }
   }
   .main__foot {
-    padding: 42px 0px 100px;
+    padding: 42px 0px 0px;
     background-color: rgb(245, 245, 245);
     .main__foot__connect {
       margin-bottom: 16px;
@@ -717,7 +722,6 @@
       }
     }
     .main__foot__product {
-      height: 544px;
       width: 100%;
       padding-left: 200px;
       padding-right: 200px;
@@ -729,9 +733,13 @@
             width: 20%;
             padding: 10px;
             .main__foot__product__box__item__div {
-              visibility: visible;
-              transition: all 0.5s ease 0s;
-              opacity: 1;
+              a img ,a{
+                border: 0;
+                float: left;
+            }
+            a:hover{
+              border: 2px solid #0099FF;
+            }
               .main__foot__product__box__item__div__link {
                 width: 100%;
                 cursor: pointer;
@@ -1173,6 +1181,9 @@
         }
     }
   }
+  .air__box {
+    padding-top: 100px;
+  }
 
 .exhibit {
   bottom: 32px;
@@ -1187,27 +1198,27 @@
     display: block;
     color: inherit;
     text-decoration: none;
-    .exhibit__link__circle {
-      width: 160px;
-      height: 160px;
-      padding-top: 35px;
-      text-align: center;
-      background-color: rgb(234, 53, 45);
-      border-radius: 50%;
-      .exhibit__link__circle__text {
-        font-size: 22px;
-        color: rgb(255, 255, 255);
-      }
-      .exhibit__link__circle__text__svg {
-        width: 60px;
-        height: 54px;
-        margin-top: 8px;
-        max-width: 100%;
-        max-height: 100%;
-        color: rgb(255, 255, 255);
-        display: block;
-        margin: 5px auto 0px;
-      }
+  }
+  .exhibit__link__circle {
+    width: 160px;
+    height: 160px;
+    padding-top: 35px;
+    text-align: center;
+    background-color: rgb(234, 53, 45);
+    border-radius: 50%;
+    .exhibit__link__circle__text {
+      font-size: 22px;
+      color: rgb(255, 255, 255);
+    }
+    .exhibit__link__circle__text__svg {
+      width: 60px;
+      height: 54px;
+      margin-top: 8px;
+      max-width: 100%;
+      max-height: 100%;
+      color: rgb(255, 255, 255);
+      display: block;
+      margin: 5px auto 0px;
     }
   }
 }
