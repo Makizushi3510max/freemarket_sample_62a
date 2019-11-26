@@ -88,10 +88,13 @@
     .item-main__price__button-left
       %button.item-main__price__button-like{"data-ga": "element", "data-ga-category": "LIKE", "data-ga-label": "like!", "data-id": "m68241027780", "data-toggle": "like", name: "like!", type: "button"}
         %i.icon-like-border
-        %span ♡　いいね!
+        %span
+          = fa_icon "heart-o"
+          いいね!
       = link_to "", "data-model": "report-item", "data-open": "model", class: "item-button item-button-report clearfix" do
-        %i.icon-flag
-        %span ⚐　不適切な商品の報告
+        %span
+          = fa_icon "flag-o"
+          不適切な商品の報告
       %input{name: "like_add_url", type: "hidden", value: "https://www.mercari.com/jp/like/add/m68241027780/"}/
       %input{name: "like_del_url", type: "hidden", value: "https://www.mercari.com/jp/like/delete/m68241027780/"}/
       %input{name: "__csrf_value", type: "hidden", value: "601cc8ee36906650a1132df5d4bcb07d1f59ea381ea07eae22023c627733c48e281d211a3de8d91788b282aed5a95a1daaeb6a5af3f417e0411f6a99d0b2c9bd6"}/
