@@ -18,14 +18,14 @@
                 .sell-dropbox-container.clearfix.state-image-number-10
                   .sell-upload-items-container
                     .sell-upload-items.have-item-0
-                      %ul
-                  = f.label :images, class: 'sell-upload-drop-label have-item-0' do
-                    .sell-upload-drop-box
-                      = f.file_field :images, multiple: true, style: "display: none;" , class: "sell-upload-drop-file"
-                      %pre.visible-pc
-                        :preserve
-                          ドラッグアンドドロップ
-                          またはクリックしてファイルをアップロード
+                      %ul#preview
+                    = f.label :images, class: 'sell-upload-drop-label have-item-1' do
+                      .sell-upload-drop-box
+                        = f.file_field :images, multiple: true, style: "display: none;" , class: "sell-upload-drop-file"
+                        %pre.visible-pc
+                          :preserve
+                            ドラッグアンドドロップ
+                            またはクリックしてファイルをアップロード
               .sell-content
                 .form-group
                   %label

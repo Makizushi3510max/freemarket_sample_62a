@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children'
       get 'get_category_grandchildren'
+      post 'post_image'
     end
   end
 

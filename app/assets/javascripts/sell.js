@@ -1,10 +1,63 @@
 $(function(){
   // 画像のプレビューを表示させる機能
-  $(document).on("change", "#product_images",function(e){
-    var file = $(this).prop('files')
-    console.log(file);
-  })
+  var files_array = [];
 
+  $(document).on("change", "#product_images",function(e){
+    var fr = new FileReader();
+    fr.onload = function(){
+      var img = $("<img>").attr("src", fr.result);
+      $("#preview").append(img);
+    }
+    fr.readAsDataURL(this.files[0])
+    // var file = e.target.files
+    // console.log(file)
+    
+    // var file = $(this).prop('files')[0]
+    // var file = this.files[0]
+
+    // var reader = new FileReader();
+    // reader.readAsDataURL(file);
+    // console.log(reader)
+    // var file = $("#product_images")
+    // console.log(file);
+    // var fd = new FormData(file)
+    // var formdata = new FormData($("#product_images").get(0));
+    // var files = e.originalEvent.dataTransfer.files;
+
+    // for (var i=0; i<files.length; i++) {
+    //   files_array.push(files[i]);
+    //   var fileReader = new FileReader();
+    //   // ファイルが読み込まれた際に、行う動作を定義する。
+    //   fileReader.onload = function( event ) {
+    //   // 画像のurlを取得します。
+    //   var loadedImageUri = event.target.result;
+    //   // 取得したURLを利用して、ビューにHTMLを挿入する。
+    //   $(buildImage(loadedImageUri,)).appendTo(".item__images__container__preview ul").trigger("create");
+    //   };
+    //   // ファイルの読み込みを行う。
+    //   fileReader.readAsDataURL(files[i]);
+    // }
+    // console.log(files)
+
+    // $.ajax({
+    //   url: "/products/post_image",
+    //   type: "POST",
+    //   data: formdata,
+    //   dataType: "html",
+    //   processData: false,
+    //   contentType: false
+    // })
+    // .done(function(data){
+    // })
+    // .fail(function(){
+    //   console.log('error');
+    // })
+  })
+  // "product"=>{"images"=>[#<ActionDispatch::Http::UploadedFile:0x00007fe917f85a90 
+  // @tempfile=#<Tempfile:/var/folders/2m/yvrqsxfn65gg48t3jxr1g7wc0000gn/T/RackMultipart20191126-80161-1gee0dj.jpg>, 
+  // @original_filename="81Ha1G6jXbL._AC_SL1500_.jpg", 
+  // @content_type="image/jpeg", 
+  // @headers="Content-Disposition: form-data; name=\"product[images][]\"; filename=\"81Ha1G6jXbL._AC_SL1500_.jpg\"\r\nContent-Type: image/jpeg\r\n">]
 
 
 

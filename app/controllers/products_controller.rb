@@ -27,6 +27,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def post_image
+    binding.pry
+    # respond_to do |format|
+    #   format.json
+    # end
+  end
+
   def create
     # Product.create(product_params)
     # binding.pry
