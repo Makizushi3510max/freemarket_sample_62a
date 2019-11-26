@@ -159,7 +159,10 @@
   //ブランド関連商品
   %section.items-box__bottom
     %h2.items-box-head
-      = link_to "#{@product.category.name} その他の商品", "#"
+      - unless @product.brand.nil?
+        = link_to "#{@product.brand.name}の#{@product.category.name} その他の商品", "#"
+      - else
+        = link_to "#{@product.category.name}（#{@product.category.root.name}） その他の商品", "#"
     .items-box-content.clearfix
       %section.items-box
         = link_to "#", class: "items-box__link" do
