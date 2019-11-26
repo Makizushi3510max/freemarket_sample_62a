@@ -15,18 +15,23 @@ class PurchaseController < ApplicationController
     @product = Product.find(params[:product_id])
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.payjp[:private_key]
-    # カード決済のアクション
-    Payjp::Charge.create(
-      amount: @product.price,        #支払金額
-      customer: card.customer_id,   #顧客ID
-      currency: 'jpy'               #日本円
-    )
-    # 商品にbuyer_idを付与
-    @product.update(
-      buyer_id: current_user.id
-    )
 
-    redirect_to action: 'done'
+    if @product[:buyer_id] == nil
+      # カード決済のアクション
+      Payjp::Charge.create(
+        amount: @product.price,        #支払金額
+        customer: card.customer_id,   #顧客ID
+        currency: 'jpy'               #日本円
+      )
+      # 商品にbuyer_idを付与
+      @product.update(
+        buyer_id: current_user.id
+      )
+      redirect_to action: 'done'
+    else
+      redirect_to root_path
+    end
+
   end
 
 
