@@ -26,8 +26,20 @@ class ProductsController < ApplicationController
   end
 
   def create
-    binding.pry
-    Product.create(product_params)
+    # Product.create(product_params)
+    # binding.pry
+    @product = Product.create(
+      name:             product_params[:name],
+      description:      product_params[:description],
+      condition:        product_params[:condition],
+      category_id:      product_params[:grandchild_category_id],
+      size_id:          product_params[:size_id],
+      shipping_cost:    product_params[:shipping_cost],
+      shipping_area:    product_params[:shipping_area],
+      shipping_date:    product_params[:shipping_date],
+      price:            product_params[:price],
+      seller_id:        product_params[:seller_id]
+    )
     redirect_to products_path
   end
 
@@ -40,6 +52,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :condition, :category_id, :size_id, :shipping_cost, :shipping_area, :shipping_date, :price, images: []).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition, :grandchild_category_id, :size_id, :shipping_cost, :shipping_area, :shipping_date, :price, images: []).merge(seller_id: current_user.id)
   end
 end
