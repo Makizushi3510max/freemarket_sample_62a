@@ -56,7 +56,8 @@
         %tr
           %th.item__product__table__th ブランド
           %td.item__product__table__td
-            = link_to @product.brand.name, "#"
+            - unless @product.brand.nil?
+              = link_to @product.brand.name, "#"
         %tr
           %th.item__product__table__th 商品のサイズ
           %td.item__product__table__td
@@ -73,7 +74,8 @@
         %tr
           %th.item__product__table__th 配送元地域
           %td.item__product__table__td
-            = link_to @product.prefecture.name, "#"
+            - unless @product.shipping_area.nil?
+              = link_to @product.prefecture.name, "#"
         %tr
           %th.item__product__table__th 発送日の目安
           %td.item__product__table__td
