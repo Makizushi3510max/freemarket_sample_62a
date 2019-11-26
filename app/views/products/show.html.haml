@@ -58,9 +58,12 @@
           %td.item__product__table__td
             = link_to @product.brand.name, "#"
         %tr
+          %th.item__product__table__th 商品のサイズ
+          %td.item__product__table__td
+        %tr
           %th.item__product__table__th 商品の状態
           %td.item__product__table__td
-            = @product.condition
+            = @product.item_condition.name
         %tr
           %th.item__product__table__th 配送料の負担
           %td.item__product__table__td 送料込み(出品者負担)
@@ -73,12 +76,14 @@
             = link_to @product.prefecture.name, "#"
         %tr
           %th.item__product__table__th 発送日の目安
-          %td.item__product__table__td 4~7日で発送
+          %td.item__product__table__td
+            = @product.ship_date.name
   .item-main__price
     %span.item-main__price__bold
       = "¥#{@product.price.to_s(:delimited, delimiter: ',')}"
     %span.item-main__price__tax (税込)
-    %span.item-main__price__fee 送料込み
+    %span.item-main__price__fee
+      = @product.ship_cost.name
   = link_to "購入画面に進む", "#", class: "item-main__price__buy-btn"
   .item-main__price__description
     %p.item-main__price__description__text
