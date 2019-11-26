@@ -46,11 +46,11 @@ class Address < ApplicationRecord
     presence: true
 
   # building_nameのバリデーション
-  validates :building_name,
-    presence: true
+  # validates :building_name,
+  #   presence: true
 
   # phone_numberのバリデーション
-  validates :phone_number,
-    presence: true,
-    format: { with: VALID_PHONE_NUMBER_REGEX }
+  # validates :phone_number,
+  #   presence: true,
+  #   format: { with: VALID_PHONE_NUMBER_REGEX }
 end
