@@ -1,0 +1,6 @@
+topコントローラのindexページだよ
+- if user_signed_in?
+  .user_image
+    = image_tag current_user.avatar, class:"user_image-hoge"
+  .entry_button{:style => "float: right"}
+    = link_to 'サインアウト', destroy_user_session_path, method: :delete

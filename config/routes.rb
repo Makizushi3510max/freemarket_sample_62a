@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   get 'card/new'
   get 'card/show'
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: 'users/registrations' }
   root to: 'products#index'
   # resources :users, only: [:create, :index, :edit, :update]
   resources :signup, only: [:index, :create] do
     collection do
-      get   'login' # マークアップ作業の為の仮置きっすbyZaki
+      get   'index'
       get   'registration'
       post  'registration'          =>  'signup#registration_validates'
       get   'sms_authentication'
@@ -21,10 +21,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:index, :new, :create] do
+  resources :products, only: [:index, :new, :create, :show] do
     member do
       get 'purchase'
       get 'done'
+    end
+    
+    collection do
+      get 'get_category_children'
+      get 'get_category_grandchildren'
     end
   end
 

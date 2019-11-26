@@ -25,5 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/localhost-key.pem
+/config/localhost.pem
+.env
 
 .DS_Store
