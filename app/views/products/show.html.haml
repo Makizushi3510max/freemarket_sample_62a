@@ -159,18 +159,21 @@
         = link_to "#{@product.brand.name}の#{@product.category.name} その他の商品", "#"
       - else
         = link_to "#{@product.category.name}（#{@product.category.root.name}） その他の商品", "#"
-    .items-box-content.clearfix
-      %section.items-box
-        = link_to "#", class: "items-box__link" do
-          %figure.items-box-photo
-            = image_tag "https://static.mercdn.net/thumb/photos/m44618610648_1.jpg?1571046449", "data-src": "https://static.mercdn.net/thumb/photos/m44618610648_1.jpg?1571046449", class: "lazyloaded", alt: "ルイヴィトン"
-          .items-box-body
-            %h3.items-box-name.font-2 ルイヴィトン
-            .items-box-num
-              .items-box-price ¥14,333
-              .font-2
-                = fa_icon "heart-o"
-                %span 15
+    - @brands_products.each do |product|
+      .items-box-content.clearfix
+        %section.items-box
+          = link_to "#", class: "items-box__link" do
+            %figure.items-box-photo
+              = image_tag product.images[0], "data-src": product.images[0], class: "lazyloaded is-higher-height", alt: "#{product.name}"
+            .items-box-body
+              %h3.items-box-name.font-2
+                = product.name
+              .items-box-num
+                .items-box-price
+                  = "¥#{product.price.to_s(:delimited, delimiter: ',')}"
+                .font-2
+                  = fa_icon "heart-o"
+                  %span 15
 
 %nav.bread-crumbs
   %ul.bread-crumbs__ul
