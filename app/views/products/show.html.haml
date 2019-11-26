@@ -44,15 +44,15 @@
         %tr
           %th.item__product__table__th カテゴリー
           %td.item__product__table__td
-            = link_to @product.category.name, "#"
+            = link_to @product.category.root.name, "#"
             = link_to "#" do
               .item__product__table__category
                 %i.icon-arrow-right
-                小物
+                = @product.category.parent.name
             = link_to "#" do
               .item__product__table__category__sub-category
                 %i.icon-arrow-right
-                長財布
+                = @product.category.name
         %tr
           %th.item__product__table__th ブランド
           %td.item__product__table__td
@@ -61,6 +61,7 @@
         %tr
           %th.item__product__table__th 商品のサイズ
           %td.item__product__table__td
+            = @product.size.name
         %tr
           %th.item__product__table__th 商品の状態
           %td.item__product__table__td
@@ -74,7 +75,9 @@
         %tr
           %th.item__product__table__th 配送元地域
           %td.item__product__table__td
-            - unless @product.shipping_area.nil?
+            - if @product.shipping_area.nil?
+              未定
+            - else
               = link_to @product.prefecture.name, "#"
         %tr
           %th.item__product__table__th 発送日の目安
