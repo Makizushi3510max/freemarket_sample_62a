@@ -37,11 +37,11 @@
             = link_to @product.category.root.name, "#"
             = link_to "#" do
               .item__product__table__category
-                %i.icon-arrow-right
+                = fa_icon "chevron-right"
                 = @product.category.parent.name
             = link_to "#" do
               .item__product__table__category__sub-category
-                %i.icon-arrow-right
+                = fa_icon "chevron-right"
                 = @product.category.name
         %tr
           %th.item__product__table__th ブランド
@@ -103,13 +103,13 @@
 .item-detail-message
   .message-container
     .message-content
-      %form.message-form{:action => "https://www.mercari.com/jp/comment/add/", :method => "POST"}
-        %input{:name => "__csrf_value", :type => "hidden", :value => "a5edbca94eacffff39f537342718b92f99c2b51a0a02f01569b4809699e88fab24ecb785b34e210e06d9d8205d5ff308deab42207eaaafcfea1cf20472299eff7"}/
+      %form.message-form{action: "#", method: "#"}
+        -# %input{:name => "__csrf_value", :type => "hidden", :value => "a5edbca94eacffff39f537342718b92f99c2b51a0a02f01569b4809699e88fab24ecb785b34e210e06d9d8205d5ff308deab42207eaaafcfea1cf20472299eff7"}/
         %p.text 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %input{:name => "item_id", :type => "hidden", :link => "#"}/
-        %input{:name => "redirect_url_key", :type => "hidden", :value => "item_detail"}/
-        %textarea.textarea-default{:name => "body", :type => "text", :value => ""}
-        %button.message-submit.btn-default.btn-gray{:type => "submit"}
+        %input{name: "item_id", type: "hidden", link: "#"}/
+        %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
+        %textarea.textarea-default{name: "body", type: "text", value: ""}
+        %button.message-submit.btn-default.btn-gray{type: "submit"}
           %span.text コメントする
 
 
@@ -133,18 +133,21 @@
   %section.items-box__top
     %h2.items-box__head
       = link_to "#{@product.seller.nickname}さんのその他の出品", "#"
-    .items-box-content
-      %section.items-box
-        = link_to "#", class: "items-box__link" do
-          %figure.items-box-photo
-            = image_tag "https://static.mercdn.net/thumb/photos/m44727837355_1.jpg?1574299998", "data-src": "https://static.mercdn.net/thumb/photos/m44727837355_1.jpg?1574299998", class: "lazyloaded is-higher-height", alt: "AMEXオリジナル トランプ カードケース"
-          .items-box-body
-            %h3.items-box-item__name AMEXオリジナル トランプ カードケース
-            .items-box-num
-              .items-box-price ¥1,000
-              .font-2
-                = fa_icon "heart-o"
-                %span 1
+    - @sellers_products.each do |product|
+      .items-box-content
+        %section.items-box
+          = link_to "#", class: "items-box__link" do
+            %figure.items-box-photo
+              = image_tag product.images[0], "data-src": product.images[0], class: "lazyloaded is-higher-height", alt: "#{product.name}"
+            .items-box-body
+              %h3.items-box-item__name
+                = product.name
+              .items-box-num
+                .items-box-price
+                  = "¥#{product.price.to_s(:delimited, delimiter: ',')}"
+                .font-2
+                  = fa_icon "heart-o"
+                  %span 1
 
   //ブランド関連商品
   %section.items-box__bottom
@@ -168,11 +171,11 @@
 
 %nav.bread-crumbs
   %ul.bread-crumbs__ul
-    %li.bread-crumbs__li{itemscope: "", itemtype: "http://data-vocabulary.org/Breadcrumb"}
+    %li.bread-crumbs__li{itemscope: "", itemtype: "#"}
       = link_to root_path, itemprop: "url" do
         %span.bread-crumbs__title{itemprop: "title"} メルカリ
       = fa_icon "chevron-right"
-    %li.bread-crumbs__next{itemscope: "", itemtype: "http://data-vocabulary.org/Breadcrumb"}
+    %li.bread-crumbs__next{itemscope: "", itemtype: "#"}
       %span{itemprop: "title"}
         = @product.name
 
