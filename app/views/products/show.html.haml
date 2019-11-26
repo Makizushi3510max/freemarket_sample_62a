@@ -1,5 +1,4 @@
-%script{src: "//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js", type: "text/javascript"}
-
+%script{:src => "//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js", :type => "text/javascript"}
 
 .header
   = render"products/header"
@@ -11,18 +10,9 @@
     .item-photos
       .item-photo
         .item-photobox
-          .item-image
-            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201342M176011_1/balenciaga------.jpg", alt: "ルイビトン　タイガのカードケース"
-          .item-image
-            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201451M150215_1/gucci-----.jpg", alt: "ルイビトン　タイガのカードケース"
-          .item-image
-            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/201451M150223_1/gucci---gg-.jpg", alt: "ルイビトン　タイガのカードケース"
-          .item-image
-            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192044M176001_1/sss-world-corp------.jpg", alt: "ルイビトン　タイガのカードケース"
-          .item-image
-            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192896M176001_1/rochambeau---.jpg", alt: "ルイビトン　タイガのカードケース"
-          .item-image
-            = image_tag "https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_480/f_auto,dpr_1.0/192216M176002_1/keenkee---.jpg", alt: "ルイビトン　タイガのカードケース"
+          - @product.images.each do |image|
+            .item-image
+              = image_tag image, alt: "#{@product.name}"
 
     //ここから出品者情報
     %table.item__product__table
