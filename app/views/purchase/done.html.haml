@@ -14,33 +14,40 @@
       %section.buy-content.buy-item
         .buy-content__inner
           %h3.buy-item-image
+            -# = image_tag {@product.images}
             = image_tag 'https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459', alt: '', class: 'lazyload'
-          %p.buy-item-name.bold コンピュータはなぜ動くのか 知っておきたいハードウエア&amp;ソフトウエアの基礎知識
+          %p.buy-item-name.bold #{@product.name}
       %section.buy-content.buy-user-info.buy-item
         .buy-content__inner
           %p.buy-price-ja.bold
-            ¥1,111
-            %span.item-shipping-fee.f14.bold 送料込み
+            = "¥" + @product.price.to_s
+            %span.item-shipping-fee.f14.bold
+              = @product.shipping_cost
       %section.buy-content.buy-user-info
         .buy-content__inner
           %h3 配送先
           %address.buy-user-info-text
-            〒810-0801
+            = "〒" + @address.postal_code
             %br/
-            福岡県 福岡市博多区中洲4丁目
-            6-12 プラート中洲　8F
+            = @address.prefecture
+            = @address.city_name
+            = @address.block_number
+            = @address.building_name if @address.building_name
             %br/
-            高野 和樹
+            = @address.last_name
+            = @address.first_name
           %p.buy-user-info-text
       %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
         .buy-content__inner
           %h3 支払い方法
           %p.buy-user-info-text
-            ************0437
+            = "**** **** ****" + @defaulte_card_infomation.last4
             %br/
-            06 / 23
+            - exp_month = @defaulte_card_infomation.exp_month.to_s
+            - exp_year = @defaulte_card_infomation.exp_year.to_s.slice(2,3)
+            = exp_month + "/" + exp_year
           %figure
-            = image_tag '//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2749976048', alt: 'jcb', height: '20', width: '26'
+            = image_tag @card_img, size: "40x15", alt: ""
           %p
       %section.buy-content.buy-done-flow
         %h3 発送通知後の流れ

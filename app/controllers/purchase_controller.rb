@@ -6,6 +6,37 @@ class PurchaseController < ApplicationController
     @product = Product.find_by(id:1)
     @address = Address.where(user_id: current_user.id).first
     # binding.pry
+
+    card_info
+  end
+
+  def pay
+    # binding.pry
+    @product = Product.find(params[:product_id])
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = Rails.application.credentials.payjp[:private_key]
+    # カード決済のアクション
+    Payjp::Charge.create(
+      amount: @product.price,        #支払金額
+      customer: card.customer_id,   #顧客ID
+      currency: 'jpy'               #日本円
+    )
+    # 商品にbuyer_idを付与
+    @product.update(
+      buyer_id: current_user.id
+    )
+
+    redirect_to action: 'done'
+  end
+
+
+  def done
+    @product = Product.find_by(params[:product_id])
+    @address = Address.where(user_id: current_user.id).first
+    card_info
+  end
+
+  def card_info
     # cardテーブルからpayjpの顧客idを検索し取得
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.payjp[:private_key]
@@ -32,30 +63,5 @@ class PurchaseController < ApplicationController
     end
     
   end
-
-  def pay
-    # binding.pry
-    @product = Product.find(params[:product_id])
-    card = Card.where(user_id: current_user.id).first
-    Payjp.api_key = Rails.application.credentials.payjp[:private_key]
-    # カード決済のアクション
-    Payjp::Charge.create(
-      amount: @product.price,        #支払金額
-      customer: card.customer_id,   #顧客ID
-      currency: 'jpy'               #日本円
-    )
-
-    @product.update(
-      buyer_id: current_user.id
-    )
-
-    redirect_to action: 'done'
-  end
-
-  # def done
-    
-  # end
-
-  
 
 end
