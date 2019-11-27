@@ -33,7 +33,8 @@ Rails.application.routes.draw do
   resources :mypages, only: :show do
     collection do
       get 'profile'
-      get 'card'
+      get 'card_registration'
+      post 'card_registration'  =>  'mypages#creditcard_validates'
       get 'identification'
       get 'logout'
     end

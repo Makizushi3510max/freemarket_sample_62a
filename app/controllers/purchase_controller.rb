@@ -3,11 +3,17 @@ class PurchaseController < ApplicationController
   require 'payjp'
 
   def index
-    @product = Product.find_by(id:1)
-    @address = Address.where(user_id: current_user.id).first
-    # binding.pry
+    card = Card.where(user_id: current_user.id).first
 
-    card_info
+
+    if card.blank?
+      redirect_to card_registration_mypages_path
+    else
+      @product = Product.find_by(id:1)
+      @address = Address.where(user_id: current_user.id).first  
+      card_info
+    end
+    # binding.pry
   end
 
   def pay
