@@ -57,17 +57,16 @@
       %div
                       
         %ul.main__main__product__div__box
-          - @products.each do |product|
-            -if product.category_id == 1
-              %li.main__main__product__div__box__item      
-                %div.main__main__product__box__item__div
-                  %a.main__main__product__box__item__div__link{:href => "#"}
-                    %figure.main__main__product__box__item__div__link__figure
-                      %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                        %span.main__main__product__box__item__div__link__figure__figcaption__span #{product.name}
-                      .main__main__product__box__item__link__figure__figcaption__style
-                        %span.main__main__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
-                        %img.main__main__product__box__item__link__figure__figcaption__style__img
+          - @ladys_category.each do |product|
+            %li.main__main__product__div__box__item      
+              %div.main__main__product__box__item__div
+                %a.main__main__product__box__item__div__link{:href => "#"}
+                  %figure.main__main__product__box__item__div__link__figure
+                    %figcaption.main__main__product__box__item__div__link__figure__figcaption
+                      %span.main__main__product__box__item__div__link__figure__figcaption__span #{product.name}
+                    .main__main__product__box__item__link__figure__figcaption__style
+                      %span.main__main__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
+                      %img.main__main__product__box__item__link__figure__figcaption__style__img
 
   .main__main
     .main__main__connect
@@ -80,17 +79,17 @@
       %div
                       
         %ul.main__main__product__div__box
-          - @products.each do |product|
-            -if product.category_id == 2
-              %li.main__main__product__div__box__item
-                %div.main__main__product__box__item__div
-                  %a.main__main__product__box__item__div__link{:href => "#"}
-                    %figure.main__main__product__box__item__div__link__figure
-                      %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                        %span.main__main__product__box__item__div__link__figure__figcaption__span #{product.name}
-                      .main__main__product__box__item__link__figure__figcaption__style
-                        %span.main__main__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
-                        %img.main__main__product__box__item__link__figure__figcaption__style__img
+          - @mens_category.each do |product|
+            %li.main__main__product__div__box__item
+              %div.main__main__product__box__item__div
+                %a.main__main__product__box__item__div__link{:href => "#"}
+                  %figure.main__main__product__box__item__div__link__figure
+                    %figcaption.main__main__product__box__item__div__link__figure__figcaption
+                      %span.main__main__product__box__item__div__link__figure__figcaption__span #{product.name}
+                    .main__main__product__box__item__link__figure__figcaption__style
+                      %span.main__main__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
+                      %img.main__main__product__box__item__link__figure__figcaption__style__img
+       
 
   .main__main
     .main__main__connect
