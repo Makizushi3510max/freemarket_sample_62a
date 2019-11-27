@@ -1,0 +1,50 @@
+.single__container
+  %header.single__header
+    %h1
+      = link_to root_path do
+        = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?210491352', alt: 'mercari'
+  %main.single__main
+    %section.l-single__container
+      %h2.l-single__head.registration 支払い方法
+      %form.l-single__inner.registration-form{action: "#"}
+      = form_with model: @card, url: card_registration_mypages_path, method: :post, local: true, html: { name: 'inputForm' } do |f|
+        .l-single__content
+          .form__group
+            = f.label :payment_card_no, "カード番号"
+            %span.form__require 必須
+            = f.number_field :payment_card_no, class: "input-default", placeholder: "半角数字のみ", maxlength: 16
+            %ul.signup__card-list
+              %li
+                = image_tag "cards/visa.svg", size: "49x20", alt: ""
+              %li
+                = image_tag "cards/master-card.svg", size: "34x20", alt: ""
+              %li
+                = image_tag "cards/saison-card.svg", size: "30x20", alt: ""
+              %li
+                = image_tag "cards/jcb.svg", size: "32x20", alt: ""
+              %li
+                = image_tag "cards/american-express.svg", size: "21x20", alt: ""
+              %li
+                = image_tag "cards/dinersclub.svg", size: "32x20", alt: ""
+              %li
+                = image_tag "cards/discover.svg", size: "32x20", alt: ""
+          .form__group.signup__form--expire
+            = f.label :payment_card_expire, "有効期限"
+            %span.form__require 必須
+            .select-wrap.half
+              != sprintf(f.date_select(:expiration_date,with_css_classes: true, order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+              %i.icon-arrow-bottom
+          .form__group
+            = f.label :payment_card_security_code, "セキュリティコード"
+            %span.form__require 必須
+            = f.number_field :payment_card_security_code, class: "input-default", placeholder: "カード背面4桁もしくは3桁の番号"
+            %p.text-right
+              %a{href: "#", target: "_blank"}
+                カード背面の番号とは?
+                %i.icon-arrow-right
+          .form__group
+          #card_token
+          = f.submit '登録する',class: "btn-default btn-red", id: "token_submit"
+          -# %p
+          -#   %button.test{type: "button",id: "test", value: "ほげほげ", style:"width: 100px; height: 100px; background-color: black;" }
+  = render partial: "products/iFooter"
