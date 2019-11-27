@@ -11,10 +11,10 @@ document.addEventListener(
           exp_month: document.getElementById("card_expiration_date_2i").value,
           exp_year: 20 + document.getElementById("card_expiration_date_1i").value
         };
-        console.log(card);
+        // console.log(card);
         Payjp.createToken(card, function(status, response){
-          console.log(status)
-          console.log(response);
+          // console.log(status)
+          // console.log(response);
           if (status === 200){
             $("#card_payment_card_no").removeAttr("name");
             $("#card_payment_card_security_code").removeAttr("name");
