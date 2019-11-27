@@ -5,4 +5,10 @@ class Product < ApplicationRecord
   belongs_to :brand, optional: true
   belongs_to :size
   has_many_attached :images
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture, class_name: "Prefecture", foreign_key: "shipping_area"
+  belongs_to_active_hash :ship_date, class_name: "Shipping_date", foreign_key: "shipping_date"
+  belongs_to_active_hash :ship_cost, class_name: "Shipping_cost", foreign_key: "shipping_cost"
+  belongs_to_active_hash :item_condition, class_name: "Condition", foreign_key: "condition"
 end
