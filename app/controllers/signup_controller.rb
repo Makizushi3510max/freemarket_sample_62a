@@ -33,6 +33,7 @@ class SignupController < ApplicationController
       date_of_birth: session[:date_of_birth],
       phone_number: "0000000000"        # 仮のphone_numberを代入
     )
+    # binding.pry
     # @user.valid?がtrueを返せば次のページに進む。falseを返せば同じページをレンダーする。
     if @user.valid?
       @user.phone_number = nil          # 仮のphone_numberをリセット
@@ -168,7 +169,6 @@ class SignupController < ApplicationController
       building_name:    session[:address_building_name],
       phone_number:     session[:address_phone_number]
     )
-    # binding.pry
     @card = Card.create(
       user:             @user,
       customer_id:      session[:customer_id],

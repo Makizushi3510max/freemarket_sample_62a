@@ -21,17 +21,26 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :purchase, only: :index do
+    collection do
+      post 'pay'
+      get  'done'
+    end
+  end
+
   resources :products, only: [:index, :new, :create, :show] do
-    member do
-      get 'purchase'
-      get 'done'
+    collection do
+      get 'get_category_children'
+      get 'get_category_grandchildren'
+      post 'post_image'
     end
   end
 
   resources :mypages, only: :show do
     collection do
       get 'profile'
-      get 'card'
+      get 'card_registration'
+      post 'card_registration'  =>  'mypages#creditcard_validates'
       get 'identification'
       get 'logout'
     end
