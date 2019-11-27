@@ -47,7 +47,8 @@ class ProductsController < ApplicationController
       shipping_area:    product_params[:shipping_area],
       shipping_date:    product_params[:shipping_date],
       price:            product_params[:price],
-      seller_id:        product_params[:seller_id]
+      seller_id:        product_params[:seller_id],
+      images:           product_params[:images]
     )
     redirect_to products_path
   end
