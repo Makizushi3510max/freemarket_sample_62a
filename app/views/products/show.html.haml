@@ -12,7 +12,7 @@
         .item-photobox
           - @product.images.each do |image|
             .item-image
-              = image_tag image, alt: "#{@product.name}"
+              = image_tag image
 
     //ここから出品者情報
     %table.item__product__table
@@ -97,7 +97,6 @@
           不適切な商品の報告
       %input{name: "like_add_url", type: "hidden", value: "https://www.mercari.com/jp/like/add/m68241027780/"}/
       %input{name: "like_del_url", type: "hidden", value: "https://www.mercari.com/jp/like/delete/m68241027780/"}/
-      %input{name: "__csrf_value", type: "hidden", value: "601cc8ee36906650a1132df5d4bcb07d1f59ea381ea07eae22023c627733c48e281d211a3de8d91788b282aed5a95a1daaeb6a5af3f417e0411f6a99d0b2c9bd6"}/
       .item-button-right
         = link_to "#", target: "_blank" do
           %i.icon-lock &#x1f512; あんしん・あんぜんへの取り組み
@@ -107,7 +106,6 @@
   .message-container
     .message-content
       %form.message-form{action: "#", method: "#"}
-        -# %input{:name => "__csrf_value", :type => "hidden", :value => "a5edbca94eacffff39f537342718b92f99c2b51a0a02f01569b4809699e88fab24ecb785b34e210e06d9d8205d5ff308deab42207eaaafcfea1cf20472299eff7"}/
         %p.text 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         %input{name: "item_id", type: "hidden", link: "#"}/
         %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
@@ -139,9 +137,9 @@
     - @sellers_products.each do |product|
       .items-box-content
         %section.items-box
-          = link_to "#", class: "items-box__link" do
+          = link_to "/products/#{product.id}", class: "items-box__link" do
             %figure.items-box-photo
-              = image_tag product.images[0], "data-src": product.images[0], class: "lazyloaded is-higher-height", alt: "#{product.name}"
+              = image_tag product.images[0], "data-src": product.images[0], class: "lazyloaded is-higher-height"
             .items-box-body
               %h3.items-box-item__name
                 = product.name
@@ -162,9 +160,9 @@
     - @brands_products.each do |product|
       .items-box-content.clearfix
         %section.items-box
-          = link_to "#", class: "items-box__link" do
+          = link_to "/products/#{product.id}", class: "items-box__link" do
             %figure.items-box-photo
-              = image_tag product.images[0], "data-src": product.images[0], class: "lazyloaded is-higher-height", alt: "#{product.name}"
+              = image_tag product.images[0], "data-src": product.images[0], class: "lazyloaded is-higher-height"
             .items-box-body
               %h3.items-box-name.font-2
                 = product.name
