@@ -35,8 +35,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def post_image
+    binding.pry
+    # respond_to do |format|
+    #   format.json
+    # end
+  end
+
   def create
     # Product.create(product_params)
+    # binding.pry
     @product = Product.create(
       name:             product_params[:name],
       description:      product_params[:description],
@@ -62,8 +70,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    # params.require(:product).permit(:name, :description, :condition, :category_id, :size_id, :shipping_cost, :shipping_area, :shipping_date, :price, images: []).merge(seller_id: current_user.id)
-
     params.require(:product).permit(:name, :description, :condition, :grandchild_category_id, :size_id, :shipping_cost, :shipping_area, :shipping_date, :price, images: []).merge(seller_id: current_user.id)
   end
 end

@@ -127,19 +127,19 @@ class SignupController < ApplicationController
   end
 
   def creditcard_validates
-    # Payjp.api_key = Rails.application.credentials.payjp[:private_key]
-    # if params['payjp-token'].blank?
-    #   redirect_to action: "creditcard"
-    # else
-    #   customer = Payjp::Customer.create(
-    #     description: '登録テスト',
-    #     email: "test@test.com",
-    #     card: params['payjp-token']
-    #   )
-    #   session[:customer_id] = customer.id
-    #   session[:card_id] = customer.default_card
+    Payjp.api_key = Rails.application.credentials.payjp[:private_key]
+    if params['payjp-token'].blank?
+      redirect_to action: "creditcard"
+    else
+      customer = Payjp::Customer.create(
+        description: '登録テスト',
+        email: "test@test.com",
+        card: params['payjp-token']
+      )
+      session[:customer_id] = customer.id
+      session[:card_id] = customer.default_card
       redirect_to done_signup_index_path
-    # end
+    end
   end
 
   def done
@@ -169,11 +169,11 @@ class SignupController < ApplicationController
       building_name:    session[:address_building_name],
       phone_number:     session[:address_phone_number]
     )
-    # @card = Card.create(
-    #   user:             @user,
-    #   customer_id:      session[:customer_id],
-    #   card_id:          session[:card_id]
-    # )
+    @card = Card.create(
+      user:             @user,
+      customer_id:      session[:customer_id],
+      card_id:          session[:card_id]
+    )
   end
 
   private
