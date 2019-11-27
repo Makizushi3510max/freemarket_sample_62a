@@ -134,10 +134,10 @@
   %section.items-box__top
     %h2.items-box__head
       = link_to "#{@product.seller.nickname}さんのその他の出品", "#"
-    - @product.seller_id.products.each do |product|
-      .items-box-content
+    .items-box-content
+      - @sellers_products.each do |product|
         %section.items-box
-          = link_to product_path, class: "items-box__link" do
+          = link_to "/products/#{product.id}", class: "items-box__link" do
             %figure.items-box-photo
               = image_tag product.images[0], "data-src": product.images[0], class: "lazyloaded is-higher-height"
             .items-box-body
@@ -157,10 +157,10 @@
         = link_to "#{@product.brand.name}の#{@product.category.name} その他の商品", "#"
       - else
         = link_to "#{@product.category.name}（#{@product.category.root.name}） その他の商品", "#"
-    - @brands_products.each do |product|
-      .items-box-content.clearfix
+    .items-box-content.clearfix
+      - @brands_products.each do |product|
         %section.items-box
-          = link_to product_path, class: "items-box__link" do
+          = link_to "/products/#{product.id}", class: "items-box__link" do
             %figure.items-box-photo
               = image_tag product.images[0], "data-src": product.images[0], class: "lazyloaded is-higher-height"
             .items-box-body

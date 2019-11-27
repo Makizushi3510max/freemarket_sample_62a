@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @sellers_products = Product.where(brand: @product.brand).limit(6)
+    @sellers_products = Product.where(seller_id: @product.seller).limit(6)
     @brands_products = Product.where(brand: @product.brand).limit(6)
   end
   
