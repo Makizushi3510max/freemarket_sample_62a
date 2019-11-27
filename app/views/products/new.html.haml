@@ -18,7 +18,37 @@
                 .sell-dropbox-container.clearfix.state-image-number-10
                   .sell-upload-items-container
                     .sell-upload-items.have-item-0
-                      %ul#preview
+                      %ul.sell-upload-items-images
+                        %li.sell-upload-item-image
+                          %figure.sell-upload-figure.portrait
+                            = image_tag "/images/product_images/Green.jpg"
+                          .sell-upload-button
+                            %a.edit-button 編集
+                            %a.delete-button 削除
+                        -# %li.sell-upload-item-image
+                        -#   %figure.sell-upload-figure.portrait
+                        -#     = image_tag "/images/product_images/Green.jpg"
+                        -#   .sell-upload-button
+                        -#     %a.edit-button 編集
+                        -#     %a.delete-button 削除
+                        -# %li.sell-upload-item-image
+                        -#   %figure.sell-upload-figure.portrait
+                        -#     = image_tag "/images/product_images/Green.jpg"
+                        -#   .sell-upload-button
+                        -#     %a.edit-button 編集
+                        -#     %a.delete-button 削除
+                        -# %li.sell-upload-item-image
+                        -#   %figure.sell-upload-figure.portrait
+                        -#     = image_tag "/images/product_images/Green.jpg"
+                        -#   .sell-upload-button
+                        -#     %a.edit-button 編集
+                        -#     %a.delete-button 削除
+                        -# %li.sell-upload-item-image
+                        -#   %figure.sell-upload-figure.portrait
+                        -#     = image_tag "/images/product_images/Green.jpg"
+                        -#   .sell-upload-button
+                        -#     %a.edit-button 編集
+                        -#     %a.delete-button 削除
                     = f.label :images, class: 'sell-upload-drop-label have-item-1' do
                       .sell-upload-drop-box
                         = f.file_field :images, multiple: true, style: "display: none;" , class: "sell-upload-drop-file"
