@@ -1,7 +1,14 @@
 class ProductsController < ApplicationController
   def index
-    # @products = Product.includes(:user).page(params[:page]).per(5).order("created_at DESC")
     @products = Product.all.order("id DESC").limit(10)
+    lady = Category.find(1)
+    mens = Category.find(417)
+    @appliance = Category.find(1181)
+    @toy = Category.find(946)
+
+    @ladys_category = Product.where(category_id: lady.id)
+    # binding.pry
+    @mens_category = Product.where(category_id: mens.id)
   end
 
   def show
