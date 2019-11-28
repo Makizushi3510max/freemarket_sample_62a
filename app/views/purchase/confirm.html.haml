@@ -13,7 +13,7 @@
             -# = image_tag 'https://static.mercdn.net/thumb/photos/m21842421124_1.jpg?1572179132', class: 'lazyload'
           %p.buy-content-inner__name.bold #{@product.name}
           -# %form.buy_form{:action => "https://www.mercari.com/jp/transaction/buy/done/m21842421124/", :method => "POST", :novalidate => "novalidate"}
-          = form_with url: pay_purchase_index_path, class: :buy_form, local: true do |f|
+          = form_with url: pay_path, class: :buy_form, local: true do |f|
             %p.buy_form__price-ja.bold
               = "¥" + @product.price.to_s
               %span.buy-price-ja.item-shipping-fee
