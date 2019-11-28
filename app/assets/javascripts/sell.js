@@ -2,14 +2,9 @@ $(function(){
   // 画像のプレビューを表示させる機能
   var temp_files = []
 
-  $(document).on("change", "#product_images",function(e){
-    var file = e.target.files;
-    var num = file.length;
-    
-    // console.log(num)
-    var fr = new FileReader();
-    fr.onload = function(){
-    var buildImageBox =  `<li class="sell-upload-item-image">
+  // プレビューのhtmlを生成
+  function buildImagePreview(fr){
+    var previewBox =  `<li class="sell-upload-item-image">
                             <figure class="sell-upload-figure portrait">
                               <img src="${fr.result}">
                             </figure>
@@ -18,13 +13,78 @@ $(function(){
                               <a class="delete-button">削除</a>
                             </div>
                           </li>`
-      $(".sell-upload-items-images").append(buildImageBox);
-    };
-    fr.readAsDataURL(this.files[0]);
+    return previewBox
+  }
 
-    var drop_box = $(".sell-upload-drop-label")
-    drop_box.removeClass("have-item-0")
-    drop_box.addClass("have-item-1")
+  
+  var images2 =  `<div class="sell-upload-items have-item-0" id="preview-lower">
+                    <ul class="sell-upload-items-images" id="images2">
+                    </ul>
+                  </div>`
+
+  // fileが変更されると発火
+  $(document).on("change", "#product_images",function(e){
+    var file = e.target.files;  // ファイルを配列に格納
+    // var num = file.length;
+    var drop_box = $(".sell-upload-drop-label") // ドロップゾーンのエレメントを取得
+    // ファイルの数だけ実行
+    $.each(file, function(index,value){
+
+      // console.log($("#images2").length)
+      var file_num = index
+      var fr = new FileReader();
+      // 1~4枚目の画像までは普通にプレビューを表示
+      // 5枚目の画像が存在した場合、drop_boxはhave-item-0に戻る
+      // 6~9枚目の画像は新しいulタグ内に挿入する。
+      // 10枚目の画像が存在した場合、drop_boxは消える
+      if (0 <= file_num && file_num <= 3 ){
+        fr.onload = function(){
+          $("#images1").append(buildImagePreview(fr));
+        };
+        fr.readAsDataURL(this);
+        $("#preview-upper").removeClass("have-item-" + file_num)
+        $("#preview-upper").addClass("have-item-" + (file_num + 1))
+        $(".sell-upload-drop-label").removeClass("have-item-" + file_num)
+        $(".sell-upload-drop-label").addClass("have-item-" + (file_num + 1))
+      } else if (file_num == 4) {
+        fr.onload = function(){
+          $("#images1").append(buildImagePreview(fr));
+        };
+        fr.readAsDataURL(this);
+        $("#preview-upper").removeClass("have-item-4")
+        $("#preview-upper").addClass("have-item-5")
+        $(".sell-upload-drop-label").removeClass("have-item-4")
+        $(".sell-upload-drop-label").addClass("have-item-0")
+      } else if (5 <= file_num && file_num <= 8) {
+        if ($("#images2").length){
+          fr.onload = function(){
+            $("#images2").append(buildImagePreview(fr));
+          };
+          fr.readAsDataURL(this);
+        } else {
+          $(".sell-upload-items-container").append(images2)
+          fr.onload = function(){
+            $("#images2").append(buildImagePreview(fr));
+          };
+          fr.readAsDataURL(this);
+        }
+        $("#preview-lower").removeClass("have-item-" + (file_num - 5))
+        $("#preview-lower").addClass("have-item-" + ((file_num - 5) + 1))
+        $(".sell-upload-drop-label").removeClass("have-item-" + (file_num - 5))
+        $(".sell-upload-drop-label").addClass("have-item-" + ((file_num - 5) + 1))
+      } else {
+        // $(".sell-upload-items").append(images2)
+        fr.onload = function(){
+          $("#images2").append(buildImagePreview(fr));
+        };
+        fr.readAsDataURL(this);
+        $("#preview-lower").removeClass("have-item-4")
+        $("#preview-lower").addClass("have-item-5")
+        $(".sell-upload-drop-label").removeClass("have-item-4")
+        $(".sell-upload-drop-label").addClass("have-item-5")
+      }
+    })
+
 
   })
 
