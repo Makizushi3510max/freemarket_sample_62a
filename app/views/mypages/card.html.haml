@@ -12,11 +12,11 @@
           %ul.settings-payment-list
         %section.settings-add-card
           .single-content
-            %a.btn-default.btn-red.submit_button{:href => "https://www.mercari.com/jp/mypage/card/create/"}
+            = link_to '#', class: 'btn-default btn-red submit_button' do
               = fa_icon "credit-card"
               クレジットカードを追加する
         .settings-not-regist
-          %a{:href => "/jp/help_center/category/6/", :target => "_blank"}
+          = link_to '#' do
             %span 支払い方法について
             = fa_icon "chevron-right"
 
@@ -24,103 +24,103 @@
     %nav.mypage-nav
       %ul.mypage-nav-list
         %li
-          %a.mypage-nav-list__item{:href => "/mypage/"}
+          = link_to mypage_path(current_user.id), class: 'mypage-nav-list__item' do
             マイページ
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             お知らせ
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             やることリスト
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             いいね！一覧
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             出品する
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             出品した商品 - 出品中
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             出品した商品 - 取引中
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             出品した商品 - 売却済み
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             購入した商品 - 取引中
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             購入した商品 - 過去の取引
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             ニュース一覧
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => ""}
+          = link_to '#', class: 'mypage-nav-list__item' do
             評価一覧
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             ガイド
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             お問い合わせ
             = fa_icon "chevron-right"
       %h3.mypage-nav-head メルペイ
       %ul.mypage-nav-list
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             売上・振込申請
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             ポイント
             = fa_icon "chevron-right"
       %h3.mypage-nav-head 設定
       %ul.mypage-nav-list
         %li
-          %a.mypage-nav-list__item{:href => "/mypage/profile/"}
+          = link_to profile_mypages_path, class: 'mypage-nav-list__item' do
             プロフィール
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             発送元・お届け先住所変更
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item.active{:href => "/mypage/card/"}
+          = link_to card_mypages_path, class: 'mypage-nav-list__item active' do
             支払い方法
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             メール/パスワード
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "/mypage/identification/"}
+          = link_to identification_mypages_path, class: 'mypage-nav-list__item' do
             本人情報
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "#"}
+          = link_to '#', class: 'mypage-nav-list__item' do
             電話番号の確認
             = fa_icon "chevron-right"
         %li
-          %a.mypage-nav-list__item{:href => "/mypage/logout/"}
+          = link_to logout_mypages_path, class: 'mypage-nav-list__item' do
             ログアウト
             = fa_icon "chevron-right"
 .exhibit
-  %a.exhibit__link{:href => "/jp/sell/"}
+  =link_to new_product_path(current_user) do
     .exhibit__link__circle
       .exhibit__link__circle__text 出品
       %svg.exhibit__link__circle__text__svg{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 18 16", :width => "18"}
