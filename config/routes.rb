@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :purchase, only: :index do
+  resources :purchase, except: [:index, :show, :new, :create, :edit, :update, :destroy] do
     collection do
+      post 'confirm'
       post 'pay'
       get  'done'
     end
