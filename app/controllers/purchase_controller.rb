@@ -9,7 +9,7 @@ class PurchaseController < ApplicationController
     if card.blank?
       redirect_to card_registration_mypages_path
     else
-      @product = Product.find_by(id:1)
+      @product = Product.find_by(id:3)
       @address = Address.where(user_id: current_user.id).first  
       card_info
     end
@@ -33,7 +33,8 @@ class PurchaseController < ApplicationController
       @product.update(
         buyer_id: current_user.id
       )
-      redirect_to action: 'done'
+      # リダイレクトさせる時に商品idを付与する
+      redirect_to action: 'done',product_id: @product.id
     else
       redirect_to root_path
     end
@@ -42,7 +43,7 @@ class PurchaseController < ApplicationController
 
 
   def done
-    @product = Product.find_by(params[:product_id])
+    @product = Product.find(params[:product_id])
     @address = Address.where(user_id: current_user.id).first
     card_info
   end

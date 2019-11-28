@@ -9,8 +9,8 @@
       %section.buy-content.buy-item
         .buy-content-inner
           %h3.buy-content-inner__image
-            -# = image_tag {@product.images}
-            = image_tag 'https://static.mercdn.net/thumb/photos/m21842421124_1.jpg?1572179132', class: 'lazyload'
+            = image_tag @product.images[0],{class: 'lazyload'}
+            -# = image_tag 'https://static.mercdn.net/thumb/photos/m21842421124_1.jpg?1572179132', class: 'lazyload'
           %p.buy-content-inner__name.bold #{@product.name}
           -# %form.buy_form{:action => "https://www.mercari.com/jp/transaction/buy/done/m21842421124/", :method => "POST", :novalidate => "novalidate"}
           = form_with url: pay_purchase_index_path, class: :buy_form, local: true do |f|
