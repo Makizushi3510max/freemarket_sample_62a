@@ -45,12 +45,11 @@
         display: block;
         ul{
           display: block;
-          width: 100%;
           li:nth-child(n+2){
             margin-left: 10px;
           }
           .sell-upload-item-image{
-            width: 112px;
+            width: 116px;
             margin-bottom:  10px;
             position: relative;
             display: inline-block;
@@ -92,10 +91,27 @@
           }
         }
       }
+      .have-item-0{
+        width: 0%;
+      }
+      .have-item-1{
+        width: 20%;
+      }
+      .have-item-2{
+        width: 40%;
+      }
+      .have-item-3{
+        width: 60%;
+      }
+      .have-item-4{
+        width: 80%;
+      }
+      .have-item-5{
+        width: 100%;
+      }
     }
     .sell-upload-drop-label{
       float: right;
-      width: 100%;
       .sell-upload-drop-box{
         width: 100%;
         margin-left: 0;
@@ -128,6 +144,25 @@
         }
       }
     }
+    .have-item-0{
+      width: 100%;
+    }
+    .have-item-1{
+      width: 491px;
+    }
+    .have-item-2{
+      width: 363px;
+    }
+    .have-item-3{
+      width: 234px;
+    }
+    .have-item-4{
+      width: 106px;
+    }
+    .have-item-5{
+      display: none;
+    }
+
   }
 
   .sell-content{

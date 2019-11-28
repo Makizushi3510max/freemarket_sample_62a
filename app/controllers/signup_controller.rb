@@ -174,6 +174,7 @@ class SignupController < ApplicationController
       customer_id:      session[:customer_id],
       card_id:          session[:card_id]
     )
+    sign_in(@user)
   end
 
   private
