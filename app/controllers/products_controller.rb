@@ -1,14 +1,22 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all.order("id DESC").limit(10)
-    lady = Category.find(1)
-    mens = Category.find(417)
-    @appliance = Category.find(1181)
-    @toy = Category.find(946)
+    @products = Product.all
+    @ladies = []
+    @mens  = []
+    @toys = []
+    @products.each_with_index do |product ,i|
+      if product.category.parent.parent.id == 1
+        @ladies << product
+      end
 
-    @ladys_category = Product.where(category_id: lady.id)
-    # binding.pry
-    @mens_category = Product.where(category_id: mens.id)
+      if product.category.parent.parent.id == 417
+        @mens << product
+      end
+
+      if product.category.parent.parent.id == 946
+        @toys << product
+      end
+    end
   end
 
   def show
