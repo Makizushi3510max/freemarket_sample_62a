@@ -2,18 +2,17 @@ class PurchaseController < ApplicationController
 
   require 'payjp'
 
-  def index
+  def confirm
     card = Card.where(user_id: current_user.id).first
 
 
     if card.blank?
       redirect_to card_registration_mypages_path
     else
-      @product = Product.find_by(id:3)
+      @product = Product.find(params[:product_id])
       @address = Address.where(user_id: current_user.id).first  
       card_info
     end
-    # binding.pry
   end
 
   def pay
