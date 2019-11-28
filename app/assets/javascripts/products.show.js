@@ -1,7 +1,6 @@
 $(function() {
   $('.item-photobox').slick({
     speed: 800,
-    // console.log('ttt')
     dots: true,
 
     customPaging: function(slider, i) {

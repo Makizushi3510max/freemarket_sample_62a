@@ -55,18 +55,20 @@
 
     .main__main__product
       %div
-                      
         %ul.main__main__product__div__box
-          - @ladys_category.each do |product|
+          - @ladies.each do |ladie|
             %li.main__main__product__div__box__item      
               %div.main__main__product__box__item__div
                 %a.main__main__product__box__item__div__link{:href => "#"}
                   %figure.main__main__product__box__item__div__link__figure
                     %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                      %span.main__main__product__box__item__div__link__figure__figcaption__span #{product.name}
+                      %span.main__main__product__box__item__div__link__figure__figcaption__span 
+                        = ladie.name
                     .main__main__product__box__item__link__figure__figcaption__style
-                      %span.main__main__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
-                      %img.main__main__product__box__item__link__figure__figcaption__style__img
+                      %span.main__main__product__box__item__link__figure__figcaption__style__span
+                        ¥
+                        = ladie.price
+                      = image_tag ladie.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
 
   .main__main
     .main__main__connect
@@ -79,16 +81,20 @@
       %div
                       
         %ul.main__main__product__div__box
-          - @mens_category.each do |product|
+          - @mens.each do |men|
             %li.main__main__product__div__box__item
-              %div.main__main__product__box__item__div
-                %a.main__main__product__box__item__div__link{:href => "#"}
-                  %figure.main__main__product__box__item__div__link__figure
-                    %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                      %span.main__main__product__box__item__div__link__figure__figcaption__span #{product.name}
-                    .main__main__product__box__item__link__figure__figcaption__style
-                      %span.main__main__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
-                      %img.main__main__product__box__item__link__figure__figcaption__style__img
+              = link_to "/products/#{men.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
+                %div.main__main__product__box__item__div
+                  .main__main__product__box__item__div__link
+                    .figure.main__main__product__box__item__div__link__figure
+                      %figcaption.main__main__product__box__item__div__link__figure__figcaption
+                        %span.main__main__product__box__item__div__link__figure__figcaption__span
+                          = men.name
+                      .main__main__product__box__item__link__figure__figcaption__style
+                        %span.main__main__product__box__item__link__figure__figcaption__style__span
+                          ¥
+                          = men.price
+                        = image_tag men.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
        
 
   .main__main
@@ -102,16 +108,15 @@
       %div
                       
         %ul.main__main__product__div__box
-          - @products.each do |product|
-            %li.main__main__product__div__box__item
-              %div.main__main__product__box__item__div
-                %a.main__main__product__box__item__div__link{:href => "#"}
-                  %figure.main__main__product__box__item__div__link__figure
-                    %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                      %span.main__main__product__box__item__div__link__figure__figcaption__span #{product.name}
-                    .main__main__product__box__item__link__figure__figcaption__style
-                      %span.main__main__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
-                      %img.main__main__product__box__item__link__figure__figcaption__style__img
+          %li.main__main__product__div__box__item
+            %div.main__main__product__box__item__div
+              %a.main__main__product__box__item__div__link{:href => "#"}
+                %figure.main__main__product__box__item__div__link__figure
+                  %figcaption.main__main__product__box__item__div__link__figure__figcaption
+                    %span.main__main__product__box__item__div__link__figure__figcaption__span 
+                  .main__main__product__box__item__link__figure__figcaption__style
+                    %span.main__main__product__box__item__link__figure__figcaption__style__span 
+                    %img.main__main__product__box__item__link__figure__figcaption__style__img
 
   .main__main
     .main__main__connect
@@ -130,9 +135,9 @@
                 %a.main__main__product__box__item__div__link{:href => "#"}
                   %figure.main__main__product__box__item__div__link__figure
                     %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                      %span.main__main__product__box__item__div__link__figure__figcaption__span #{product.name}
+                      %span.main__main__product__box__item__div__link__figure__figcaption__span 
                     .main__main__product__box__item__link__figure__figcaption__style
-                      %span.main__main__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
+                      %span.main__main__product__box__item__link__figure__figcaption__style__span 
                       %img.main__main__product__box__item__link__figure__figcaption__style__img
 
             
@@ -167,9 +172,9 @@
                 %a.main__foot__product__box__item__div__link{:href => "#"}
                   %figure.main__foot__product__box__item__div__link__figure
                     %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                      %span.main__foot__product__box__item__div__link__figure__figcaption__span #{product.name}
+                      %span.main__foot__product__box__item__div__link__figure__figcaption__span 
                     .main__foot__product__box__item__link__figure__figcaption__style
-                      %span.main__foot__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
+                      %span.main__foot__product__box__item__link__figure__figcaption__style__span 
                       %img.main__foot__product__box__item__link__figure__figcaption__style__img
 
   .main__foot
@@ -189,9 +194,9 @@
                 %a.main__foot__product__box__item__div__link{:href => "#"}
                   %figure.main__foot__product__box__item__div__link__figure
                     %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                      %span.main__foot__product__box__item__div__link__figure__figcaption__span #{product.name}
+                      %span.main__foot__product__box__item__div__link__figure__figcaption__span 
                     .main__foot__product__box__item__link__figure__figcaption__style
-                      %span.main__foot__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
+                      %span.main__foot__product__box__item__link__figure__figcaption__style__span 
                       %img.main__foot__product__box__item__link__figure__figcaption__style__img
 
   .main__foot
@@ -211,9 +216,9 @@
                 %a.main__foot__product__box__item__div__link{:href => "#"}
                   %figure.main__foot__product__box__item__div__link__figure
                     %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                      %span.main__foot__product__box__item__div__link__figure__figcaption__span #{product.name}
+                      %span.main__foot__product__box__item__div__link__figure__figcaption__span 
                     .main__foot__product__box__item__link__figure__figcaption__style
-                      %span.main__foot__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
+                      %span.main__foot__product__box__item__link__figure__figcaption__style__span 
                       %img.main__foot__product__box__item__link__figure__figcaption__style__img
 
   .main__foot
@@ -233,9 +238,9 @@
                 %a.main__foot__product__box__item__div__link{:href => "#"}
                   %figure.main__foot__product__box__item__div__link__figure
                     %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                      %span.main__foot__product__box__item__div__link__figure__figcaption__span #{product.name}
+                      %span.main__foot__product__box__item__div__link__figure__figcaption__span 
                     .main__foot__product__box__item__link__figure__figcaption__style
-                      %span.main__foot__product__box__item__link__figure__figcaption__style__span ¥#{product.price}
+                      %span.main__foot__product__box__item__link__figure__figcaption__style__span 
                       %img.main__foot__product__box__item__link__figure__figcaption__style__img
   
   .air__box
