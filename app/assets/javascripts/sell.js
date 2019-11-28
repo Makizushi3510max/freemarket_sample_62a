@@ -1,27 +1,30 @@
 $(function(){
   // 画像のプレビューを表示させる機能
-  var files_array = [];
+  var temp_files = []
 
   $(document).on("change", "#product_images",function(e){
-    var file = $("#product_images").prop('files')[0]
-    var reader  = new FileReader();
-    var images_box = $(".sell-upload-items-images")
-    var src = window.URL.createObjectURL(file)
-
-    console.log(src)
-
-    reader.onload = (function(file){
-      images_box.append( `<li class="sell-upload-item-image">
-                            <fifure class="sell-upload-figure portrait">
-                              <img src="${src}">
-                            </fifure>
-                            <div>
+    var file = e.target.files;
+    var num = file.length;
+    
+    // console.log(num)
+    var fr = new FileReader();
+    fr.onload = function(){
+    var buildImageBox =  `<li class="sell-upload-item-image">
+                            <figure class="sell-upload-figure portrait">
+                              <img src="${fr.result}">
+                            </figure>
+                            <div class="sell-upload-button">
                               <a class="edit-button">編集</a>
                               <a class="delete-button">削除</a>
                             </div>
-                          </li>
-      `)
-    })
+                          </li>`
+      $(".sell-upload-items-images").append(buildImageBox);
+    };
+    fr.readAsDataURL(this.files[0]);
+
+    var drop_box = $(".sell-upload-drop-label")
+    drop_box.removeClass("have-item-0")
+    drop_box.addClass("have-item-1")
 
   })
 

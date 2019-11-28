@@ -92,10 +92,27 @@
           }
         }
       }
+      .have-item-0{
+        width: 0%;
+      }
+      .have-item-1{
+        width: 20%;
+      }
+      .have-item-2{
+        width: 40%;
+      }
+      .have-item-3{
+        width: 60%;
+      }
+      .have-item-4{
+        width: 80%;
+      }
+      .have-item-5{
+        width: 100%;
+      }
     }
     .sell-upload-drop-label{
       float: right;
-      width: 100%;
       .sell-upload-drop-box{
         width: 100%;
         margin-left: 0;
@@ -128,6 +145,25 @@
         }
       }
     }
+    .have-item-0{
+      width: 100%;
+    }
+    .have-item-1{
+      width: 80%;
+    }
+    .have-item-2{
+      width: 60%;
+    }
+    .have-item-3{
+      width: 40%;
+    }
+    .have-item-4{
+      width: 20%;
+    }
+    .have-item-5{
+      width: 0%;
+    }
+
   }
 
   .sell-content{
