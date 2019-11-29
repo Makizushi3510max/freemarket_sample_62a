@@ -84,7 +84,8 @@
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
         .l-single__content
           .form__group
-            .g-recaptcha.signup-recaptcha{"data-sitekey" => "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
+            = recaptcha_tags
+            -# .g-recaptcha.signup-recaptcha{"data-sitekey" => "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
           .form__group
             %p.l-single__text.text-center
               「次へ進む」のボタンを押すことにより、
