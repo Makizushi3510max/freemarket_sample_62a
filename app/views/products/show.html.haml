@@ -88,11 +88,12 @@
         - if @product.buyer_id.nil?
           = f.submit "購入画面に進む", {class: "item-main__price__buy-btn"}
         - else
-          = f.submit "売り切れました", {class: "item-main__price__buy-btn btn-gray", disabled: true}
-    -# - else
-    -#   = link_to "商品の編集", root_path, class: "item-main__price__buy-btn"
-    -#   .item-box__text__center or
-    -#   = link_to "商品を削除する", root_path, class: "item-main__price__buy-btn btn-gray"
+          = f.submit "売り切れました", {class: "item-main__price__buy-btn buy-btn__gray", disabled: true}
+    - else
+      = link_to "変更する", root_path, class: "item-main__price__buy-btn"
+      .item-box__text__center or
+      = link_to "出品を一旦停止する", root_path, class: "item-main__price__buy-btn buy-btn__gray"
+      = link_to "この商品を削除する", root_path, class: "item-main__price__buy-btn buy-btn__gray"
 
 
   .item-main__price__description
