@@ -24,6 +24,14 @@ class ProductsController < ApplicationController
     @sellers_products = Product.where(seller_id: @product.seller).limit(6)
     @brands_products = Product.where(brand: @product.brand).limit(6)
   end
+
+  def destroy
+    product = Product.find(params[:id])
+    if product.seller.id == current_user.id
+      product.destroy
+    end
+    redirect_to root_path
+  end
   
   def new
     @product = Product.new

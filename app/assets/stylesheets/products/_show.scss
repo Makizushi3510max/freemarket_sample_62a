@@ -129,8 +129,13 @@
     transition: all ease-out .3s;
     cursor: pointer;
   }
-  .btn-gray{
+  .buy-btn--gray{
     background: #979797;
+  }
+  &__text__center{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 16px;
   }
   .item-main__price__description {
     padding: 24px 0 0;
