@@ -1,18 +1,24 @@
 $(function(){
   // 画像のプレビューを表示させる機能
+
+  // 登録済みの画像、これから登録する画像、両方を格納する配列
+  var images = []
+  // DBに保存済みの画像を格納する配列
+  var registered_images = []
+  // DBへ保存する前の画像を格納する配列
   var temp_files = []
 
   // プレビューのhtmlを生成
-  function buildImagePreview(fr){
-    var previewBox =  `<li class="sell-upload-item-image">
-                            <figure class="sell-upload-figure portrait">
-                              <img src="${fr.result}">
-                            </figure>
-                            <div class="sell-upload-button">
-                              <a class="edit-button">編集</a>
-                              <a class="delete-button">削除</a>
-                            </div>
-                          </li>`
+  function buildImagePreview(fr,index){
+    var previewBox = `<li class="sell-upload-item-image id="image-${index}">
+                        <figure class="sell-upload-figure portrait">
+                          <img src="${fr.result}">
+                        </figure>
+                        <div class="sell-upload-button">
+                          <a class="edit-button">編集</a>
+                          <a class="delete-button">削除</a>
+                        </div>
+                      </li>`
     return previewBox
   }
 
@@ -22,15 +28,9 @@ $(function(){
                     </ul>
                   </div>`
 
-  // fileが変更されると発火
-  $(document).on("change", "#product_images",function(e){
-    var file = e.target.files;  // ファイルを配列に格納
-    // var num = file.length;
-    var drop_box = $(".sell-upload-drop-label") // ドロップゾーンのエレメントを取得
-    // ファイルの数だけ実行
-    $.each(file, function(index,value){
-
-      // console.log($("#images2").length)
+  // 画像一覧"images"を渡すとプレビューを描画する関数
+  function renderingPreview(images){
+    $.each(images, function(index,value){
       var file_num = index
       var fr = new FileReader();
       // 1~4枚目の画像までは普通にプレビューを表示
@@ -39,7 +39,7 @@ $(function(){
       // 10枚目の画像が存在した場合、drop_boxは消える
       if (0 <= file_num && file_num <= 3 ){
         fr.onload = function(){
-          $("#images1").append(buildImagePreview(fr));
+          $("#images1").append(buildImagePreview(fr,file_num));
         };
         fr.readAsDataURL(this);
         $("#preview-upper").removeClass("have-item-" + file_num)
@@ -48,7 +48,7 @@ $(function(){
         $(".sell-upload-drop-label").addClass("have-item-" + (file_num + 1))
       } else if (file_num == 4) {
         fr.onload = function(){
-          $("#images1").append(buildImagePreview(fr));
+          $("#images1").append(buildImagePreview(fr,file_num));
         };
         fr.readAsDataURL(this);
         $("#preview-upper").removeClass("have-item-4")
@@ -58,13 +58,13 @@ $(function(){
       } else if (5 <= file_num && file_num <= 8) {
         if ($("#images2").length){
           fr.onload = function(){
-            $("#images2").append(buildImagePreview(fr));
+            $("#images2").append(buildImagePreview(fr,file_num));
           };
           fr.readAsDataURL(this);
         } else {
           $(".sell-upload-items-container").append(images2)
           fr.onload = function(){
-            $("#images2").append(buildImagePreview(fr));
+            $("#images2").append(buildImagePreview(fr,file_num));
           };
           fr.readAsDataURL(this);
         }
@@ -73,9 +73,8 @@ $(function(){
         $(".sell-upload-drop-label").removeClass("have-item-" + (file_num - 5))
         $(".sell-upload-drop-label").addClass("have-item-" + ((file_num - 5) + 1))
       } else {
-        // $(".sell-upload-items").append(images2)
         fr.onload = function(){
-          $("#images2").append(buildImagePreview(fr));
+          $("#images2").append(buildImagePreview(fr,file_num));
         };
         fr.readAsDataURL(this);
         $("#preview-lower").removeClass("have-item-4")
@@ -84,8 +83,27 @@ $(function(){
         $(".sell-upload-drop-label").addClass("have-item-5")
       }
     })
+  }
 
 
+  // fileが変更されると発火
+  $(document).on("change", "#product_images",function(e){
+    var file = e.target.files;  // ファイルを配列に格納
+    // 新しく追加されたファイルをimagesの末尾に追加
+    $.each(file, function(index,value){
+      images.push(value)
+    })
+
+    // 画像が1つでも存在していればプレビュー一覧を描画
+    if (images.length){
+      // 描画済みのプレビュー一覧を削除
+      $("#images1").empty()
+      $("#images2").empty()
+      // プレビュー一覧を描画
+      renderingPreview(images)
+      // console.log(images)
+      // console.log($("#images1").children)
+    }
   })
 
 
