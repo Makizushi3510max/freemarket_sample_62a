@@ -1,6 +1,8 @@
 -# マイページ
 = render"products/header"
-
+- breadcrumb :mypage
+.bread-crumbs
+  = breadcrumbs separator: "&nbsp;&nbsp;&#12297;"
 .mypage.clearfix
   .mypage__content
     %section.user-icon
