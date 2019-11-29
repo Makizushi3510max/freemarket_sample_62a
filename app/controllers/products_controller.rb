@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     @ladies = []
     @mens  = []
+    @electronics = []
     @toys = []
     @products.each_with_index do |product ,i|
       if product.category.parent.parent.id == 1
@@ -13,8 +14,12 @@ class ProductsController < ApplicationController
         @mens << product
       end
 
+      if product.category.parent.parent.id == 1181
+        @electronics << product
+      end
+
       if product.category.parent.parent.id == 946
-        @toys << product
+        @toys << product 
       end
     end
   end
