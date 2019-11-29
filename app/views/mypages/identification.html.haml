@@ -1,6 +1,7 @@
 -# 本人情報　ユーザー本人確認ページ
 = render"products/header"
-
+- breadcrumb :identification
+= render 'layouts/breadcrumbs'
 .mypage.clearfix
   .mypage__content
     %section.chapter-container.mypage-identification
@@ -177,7 +178,7 @@
             プロフィール
             = fa_icon "chevron-right"
         %li
-          = link_to 'identification_mypages_path', class: 'mypage-nav-list__item active' do
+          = link_to '#', class: 'mypage-nav-list__item' do
             発送元・お届け先住所変更
             = fa_icon "chevron-right"
         %li
@@ -189,7 +190,7 @@
             メール/パスワード
             = fa_icon "chevron-right"
         %li
-          = link_to identification_mypages_path, class: 'mypage-nav-list__item' do
+          = link_to identification_mypages_path, class: 'mypage-nav-list__item active' do
             本人情報
             = fa_icon "chevron-right"
         %li
