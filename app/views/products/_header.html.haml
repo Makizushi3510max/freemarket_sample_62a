@@ -2,9 +2,8 @@
   .header__main
     .header__top
       .header__logo
-        .header__logo__box
-          =link_to root_path do
-            %img.header__logo__box__img{:alt => "mercari", :src => "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg"}/
+        = link_to root_path, class: 'header__logo__box' do
+          %img.header__logo__box__img{:alt => "mercari", :src => "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg"}/
       .search
         %form.search__box{:action => "#"}
           %input.search__box__ber{:name => "keyword", :placeholder => "What are you looking for？", :type => "search", :value => ""}/
