@@ -1,6 +1,41 @@
+# ルート
 crumb :root do
-  link "Home", root_path
+  link "トップページ", root_path
 end
+
+# マイページ
+crumb :mypage do
+  link "マイページ", mypage_path(current_user.id)
+end
+
+# プロフィール
+crumb :profile do
+  link "プロフィール", profile_mypages_path
+  parent :mypage
+end
+
+# 支払い方法
+crumb :card do
+  link "支払い方法", card_mypages_path
+  parent :mypage
+end
+
+# 本人情報
+crumb :identification do
+  link "本人情報", identification_mypages_path
+  parent :mypage
+end
+
+# ログアウト
+crumb :logout do
+  link "ログアウト", logout_mypages_path
+  parent :mypage
+end
+
+
+
+
+
 
 # crumb :projects do
 #   link "Projects", projects_path
