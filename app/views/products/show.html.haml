@@ -14,7 +14,7 @@
             .item-image
               = image_tag image
 
-    //ここから出品者情報
+    -# 出品者情報
     %table.item__product__table
       %tbody
         %tr
@@ -34,12 +34,12 @@
         %tr
           %th.item__product__table__th カテゴリー
           %td.item__product__table__td
-            = link_to @product.category.root.name, "#"
-            = link_to "#" do
+            = link_to @product.category.root.name, root_path
+            = link_to root_path do
               .item__product__table__category
                 = fa_icon "chevron-right"
                 = @product.category.parent.name
-            = link_to "#" do
+            = link_to root_path do
               .item__product__table__category__sub-category
                 = fa_icon "chevron-right"
                 = @product.category.name
@@ -47,7 +47,7 @@
           %th.item__product__table__th ブランド
           %td.item__product__table__td
             - unless @product.brand.nil?
-              = link_to @product.brand.name, "#"
+              = link_to @product.brand.name, root_path
         %tr
           %th.item__product__table__th 商品のサイズ
           %td.item__product__table__td
@@ -69,7 +69,7 @@
             - if @product.shipping_area.nil?
               未定
             - else
-              = link_to @product.prefecture.name, "#"
+              = link_to @product.prefecture.name, root_path
         %tr
           %th.item__product__table__th 発送日の目安
           %td.item__product__table__td
@@ -86,15 +86,14 @@
       = form_with url: confirm_path, local: true do |f|
         = f.number_field :product_id, type: "hidden", value: "#{@product.id}"
         - if @product.buyer_id.nil?
-          = f.submit "購入画面に進む", {class: "item-main__price__buy-btn"}
+          = f.submit "購入画面に進む", class: "item-main__price__buy-btn"
         - else
-          = f.submit "売り切れました", {class: "item-main__price__buy-btn buy-btn__gray", disabled: true}
+          = f.submit "売り切れました", class: "item-main__price__buy-btn buy-btn--gray", disabled: true
     - else
       = link_to "変更する", root_path, class: "item-main__price__buy-btn"
       .item-box__text__center or
-      = link_to "出品を一旦停止する", root_path, class: "item-main__price__buy-btn buy-btn__gray"
-      = link_to "この商品を削除する", root_path, class: "item-main__price__buy-btn buy-btn__gray"
-
+      = link_to "出品を一旦停止する", "#", class: "item-main__price__buy-btn buy-btn--gray", data: {turbolinks: false}
+      = link_to "この商品を削除する", root_path, class: "item-main__price__buy-btn buy-btn--gray"
 
   .item-main__price__description
     %p.item-main__price__description__text
@@ -102,47 +101,46 @@
 
   .item-main__price__clearfix
     .item-main__price__button-left
-      %button.item-main__price__button-like{"data-ga": "element", "data-ga-category": "LIKE", "data-ga-label": "like!", "data-id": "m68241027780", "data-toggle": "like", name: "like!", type: "button"}
+      %button.item-main__price__button-like{type: "button"}
         %i.icon-like-border
         %span
           = fa_icon "heart-o"
           いいね!
-      = link_to "", "data-model": "report-item", "data-open": "model", class: "item-button item-button-report clearfix" do
+      = link_to "#", class: "item-button item-button-report clearfix", data: {turbolinks: false} do
         %span
           = fa_icon "flag-o"
           不適切な商品の報告
       .item-button-right
-        = link_to "#", target: "_blank" do
+        = link_to root_path do
           %i.icon-lock &#x1f512; あんしん・あんぜんへの取り組み
 
-//ここからコメント欄
+-# コメント欄
 .item-detail-message
   .message-container
     .message-content
       %form.message-form{action: "#", method: "#"}
         %p.text 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %input{name: "item_id", type: "hidden", link: "#"}/
-        %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
+        -# %input{name: "item_id", type: "hidden", link: "#"}/
+        -# %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
         %textarea.textarea-default{name: "body", type: "text", value: ""}
         %button.message-submit.btn-default.btn-gray{type: "submit"}
           %span.text コメントする
 
-//ここからコメント欄より下の部分
+-# 以降コメント欄より下の部分
 .item-social-media-box
   .text-center
-
   %ul.social-media-box
     %li.social-media-box__li
-      = link_to "#", class: "share-btn__facebook", "data-window-name": "facebook_window", target: "_blank" do
+      = link_to root_path, class: "share-btn__facebook", target: "_blank" do
         = fa_icon "facebook"
     %li.social-media-box__li
-      = link_to "#", class: "share-btn__twitter", "data-window-name": "twitter_window", target: "_blank" do
+      = link_to root_path, class: "share-btn__twitter", target: "_blank" do
         = fa_icon "twitter"
     %li.social-media-box__li
-      = link_to "#", class: "share-btn__pinterest", "data-window-name": "pinterest_window", target: "_blank" do
+      = link_to root_path, class: "share-btn__pinterest", target: "_blank" do
         = fa_icon "pinterest"
 
-//その他の出品
+-# 出品者その他の出品
 .items-in-user-profile
   %section.items-box__top
     %h2.items-box__head
@@ -163,7 +161,7 @@
                   = fa_icon "heart-o"
                   %span 1
 
-  //ブランド関連商品
+  -# ブランド関連商品
   %section.items-box__bottom
     %h2.items-box-head
       - unless @product.brand.nil?
