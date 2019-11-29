@@ -7,6 +7,8 @@ $(function(){
   var registered_images = []
   // DBへ保存する前の画像を格納する配列
   var temp_files = []
+  // プレビュー中の画像の数を格納する変数
+  var preview_count = 0
 
   // プレビューのhtmlを生成
   function buildImagePreview(fr,index){
@@ -29,60 +31,69 @@ $(function(){
                   </div>`
 
   // 画像一覧"images"を渡すとプレビューを描画する関数
-  function renderingPreview(images){
+  function renderingPreview(images,preview_count){
+    console.log("画像の総数(描画されていない画像含む):" + images.length)
+    console.log("描画済みの画像の数:" + preview_count)
     $.each(images, function(index,value){
-      var file_num = index
-      var fr = new FileReader();
-      // 1~4枚目の画像までは普通にプレビューを表示
-      // 5枚目の画像が存在した場合、drop_boxはhave-item-0に戻る
-      // 6~9枚目の画像は新しいulタグ内に挿入する。
-      // 10枚目の画像が存在した場合、drop_boxは消える
-      if (0 <= file_num && file_num <= 3 ){
-        fr.onload = function(){
-          $("#images1").append(buildImagePreview(fr,file_num));
-        };
-        fr.readAsDataURL(this);
-        $("#preview-upper").removeClass("have-item-" + file_num)
-        $("#preview-upper").addClass("have-item-" + (file_num + 1))
-        $(".sell-upload-drop-label").removeClass("have-item-" + file_num)
-        $(".sell-upload-drop-label").addClass("have-item-" + (file_num + 1))
-      } else if (file_num == 4) {
-        fr.onload = function(){
-          $("#images1").append(buildImagePreview(fr,file_num));
-        };
-        fr.readAsDataURL(this);
-        $("#preview-upper").removeClass("have-item-4")
-        $("#preview-upper").addClass("have-item-5")
-        $(".sell-upload-drop-label").removeClass("have-item-4")
-        $(".sell-upload-drop-label").addClass("have-item-0")
-      } else if (5 <= file_num && file_num <= 8) {
-        if ($("#images2").length){
+      console.log("preview_count - 1 = " + (preview_count - 1))
+      console.log("index = " + index)
+      // 未描画の画像のみプレビューに追加
+      if ((preview_count - 1) < index){
+        // console.log(true)
+        var fr = new FileReader();
+        // 1~4枚目の画像までは普通にプレビューを表示
+        // 5枚目の画像が存在した場合、drop_boxはhave-item-0に戻る
+        // 6~9枚目の画像は新しいulタグ内に挿入する。
+        // 10枚目の画像が存在した場合、drop_boxは消える
+        if (0 <= preview_count && preview_count <= 3 ){
           fr.onload = function(){
-            $("#images2").append(buildImagePreview(fr,file_num));
+            $("#images1").append(buildImagePreview(fr,preview_count));
           };
           fr.readAsDataURL(this);
+          $("#preview-upper").removeClass("have-item-" + preview_count)
+          $("#preview-upper").addClass("have-item-" + (preview_count + 1))
+          $(".sell-upload-drop-label").removeClass("have-item-" + preview_count)
+          $(".sell-upload-drop-label").addClass("have-item-" + (preview_count + 1))
+        } else if (preview_count == 4) {
+          fr.onload = function(){
+            $("#images1").append(buildImagePreview(fr,preview_count));
+          };
+          fr.readAsDataURL(this);
+          $("#preview-upper").removeClass("have-item-4")
+          $("#preview-upper").addClass("have-item-5")
+          $(".sell-upload-drop-label").removeClass("have-item-4")
+          $(".sell-upload-drop-label").addClass("have-item-0")
+        } else if (5 <= preview_count && preview_count <= 8) {
+          if ($("#images2").length){
+            fr.onload = function(){
+              $("#images2").append(buildImagePreview(fr,preview_count));
+            };
+            fr.readAsDataURL(this);
+          } else {
+            $(".sell-upload-items-container").append(images2)
+            fr.onload = function(){
+              $("#images2").append(buildImagePreview(fr,preview_count));
+            };
+            fr.readAsDataURL(this);
+          }
+          $("#preview-lower").removeClass("have-item-" + (preview_count - 5))
+          $("#preview-lower").addClass("have-item-" + ((preview_count - 5) + 1))
+          $(".sell-upload-drop-label").removeClass("have-item-" + (preview_count - 5))
+          $(".sell-upload-drop-label").addClass("have-item-" + ((preview_count - 5) + 1))
         } else {
-          $(".sell-upload-items-container").append(images2)
           fr.onload = function(){
-            $("#images2").append(buildImagePreview(fr,file_num));
+            $("#images2").append(buildImagePreview(fr,preview_count));
           };
           fr.readAsDataURL(this);
+          $("#preview-lower").removeClass("have-item-4")
+          $("#preview-lower").addClass("have-item-5")
+          $(".sell-upload-drop-label").removeClass("have-item-4")
+          $(".sell-upload-drop-label").addClass("have-item-5")
         }
-        $("#preview-lower").removeClass("have-item-" + (file_num - 5))
-        $("#preview-lower").addClass("have-item-" + ((file_num - 5) + 1))
-        $(".sell-upload-drop-label").removeClass("have-item-" + (file_num - 5))
-        $(".sell-upload-drop-label").addClass("have-item-" + ((file_num - 5) + 1))
-      } else {
-        fr.onload = function(){
-          $("#images2").append(buildImagePreview(fr,file_num));
-        };
-        fr.readAsDataURL(this);
-        $("#preview-lower").removeClass("have-item-4")
-        $("#preview-lower").addClass("have-item-5")
-        $(".sell-upload-drop-label").removeClass("have-item-4")
-        $(".sell-upload-drop-label").addClass("have-item-5")
+        preview_count += 1
       }
     })
+    return preview_count
   }
 
 
@@ -94,15 +105,18 @@ $(function(){
       images.push(value)
     })
 
+    // preview_count += file.length
+
+    // console.log(preview_count)
+
     // 画像が1つでも存在していればプレビュー一覧を描画
     if (images.length){
       // 描画済みのプレビュー一覧を削除
-      $("#images1").empty()
-      $("#images2").empty()
+      // $("#images1").empty()
+      // $("#images2").empty()
       // プレビュー一覧を描画
-      renderingPreview(images)
-      // console.log(images)
-      // console.log($("#images1").children)
+      preview_count = renderingPreview(images,preview_count)
+      console.log(preview_count)
     }
   })
 
