@@ -9,36 +9,50 @@ class SignupController < ApplicationController
   def registration_validates
     # binding.pry
     # sessionにとりあえず格納
-    session[:nickname] = user_params[:nickname]
-    session[:email] = user_params[:email]
-    session[:password] = user_params[:password] if session[:password] == nil
-    session[:date_of_birth] = Date.new(
-      user_params["date_of_birth(1i)"].to_i,
-      user_params["date_of_birth(2i)"].to_i,
-      user_params["date_of_birth(3i)"].to_i)
-    session[:last_name] = user_params[:last_name]
-    session[:first_name] = user_params[:first_name]
-    session[:last_name_kana] = user_params[:last_name_kana]
-    session[:first_name_kana] = user_params[:first_name_kana]
-
-    # バリデーション用のインスタンスを準備
-    @user = User.new(
-      nickname: session[:nickname],
-      email: session[:email],
-      password: session[:password],
-      last_name: session[:last_name],
-      first_name: session[:first_name],
-      last_name_kana: session[:last_name_kana],
-      first_name_kana: session[:first_name_kana],
-      date_of_birth: session[:date_of_birth],
-      phone_number: "0000000000"        # 仮のphone_numberを代入
-    )
-    # binding.pry
-    # @user.valid?がtrueを返せば次のページに進む。falseを返せば同じページをレンダーする。
-    if @user.valid?
-      @user.phone_number = nil          # 仮のphone_numberをリセット
-      redirect_to sms_authentication_signup_index_path
+    if verify_recaptcha
+      session[:nickname] = user_params[:nickname]
+      session[:email] = user_params[:email]
+      session[:password] = user_params[:password] if session[:password] == nil
+      session[:date_of_birth] = Date.new(
+        user_params["date_of_birth(1i)"].to_i,
+        user_params["date_of_birth(2i)"].to_i,
+        user_params["date_of_birth(3i)"].to_i)
+      session[:last_name] = user_params[:last_name]
+      session[:first_name] = user_params[:first_name]
+      session[:last_name_kana] = user_params[:last_name_kana]
+      session[:first_name_kana] = user_params[:first_name_kana]
+  
+      # バリデーション用のインスタンスを準備
+      @user = User.new(
+        nickname: session[:nickname],
+        email: session[:email],
+        password: session[:password],
+        last_name: session[:last_name],
+        first_name: session[:first_name],
+        last_name_kana: session[:last_name_kana],
+        first_name_kana: session[:first_name_kana],
+        date_of_birth: session[:date_of_birth],
+        phone_number: "0000000000"        # 仮のphone_numberを代入
+      )
+      # binding.pry
+      # @user.valid?がtrueを返せば次のページに進む。falseを返せば同じページをレンダーする。
+      if @user.valid?
+        @user.phone_number = nil          # 仮のphone_numberをリセット
+        redirect_to sms_authentication_signup_index_path
+      else
+        render 'signup/registration'
+      end
     else
+      @user = User.new(
+        nickname: session[:nickname],
+        email: session[:email],
+        password: session[:password],
+        last_name: session[:last_name],
+        first_name: session[:first_name],
+        last_name_kana: session[:last_name_kana],
+        first_name_kana: session[:first_name_kana],
+        date_of_birth: session[:date_of_birth]
+      )
       render 'signup/registration'
     end
   end
