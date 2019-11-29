@@ -11,8 +11,8 @@ $(function(){
   var preview_count = 0
 
   // プレビューのhtmlを生成
-  function buildImagePreview(fr,index){
-    var previewBox = `<li class="sell-upload-item-image id="image-${index}">
+  function buildImagePreview(fr,preview_count){
+    var previewBox = `<li class="sell-upload-item-image id="image-${preview_count}">
                         <figure class="sell-upload-figure portrait">
                           <img src="${fr.result}">
                         </figure>
@@ -24,6 +24,9 @@ $(function(){
     return previewBox
   }
 
+  // 削除ボタンが押されたら配列の何番目なのかを取得する
+  // 配列から画像を削除する
+  // 削除された画像の後ろを描画しなおす
   
   var images2 =  `<div class="sell-upload-items have-item-0" id="preview-lower">
                     <ul class="sell-upload-items-images" id="images2">
@@ -54,6 +57,8 @@ $(function(){
           $("#preview-upper").addClass("have-item-" + (preview_count + 1))
           $(".sell-upload-drop-label").removeClass("have-item-" + preview_count)
           $(".sell-upload-drop-label").addClass("have-item-" + (preview_count + 1))
+          console.log(preview_count)
+          preview_count += 1
         } else if (preview_count == 4) {
           fr.onload = function(){
             $("#images1").append(buildImagePreview(fr,preview_count));
@@ -63,6 +68,8 @@ $(function(){
           $("#preview-upper").addClass("have-item-5")
           $(".sell-upload-drop-label").removeClass("have-item-4")
           $(".sell-upload-drop-label").addClass("have-item-0")
+          console.log(preview_count)
+          preview_count += 1
         } else if (5 <= preview_count && preview_count <= 8) {
           if ($("#images2").length){
             fr.onload = function(){
@@ -80,6 +87,8 @@ $(function(){
           $("#preview-lower").addClass("have-item-" + ((preview_count - 5) + 1))
           $(".sell-upload-drop-label").removeClass("have-item-" + (preview_count - 5))
           $(".sell-upload-drop-label").addClass("have-item-" + ((preview_count - 5) + 1))
+          console.log(preview_count)
+          preview_count += 1
         } else {
           fr.onload = function(){
             $("#images2").append(buildImagePreview(fr,preview_count));
@@ -89,8 +98,9 @@ $(function(){
           $("#preview-lower").addClass("have-item-5")
           $(".sell-upload-drop-label").removeClass("have-item-4")
           $(".sell-upload-drop-label").addClass("have-item-5")
+          console.log(preview_count)
+          preview_count += 1
         }
-        preview_count += 1
       }
     })
     return preview_count
