@@ -55,20 +55,22 @@
 
     .main__main__product
       %div
+
         %ul.main__main__product__div__box
           - @ladies.each do |ladie|
-            %li.main__main__product__div__box__item      
-              %div.main__main__product__box__item__div
-                %a.main__main__product__box__item__div__link{:href => "#"}
-                  %figure.main__main__product__box__item__div__link__figure
-                    %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                      %span.main__main__product__box__item__div__link__figure__figcaption__span 
-                        = ladie.name
-                    .main__main__product__box__item__link__figure__figcaption__style
-                      %span.main__main__product__box__item__link__figure__figcaption__style__span
-                        ¥
-                        = ladie.price
-                      = image_tag ladie.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+            %li.main__main__product__div__box__item
+              = link_to "/products/#{ladie.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do     
+                %div.main__main__product__box__item__div
+                  .main__main__product__box__item__div__link
+                    .fugure.main__main__product__box__item__div__link__figure
+                      %figcaption.main__main__product__box__item__div__link__figure__figcaption
+                        %span.main__main__product__box__item__div__link__figure__figcaption__span 
+                          = ladie.name
+                      .main__main__product__box__item__link__figure__figcaption__style
+                        %span.main__main__product__box__item__link__figure__figcaption__style__span
+                          ¥
+                          = ladie.price
+                        = image_tag ladie.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
 
   .main__main
     .main__main__connect
@@ -108,15 +110,20 @@
       %div
                       
         %ul.main__main__product__div__box
-          %li.main__main__product__div__box__item
-            %div.main__main__product__box__item__div
-              %a.main__main__product__box__item__div__link{:href => "#"}
-                %figure.main__main__product__box__item__div__link__figure
-                  %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                    %span.main__main__product__box__item__div__link__figure__figcaption__span 
-                  .main__main__product__box__item__link__figure__figcaption__style
-                    %span.main__main__product__box__item__link__figure__figcaption__style__span 
-                    %img.main__main__product__box__item__link__figure__figcaption__style__img
+          - @electronics.each do |electronic|
+            %li.main__main__product__div__box__item
+              = link_to "/products/#{electronic.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
+                %div.main__main__product__box__item__div
+                  .main__main__product__box__item__div__link
+                    .figure.main__main__product__box__item__div__link__figure
+                      %figcaption.main__main__product__box__item__div__link__figure__figcaption
+                        %span.main__main__product__box__item__div__link__figure__figcaption__span
+                          = electronic.name
+                      .main__main__product__box__item__link__figure__figcaption__style
+                        %span.main__main__product__box__item__link__figure__figcaption__style__span 
+                          ¥
+                          = electronic.price
+                        = image_tag electronic.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
 
   .main__main
     .main__main__connect
@@ -129,16 +136,20 @@
       %div
                       
         %ul.main__main__product__div__box
-          - @products.each do |product|
+          - @toys.each do |toy|
             %li.main__main__product__div__box__item
-              %div.main__main__product__box__item__div
-                %a.main__main__product__box__item__div__link{:href => "#"}
-                  %figure.main__main__product__box__item__div__link__figure
-                    %figcaption.main__main__product__box__item__div__link__figure__figcaption
-                      %span.main__main__product__box__item__div__link__figure__figcaption__span 
-                    .main__main__product__box__item__link__figure__figcaption__style
-                      %span.main__main__product__box__item__link__figure__figcaption__style__span 
-                      %img.main__main__product__box__item__link__figure__figcaption__style__img
+              = link_to "/products/#{toy.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
+                %div.main__main__product__box__item__div
+                  .main__main__product__box__item__div__link
+                    .figure.main__main__product__box__item__div__link__figure
+                      %figcaption.main__main__product__box__item__div__link__figure__figcaption
+                        %span.main__main__product__box__item__div__link__figure__figcaption__span
+                          = toy.name
+                      .main__main__product__box__item__link__figure__figcaption__style
+                        %span.main__main__product__box__item__link__figure__figcaption__style__span 
+                          ¥
+                          = toy.price
+                        = image_tag toy.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
 
             
 
@@ -166,16 +177,15 @@
       %div                  
 
         %ul.main__foot__product__div__box
-          - @products.each do |product|
-            %li.main__foot__product__div__box__item
-              %div.main__foot__product__box__item__div
-                %a.main__foot__product__box__item__div__link{:href => "#"}
-                  %figure.main__foot__product__box__item__div__link__figure
-                    %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                      %span.main__foot__product__box__item__div__link__figure__figcaption__span 
-                    .main__foot__product__box__item__link__figure__figcaption__style
-                      %span.main__foot__product__box__item__link__figure__figcaption__style__span 
-                      %img.main__foot__product__box__item__link__figure__figcaption__style__img
+          %li.main__foot__product__div__box__item
+            %div.main__foot__product__box__item__div
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span 
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span 
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img
 
   .main__foot
     .main__foot__connect
@@ -188,16 +198,15 @@
       %div                  
 
         %ul.main__foot__product__div__box
-          - @products.each do |product|
-            %li.main__foot__product__div__box__item
-              %div.main__foot__product__box__item__div
-                %a.main__foot__product__box__item__div__link{:href => "#"}
-                  %figure.main__foot__product__box__item__div__link__figure
-                    %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                      %span.main__foot__product__box__item__div__link__figure__figcaption__span 
-                    .main__foot__product__box__item__link__figure__figcaption__style
-                      %span.main__foot__product__box__item__link__figure__figcaption__style__span 
-                      %img.main__foot__product__box__item__link__figure__figcaption__style__img
+          %li.main__foot__product__div__box__item
+            %div.main__foot__product__box__item__div
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span 
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span 
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img
 
   .main__foot
     .main__foot__connect
@@ -210,16 +219,15 @@
       %div                  
 
         %ul.main__foot__product__div__box
-          - @products.each do |product|
-            %li.main__foot__product__div__box__item
-              %div.main__foot__product__box__item__div
-                %a.main__foot__product__box__item__div__link{:href => "#"}
-                  %figure.main__foot__product__box__item__div__link__figure
-                    %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                      %span.main__foot__product__box__item__div__link__figure__figcaption__span 
-                    .main__foot__product__box__item__link__figure__figcaption__style
-                      %span.main__foot__product__box__item__link__figure__figcaption__style__span 
-                      %img.main__foot__product__box__item__link__figure__figcaption__style__img
+          %li.main__foot__product__div__box__item
+            %div.main__foot__product__box__item__div
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span 
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span 
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img
 
   .main__foot
     .main__foot__connect
@@ -232,16 +240,15 @@
       %div                  
 
         %ul.main__foot__product__div__box
-          - @products.each do |product|
-            %li.main__foot__product__div__box__item
-              %div.main__foot__product__box__item__div
-                %a.main__foot__product__box__item__div__link{:href => "#"}
-                  %figure.main__foot__product__box__item__div__link__figure
-                    %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                      %span.main__foot__product__box__item__div__link__figure__figcaption__span 
-                    .main__foot__product__box__item__link__figure__figcaption__style
-                      %span.main__foot__product__box__item__link__figure__figcaption__style__span 
-                      %img.main__foot__product__box__item__link__figure__figcaption__style__img
+          %li.main__foot__product__div__box__item
+            %div.main__foot__product__box__item__div
+              %a.main__foot__product__box__item__div__link{:href => "#"}
+                %figure.main__foot__product__box__item__div__link__figure
+                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                    %span.main__foot__product__box__item__div__link__figure__figcaption__span 
+                  .main__foot__product__box__item__link__figure__figcaption__style
+                    %span.main__foot__product__box__item__link__figure__figcaption__style__span 
+                    %img.main__foot__product__box__item__link__figure__figcaption__style__img
   
   .air__box
 
