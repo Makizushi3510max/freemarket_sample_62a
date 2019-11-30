@@ -121,7 +121,6 @@
     background: #fff;
     a{
       display: block;
-      margin: 40px 0 0;
     }
   }
   &__no-account{
@@ -280,6 +279,7 @@
   &-mail{
     color: #fff;
     background-color: #ea352d;
+    position: relative;
   }
   &-sns{
     position: relative;
@@ -298,10 +298,17 @@
       margin: 16px 0 0;
       background: #fff;
       border: solid 1px #979797;
+      color: #333;
       a{
         color: #333;
       }
     }
+  }
+  &__icon{
+    font-size: 20px;
+    position: absolute;
+    top: 14px;
+    left: 20px;
   }
 }
 
