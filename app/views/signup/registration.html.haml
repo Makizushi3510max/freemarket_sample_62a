@@ -93,7 +93,7 @@
           = f.submit '次へ進む',class: "btn-default btn-red"
           .form__group.text-right
             %p
-              %a{:href => "#", :target => "_blank"}
+              = link_to root_path, target: "_blank" do
                 本人情報の登録について
-                %i.icon-arrow-right
+                = fa_icon "chevron-right"
   = render partial: "signup/iFooter"

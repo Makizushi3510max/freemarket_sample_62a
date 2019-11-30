@@ -35,7 +35,9 @@
             ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
           .form__group.text-right
             %p
-              %a{href: "#", target: "_blank"}
+              -# %a{href: "#", target: "_blank"}
+              = link_to root_path, target: "_blank" do
                 電話番号の確認が必要な理由
-                %i.icon-arrow-right
+                = fa_icon "chevron-right"
+                -# %i.icon-arrow-right
   = render partial: "iFooter"
