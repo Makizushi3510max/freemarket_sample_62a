@@ -1,8 +1,8 @@
 .single__container
   %header.single__header
     %h1.logo
-      %a.logo__link{href: "#"}
-        %img.logo__image{alt: "mercari", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2651893653"}/
+      = link_to root_path do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2651893653", class: "logo__image"
     %nav.signup-bar
       %ol.clearfix.progress-bar
         %li.active
@@ -23,7 +23,7 @@
   %main.single__main
     %section.l-single__container
       %h2.l-single__head.registration お届け先住所入力
-      = form_with model: @address, url: address_signup_index_path, method: :post, local: true do |f|
+      = form_with model: @address, url: address_signup_index_path, class: "l-single__inner", method: :post, local: true do |f|
         .l-single__content
           .form__group
             %div
@@ -38,14 +38,15 @@
             = f.text_field :last_name_kana, class: "input-default half", placeholder: "例) タカノ"
             = f.text_field :first_name_kana, class: "input-default half", placeholder: "例) カズキ"
           .form__group
-            = f.label :phone_number, "郵便番号"
-            %span.form__require 必須
+            %div
+              = f.label :phone_number, "郵便番号"
+              %span.form__require 必須
             = f.text_field :postal_code, class: "input-default half", placeholder: "例) 123-4567"
           .form__group
             = f.label :prefecture, "都道府県"
             %span.form__require 必須
             .select-wrap
-              %i.icon-arrow-bottom
+              -# = fa_icon "chevron-down", class: "icon-arrow-bottom"
               = f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "---", class: "select-default"
           .form__group
             = f.label :city_name, "市区町村"

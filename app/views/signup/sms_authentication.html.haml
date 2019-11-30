@@ -1,8 +1,8 @@
 .single__container
   %header.single__header
     %h1.logo
-      %a.logo__link{:href => "#"}
-        %img.logo__image{:alt => "mercari", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2651893653"}/
+      = link_to root_path do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2651893653", class: "logo__image"
     %nav.signup-bar
       %ol.clearfix.progress-bar
         %li.active
@@ -23,7 +23,7 @@
   %main.single__main
     %section.l-single__container
       %h2.l-single__head.registration 電話番号の確認
-      = form_with model: @user, url: sms_authentication_signup_index_path, method: :post, local: true do |f|
+      = form_with model: @user, url: sms_authentication_signup_index_path, class: "l-single__inner", method: :post, local: true do |f|
         .l-single__content
           .form__group
             = f.label :phone_number, "携帯電話の番号"
