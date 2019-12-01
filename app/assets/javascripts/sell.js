@@ -198,6 +198,7 @@ $(function(){
       dataType: "json"
     })
     .done(function(category_children){
+      // 既に小カテゴリ、孫カテゴリを表示していた場合は削除
       $("#wrap-child").remove()
       $("#wrap-grandchild").remove()
       buildSelectBox_Children(category_children)
@@ -218,8 +219,7 @@ $(function(){
       dataType: "json"
     })
     .done(function(category_grandchildren){
-      // console.log(category_grandchildren)
-      // $("#wrap-child").remove()
+      // 既に孫カテゴリを表示していた場合は削除
       $("#wrap-grandchild").remove()
       buildSelectBox_GrandChildren(category_grandchildren)
     })
