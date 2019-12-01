@@ -329,9 +329,13 @@
     }
     .items-box-content {
       display: flex;
+      flex-wrap: wrap;
       .items-box {
         width: 220px;
         margin: 0 20px 20px 0;
+        &:nth-child(3n){
+          margin-right: 0;
+        }
         .items-box__link {
           display: block;
           color: #333;
@@ -399,9 +403,14 @@
       margin: 50px 0 8px;
     }
     .items-box-content.clearfix {
+      display: flex;
+      flex-wrap: wrap;
       .items-box {
         width: 220px;
         margin: 0 20px 20px 0;
+        &:nth-child(3n){
+          margin-right: 0;
+        }
         .items-box__link {
           display: block;
           color: #333;

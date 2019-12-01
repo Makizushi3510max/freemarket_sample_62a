@@ -159,7 +159,7 @@
                   = "¥#{product.price.to_s(:delimited, delimiter: ',')}"
                 .font-2
                   = fa_icon "heart-o"
-                  %span 1
+                  %span 21
 
   -# ブランド関連商品
   %section.items-box__bottom
@@ -167,7 +167,7 @@
       - unless @product.brand.nil?
         = link_to "#{@product.brand.name}の#{@product.category.name} その他の商品", "#"
       - else
-        = link_to "#{@product.category.name}（#{@product.category.root.name}） その他の商品", "#"
+        = link_to "ノーブランド（#{@product.category.root.name}） その他の商品", "#"
     .items-box-content.clearfix
       - @brands_products.each do |product|
         %section.items-box

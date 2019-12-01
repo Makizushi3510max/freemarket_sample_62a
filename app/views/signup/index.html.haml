@@ -8,10 +8,13 @@
       %h2.l-single__head.registration 新規会員登録
       .l-single__inner.registration-form
         .l-single__content
-          = link_to "メールアドレスで登録する", registration_signup_index_path, class: "btn-default btn-mail"
-          %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
-            %i.icon-facebook
-            = link_to "Facebookで登録する", user_facebook_omniauth_authorize_path, method: :post
-          %button#google-login.btn-default.btn-sns.btn-sns-google
-            = link_to "Googleで登録する", user_google_oauth2_omniauth_authorize_path, method: :post
+          = link_to registration_signup_index_path, class: "btn-default btn-mail" do
+            = fa_icon "envelope-o", class: "btn__icon"
+            メールアドレスで登録する
+          = link_to user_facebook_omniauth_authorize_path, method: :post, id: "facebook-login", class: "btn-default btn-sns btn-sns-facebook" do
+            = fa_icon "facebook-official", class: "btn__icon"
+            Facebookで登録する
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, id: "google-login", class: "btn-default btn-sns btn-sns-google" do
+            = fa_icon "google", class: "btn__icon"
+            Googleで登録する
   = render partial: "signup/iFooter"

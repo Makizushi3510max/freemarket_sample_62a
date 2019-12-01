@@ -121,7 +121,6 @@
     background: #fff;
     a{
       display: block;
-      margin: 40px 0 0;
     }
   }
   &__no-account{
@@ -194,8 +193,8 @@
 
 .birthday-select{
   .select-wrap{
-    width: 76px;
-    display: inline-block;
+    display: flex;
+    align-items: baseline;
   }
 }
 
@@ -217,6 +216,12 @@
     }
     select{
       width: 100%;
+      height: 48px;
+      padding: 10px 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: 0;
+      cursor: pointer;
     }
   }
   &-default{
@@ -235,11 +240,12 @@
 
 .year,.month,.day{
   display: inline-block;
-  margin-top: 8px;
   position: relative;
   z-index: 2;
   height: 48px;
+  width: 76px;
   padding: 0 16px;
+  margin: 0 2px;
   border-radius: 4px;
   border: 1px solid #ccc;
   background: 0;
@@ -273,6 +279,7 @@
   &-mail{
     color: #fff;
     background-color: #ea352d;
+    position: relative;
   }
   &-sns{
     position: relative;
@@ -291,10 +298,17 @@
       margin: 16px 0 0;
       background: #fff;
       border: solid 1px #979797;
+      color: #333;
       a{
         color: #333;
       }
     }
+  }
+  &__icon{
+    font-size: 20px;
+    position: absolute;
+    top: 14px;
+    left: 20px;
   }
 }
 
@@ -461,7 +475,6 @@
   }
   li.active{
     font-weight: 600px;
-    color: #ea352d;
     .progress-bar__status{
       background: #ea352d;
       &::before{
@@ -472,6 +485,8 @@
       }
     }
     &-last{
+      color: #ea352d;
+      font-weight: bold;
       .progress-bar__status::after{
         background: #ccc;
       }
