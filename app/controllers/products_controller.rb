@@ -8,8 +8,8 @@ class ProductsController < ApplicationController
     @products.each_with_index do |product ,i|
       if product.category.parent.parent.id == 1
         @ladies << product
+        # Ladie.where(parent: parent).order(created_at: :desc).limit(30)
       end
-
       if product.category.parent.parent.id == 417
         @mens << product
       end
