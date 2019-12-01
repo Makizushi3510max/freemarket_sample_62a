@@ -188,6 +188,7 @@ class SignupController < ApplicationController
       customer_id:      session[:customer_id],
       card_id:          session[:card_id]
     )
+    session.clear
     sign_in(@user)
   end
 
