@@ -729,11 +729,7 @@
             width: 20%;
             padding: 10px;
             .main__main__product__box__item__div {
-              a img ,a{
-                  border: 0;
-                  float: left;
-              }
-              a:hover{
+              &:hover{
                 border: 1px solid #0099FF;
               }
               .main__main__product__box__item__div__link {

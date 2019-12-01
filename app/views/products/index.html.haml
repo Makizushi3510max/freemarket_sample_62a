@@ -57,7 +57,7 @@
       %div
 
         %ul.main__main__product__div__box
-          - @ladies.each do |ladie|
+          - @ladies.first(10).each do |ladie|
             %li.main__main__product__div__box__item
               = link_to "/products/#{ladie.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do     
                 %div.main__main__product__box__item__div
@@ -83,7 +83,7 @@
       %div
                       
         %ul.main__main__product__div__box
-          - @mens.each do |men|
+          - @mens.first(10).each do |men|
             %li.main__main__product__div__box__item
               = link_to "/products/#{men.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
                 %div.main__main__product__box__item__div
@@ -110,7 +110,7 @@
       %div
                       
         %ul.main__main__product__div__box
-          - @electronics.each do |electronic|
+          - @electronics.first(10).each do |electronic|
             %li.main__main__product__div__box__item
               = link_to "/products/#{electronic.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
                 %div.main__main__product__box__item__div
@@ -136,7 +136,7 @@
       %div
                       
         %ul.main__main__product__div__box
-          - @toys.each do |toy|
+          - @toys.first(10).each do |toy|
             %li.main__main__product__div__box__item
               = link_to "/products/#{toy.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
                 %div.main__main__product__box__item__div

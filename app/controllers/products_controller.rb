@@ -1,16 +1,16 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.all.order('created_at DESC')
     @ladies = []
     @mens  = []
     @electronics = []
     @toys = []
-    @products.each_with_index do |product ,i|
+    @products.each do |product|
       if product.category.parent.parent.id == 1
         @ladies << product
-        # Ladie.where(parent: parent).order(created_at: :desc).limit(30)
       end
       if product.category.parent.parent.id == 417
+        # Ladie.where(parent: parent).order(created_at: :desc).limit(30)
         @mens << product
       end
 
