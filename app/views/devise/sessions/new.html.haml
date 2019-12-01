@@ -24,13 +24,11 @@
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .login__inner
           .form__group
-            -# %input.input-default.login__input--text{name: "email", type: "email", placeholder: "メールアドレス"}
             = f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "input-default login__input--text"
           .form__group
-            -# %input.input-default.login__input--text{name: "password", type: "password", placeholder: "パスワード"}
             = f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "input-default login__input--text"
           .form__group
-            .g-recaptcha.login__captcha
+            = recaptcha_tags
           %button.login__submit.btn-default.btn-red{type: "submit"} ログイン
           %input{name: "login__callback", type: "hidden", value: ""}
           %input{name: "#", type: "hidden", value: "#"}

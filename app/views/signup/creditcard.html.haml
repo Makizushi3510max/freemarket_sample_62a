@@ -23,8 +23,7 @@
   %main.single__main
     %section.l-single__container
       %h2.l-single__head.registration 支払い方法
-      %form.l-single__inner.registration-form{action: "#", class: "l-single__inner"}
-      = form_with model: @card, url: creditcard_signup_index_path, method: :post, local: true, html: { name: 'inputForm' } do |f|
+      = form_with model: @card, url: creditcard_signup_index_path, class: "l-single__inner", method: :post, local: true, html: { name: 'inputForm' } do |f|
         .l-single__content
           .form__group
             = f.label :payment_card_no, "カード番号"
@@ -50,7 +49,6 @@
             %span.form__require 必須
             .select-wrap.half
               != sprintf(f.date_select(:expiration_date,with_css_classes: true, order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
-              %i.icon-arrow-bottom
           .form__group
             = f.label :payment_card_security_code, "セキュリティコード"
             %span.form__require 必須
@@ -61,7 +59,7 @@
                 %i.icon-arrow-right
           .form__group
           #card_token
-          = f.submit '次へ進む',class: "btn-default btn-red", id: "token_submit"
+          = f.submit '次へ進む', class: "btn-default btn-red", id: "token_submit"
           -# %p
           -#   %button.test{type: "button",id: "test", value: "ほげほげ", style:"width: 100px; height: 100px; background-color: black;" }
   = render partial: "iFooter"
