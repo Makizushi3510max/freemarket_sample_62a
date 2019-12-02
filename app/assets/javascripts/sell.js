@@ -12,26 +12,24 @@ $(function(){
 
   // プレビューのhtmlを生成
   function buildImagePreviewBox(preview_count,src){
-    var previewBox = `<li class="sell-upload-item-image id="image-${preview_count}">
+    var previewBox = `<li class="sell-upload-item-image" id="image-${JSON.stringify(preview_count)}">
                         <figure class="sell-upload-figure portrait">
                           <img src="${src}">
                         </figure>
                         <div class="sell-upload-button">
                           <a class="edit-button">編集</a>
-                          <a class="delete-button">削除</a>
+                          <a class="delete-button" id="delete-button-${JSON.stringify(preview_count)}">削除</a>
                         </div>
                       </li>`
     return previewBox
   }
-
-  // 削除ボタンが押されたら配列の何番目なのかを取得する
-  // 配列から画像を削除する
-  // 削除された画像の後ろを描画しなおす
   
   var images2 =  `<div class="sell-upload-items have-item-0" id="preview-lower">
                     <ul class="sell-upload-items-images" id="images2">
                     </ul>
                   </div>`
+
+  var dropzone = 
 
   // プレビューを描画する関数
   function renderingPreview(images,preview_count){
@@ -93,6 +91,21 @@ $(function(){
     }
   })
 
+  $(document).on("click", ".delete-button", function(e){
+    // 削除ボタンが押されたら配列の何番目なのかを取得する
+    target_image = Number($(this).attr("id").split("-")[2])
+
+    // 選択された画像以降全てのプレビューを削除
+    for(var i = target_image; i < 10; i++){
+      // console.log($("#image-" + i))
+      $("#image-" + i).remove()
+    }
+
+    // 配列から画像を削除する
+    images.splice(target_image,1)
+    // 削除された画像の以降の画像を描画しなおす
+    preview_count = renderingPreview(images,target_image)
+  })
 
 
 
