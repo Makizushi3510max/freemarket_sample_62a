@@ -29,7 +29,7 @@ $(function(){
                     </ul>
                   </div>`
 
-  var dropzone = 
+  // var dropzone = 
 
   // プレビューを描画する関数
   function renderingPreview(images,preview_count){
