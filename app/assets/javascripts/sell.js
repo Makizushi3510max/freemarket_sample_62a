@@ -171,37 +171,53 @@ $(function(){
     }
   })
 
-  // 出品時に画像一覧を送信する
-  $(document).on("click", "#sell-submit", function(e){
-    e.preventDefault();
-    // console.log("hoge")
-    var formData = new FormData();
-    // console.log(formData)
-    // src = URL.createObjectURL(images[0])
-    // console.log(src)
+  $('form').submit(function(event){
+    event.preventDefault();
+    // console.log(this)
+
+    var formData = new FormData(this);
     $.each(images, function(index,image){
       formData.append('image' + index,image,image.name)
-      console.log(formData)
     })
-    // formData
-    // console.log(formData)
-    // console.log(images[0].name)
-    // var url = $(this).attr('action');
+    formData.append('images_length', images.length)
     $.ajax({
-      url: "/products/post_image",
+      url: "/products",
       type: "POST",
       data: formData,
       dataType: 'json',
       processData: false,
       contentType: false
     })
-    .done(function(data){
-      console.log
-    })
-    .fail(function(){
-      alert('error');
-    })
   })
+
+  // 出品時に画像一覧を送信する
+  // $(document).on("submit", "#sell-submit", function(e){
+  //   e.preventDefault();
+  //   console.log(this)
+  //   var form = $(this).parents('form');
+  //   console.log(form)
+  //   console.log("hoge")
+    // var formData = new FormData();
+  //   // console.log(formData)
+  //   // src = URL.createObjectURL(images[0])
+  //   // console.log(src)
+    // $.each(images, function(index,image){
+    //   formData.append('image' + index,image,image.name)
+    // })
+  //   formData.append('images_length', images.length)
+  //   // formData
+  //   // console.log(formData)
+  //   // console.log(images[0].name)
+  //   // var url = $(this).attr('action');
+    // $.ajax({
+    //   url: "/products/post_image",
+    //   type: "POST",
+    //   data: formData,
+    //   dataType: 'json',
+    //   processData: false,
+    //   contentType: false
+    // })
+  // })
 
 
 
