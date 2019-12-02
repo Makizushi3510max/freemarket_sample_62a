@@ -137,8 +137,6 @@ $(function(){
     preview_count = renderingPreview(images,target_image)
 
     if(flag == true){
-      // console.log("発火")
-      console.log(images)
       if(images.length < 5){
         $("#preview-upper").removeClass (function (index, className) {
           return (className.match (/have-item-\d/g) || []).join(' ');
