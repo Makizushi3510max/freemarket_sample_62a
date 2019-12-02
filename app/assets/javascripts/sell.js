@@ -114,6 +114,11 @@ $(function(){
       // プレビュー一覧を描画
       preview_count = renderingPreview(images,preview_count)
     }
+
+    // ajax通信で画像をrailsサーバ側に送信
+    $.each(images, function(index,value){
+      // console.log("ほげ")
+    })
   })
 
   $(document).on("click", ".delete-button", function(e){
