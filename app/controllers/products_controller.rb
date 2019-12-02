@@ -49,6 +49,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @categories = Category.all
     @sizes = Size.all
+    session[:images] = []
   end
 
   def get_category_children
@@ -66,7 +67,13 @@ class ProductsController < ApplicationController
   end
 
   def post_image
-    binding.pry
+    # binding.pry
+    # i = params.require(:images_length).to_i - 1
+    # for num in 0..i do
+    #   # puts %I(image#{num})
+    #   session[:images].push(params.require(%I(image#{num})))
+    # end
+    # binding.pry
     # respond_to do |format|
     #   format.json
     # end
@@ -74,6 +81,11 @@ class ProductsController < ApplicationController
 
   def create
     # Product.create(product_params)
+    i = params.require(:images_length).to_i - 1
+    for num in 0..i do
+      # puts %I(image#{num})
+      session[:images].push(params.require(%I(image#{num})))
+    end
     # binding.pry
     @product = Product.create(
       name:             product_params[:name],
@@ -86,8 +98,9 @@ class ProductsController < ApplicationController
       shipping_date:    product_params[:shipping_date],
       price:            product_params[:price],
       seller_id:        product_params[:seller_id],
-      images:           product_params[:images]
+      images:           session[:images]
     )
+    session.clear
     redirect_to products_path
   end
 
