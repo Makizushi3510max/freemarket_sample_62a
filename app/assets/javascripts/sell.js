@@ -11,17 +11,21 @@ $(function(){
   var preview_count = 0
 
   // プレビューのhtmlを生成
-  function buildImagePreview(fr,preview_count){
+  function buildImagePreviewBox(preview_count){
     var previewBox = `<li class="sell-upload-item-image id="image-${preview_count}">
-                        <figure class="sell-upload-figure portrait">
-                          <img src="${fr.result}">
-                        </figure>
                         <div class="sell-upload-button">
                           <a class="edit-button">編集</a>
                           <a class="delete-button">削除</a>
                         </div>
                       </li>`
     return previewBox
+  }
+
+  function buildImagePreview(fr){
+    var preview = `<figure class="sell-upload-figure portrait">
+                     <img src="${fr.result}">
+                   </figure>`
+    return preview
   }
 
   // 削除ボタンが押されたら配列の何番目なのかを取得する
@@ -49,16 +53,16 @@ $(function(){
         // 6~9枚目の画像は新しいulタグ内に挿入する。
         // 10枚目の画像が存在した場合、drop_boxは消える
         if (0 <= preview_count && preview_count <= 3 ){
+          $("#images1").append(buildImagePreviewBox(preview_count))
           fr.onload = function(){
-            $("#images1").append(buildImagePreview(fr,preview_count));
+            $("#image-" + preview_count).append(buildImagePreview(fr));
           };
+          console.log($("#image-" + preview_count))
           fr.readAsDataURL(this);
           $("#preview-upper").removeClass("have-item-" + preview_count)
           $("#preview-upper").addClass("have-item-" + (preview_count + 1))
           $(".sell-upload-drop-label").removeClass("have-item-" + preview_count)
           $(".sell-upload-drop-label").addClass("have-item-" + (preview_count + 1))
-          console.log(preview_count)
-          preview_count += 1
         } else if (preview_count == 4) {
           fr.onload = function(){
             $("#images1").append(buildImagePreview(fr,preview_count));
@@ -68,7 +72,6 @@ $(function(){
           $("#preview-upper").addClass("have-item-5")
           $(".sell-upload-drop-label").removeClass("have-item-4")
           $(".sell-upload-drop-label").addClass("have-item-0")
-          console.log(preview_count)
           preview_count += 1
         } else if (5 <= preview_count && preview_count <= 8) {
           if ($("#images2").length){
@@ -87,7 +90,6 @@ $(function(){
           $("#preview-lower").addClass("have-item-" + ((preview_count - 5) + 1))
           $(".sell-upload-drop-label").removeClass("have-item-" + (preview_count - 5))
           $(".sell-upload-drop-label").addClass("have-item-" + ((preview_count - 5) + 1))
-          console.log(preview_count)
           preview_count += 1
         } else {
           fr.onload = function(){
@@ -98,9 +100,9 @@ $(function(){
           $("#preview-lower").addClass("have-item-5")
           $(".sell-upload-drop-label").removeClass("have-item-4")
           $(".sell-upload-drop-label").addClass("have-item-5")
-          console.log(preview_count)
           preview_count += 1
         }
+        preview_count += 1
       }
     })
     return preview_count
