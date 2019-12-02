@@ -18,7 +18,7 @@ $(function(){
                         </figure>
                         <div class="sell-upload-button">
                           <a class="edit-button">編集</a>
-                          <a class="delete-button">削除</a>
+                          <a class="delete-button" id="delete-button-${preview_count}">削除</a>
                         </div>
                       </li>`
     return previewBox
