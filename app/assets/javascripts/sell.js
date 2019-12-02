@@ -50,6 +50,9 @@ $(function(){
           $(".sell-upload-drop-label").addClass("have-item-" + (preview_count + 1))
         // 5枚目の画像が存在した場合、drop_boxはhave-item-0に戻る
         } else if (preview_count == 4) {
+          if (!$("#preview-lower").length){
+            $("#preview-lower").remove();
+          }
           $("#images1").append(buildImagePreviewBox(preview_count,src))
           // $("#preview-upper").removeClass("have-item-4")
           $("#preview-upper").removeClass (function (index, className) {
@@ -135,7 +138,8 @@ $(function(){
 
     if(flag == true){
       // console.log("発火")
-      if(images.length <= 5){
+      console.log(images)
+      if(images.length < 5){
         $("#preview-upper").removeClass (function (index, className) {
           return (className.match (/have-item-\d/g) || []).join(' ');
         });
@@ -144,7 +148,16 @@ $(function(){
           return (className.match (/have-item-\d/g) || []).join(' ');
         });
         $(".sell-upload-drop-label").addClass("have-item-" + preview_count)
-      } else if(5 <= images.length) {
+      } else if(images.length == 5){
+        $("#preview-upper").removeClass (function (index, className) {
+          return (className.match (/have-item-\d/g) || []).join(' ');
+        });
+        $("#preview-upper").addClass("have-item-5")
+        $(".sell-upload-drop-label").removeClass (function (index, className) {
+          return (className.match (/have-item-\d/g) || []).join(' ');
+        });
+        $(".sell-upload-drop-label").addClass("have-item-0")
+      } else if(5 < images.length) {
         $("#preview-lower").removeClass (function (index, className) {
           return (className.match (/have-item-\d/g) || []).join(' ');
         });
