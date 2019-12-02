@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :new, :create, :show, :destroy] do
     collection do
+      get 'get_category_roots'
       get 'get_category_children'
       get 'get_category_grandchildren'
       post 'post_image'

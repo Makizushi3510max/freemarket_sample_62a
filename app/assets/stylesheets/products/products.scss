@@ -18,8 +18,7 @@
         height: 36px;
         width: 134px;
           .header__logo__box__img {
-            height: 36px;
-            width: 134px;
+            background-image:url(../img.jpg);
           }
       }
       .search {
@@ -95,40 +94,19 @@
             text-decoration: none;
             .fa {
               color: red;
-              font-size: 18px;
+              font-size: 15px;
             }
-            &__text {
+            .text {
+              display: inline-block;
               letter-spacing: 0.1em;
               text-align: left;
               font-size: 13px;
               color: black;
             }
           }
-          .header__content__category:hover {
-            .header__content__category__text {
+          &:hover {
+            .text {
               color: #0099e8;
-            }
-          }
-          .dropdwn {
-            left: -34px;
-            position: absolute;
-            top: 44px;
-            z-index: 1;
-            left: 0px;
-            .dropdwn_menu:hover {
-              background-color: rgb(255, 255, 255);
-              box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-              width: 224px;
-              .text {
-                display: block;
-                font-size: 14px;
-                line-height: 44px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-                padding: 0px 16px;
-                color: black;
-              }
             }
           }
         }

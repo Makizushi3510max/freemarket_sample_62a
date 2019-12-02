@@ -24,6 +24,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def get_category_root
+    @category_roots = Category.all.roots
+    respond to do |format|
+      format.json
+    end
+  end
+
   def show
     @product = Product.find(params[:id])
     @sellers_products = Product.where(seller_id: @product.seller).limit(6)
