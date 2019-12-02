@@ -104,6 +104,8 @@ $(function(){
   // fileが変更されると発火
   $(document).on("change", "#product_images",function(e){
     var file = e.target.files;  // ファイルを配列に格納
+    // var fd = new FormData($(this)[0]);
+    // console.log($(this))
     // 新しく追加されたファイルをimagesの末尾に追加
     $.each(file, function(index,value){
       images.push(value)
@@ -116,6 +118,7 @@ $(function(){
     }
   })
 
+  // 画像の削除機能
   $(document).on("click", ".delete-button", function(e){
     // 削除ボタンが押されたら配列の何番目なのかを取得する
     target_image = Number($(this).attr("id").split("-")[2])
@@ -166,6 +169,38 @@ $(function(){
         $(".sell-upload-drop-label").addClass("have-item-" + (preview_count - 5))
       }
     }
+  })
+
+  // 出品時に画像一覧を送信する
+  $(document).on("click", "#sell-submit", function(e){
+    e.preventDefault();
+    // console.log("hoge")
+    var formData = new FormData();
+    // console.log(formData)
+    // src = URL.createObjectURL(images[0])
+    // console.log(src)
+    $.each(images, function(index,image){
+      formData.append('image' + index,image,image.name)
+      console.log(formData)
+    })
+    // formData
+    // console.log(formData)
+    // console.log(images[0].name)
+    // var url = $(this).attr('action');
+    $.ajax({
+      url: "/products/post_image",
+      type: "POST",
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data){
+      console.log
+    })
+    .fail(function(){
+      alert('error');
+    })
   })
 
 
