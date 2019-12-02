@@ -13,6 +13,9 @@
           - @product.images.each do |image|
             .item-image
               = image_tag image
+              - unless @product.buyer_id.nil?
+                .items-box__sold-out
+                  %div SOLD
 
     -# 出品者情報
     %table.item__product__table
@@ -151,6 +154,9 @@
           = link_to "/products/#{product.id}", class: "items-box__link", data: {turbolinks: false} do
             %figure.items-box-photo
               = image_tag product.images[0], class: "lazyloaded is-higher-height"
+              - unless @product.buyer_id.nil?
+                .items-box__sold-out
+                  %div SOLD
             .items-box-body
               %h3.items-box-item__name
                 = product.name
@@ -174,6 +180,9 @@
           = link_to "/products/#{product.id}", class: "items-box__link", data: {turbolinks: false} do
             %figure.items-box-photo
               = image_tag product.images[0], class: "lazyloaded is-higher-height"
+              - unless @product.buyer_id.nil?
+                .items-box__sold-out
+                  %div SOLD
             .items-box-body
               %h3.items-box-name.font-2
                 = product.name
