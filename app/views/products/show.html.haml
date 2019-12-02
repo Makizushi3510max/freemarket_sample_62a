@@ -154,7 +154,7 @@
           = link_to "/products/#{product.id}", class: "items-box__link", data: {turbolinks: false} do
             %figure.items-box-photo
               = image_tag product.images[0], class: "lazyloaded is-higher-height"
-              - unless @product.buyer_id.nil?
+              - unless product.buyer_id.nil?
                 .items-box__sold-out
                   %div SOLD
             .items-box-body
@@ -180,7 +180,7 @@
           = link_to "/products/#{product.id}", class: "items-box__link", data: {turbolinks: false} do
             %figure.items-box-photo
               = image_tag product.images[0], class: "lazyloaded is-higher-height"
-              - unless @product.buyer_id.nil?
+              - unless product.buyer_id.nil?
                 .items-box__sold-out
                   %div SOLD
             .items-box-body
