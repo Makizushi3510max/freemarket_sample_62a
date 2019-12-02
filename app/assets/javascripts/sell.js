@@ -12,7 +12,7 @@ $(function(){
 
   // プレビューのhtmlを生成
   function buildImagePreviewBox(preview_count,src){
-    var previewBox = `<li class="sell-upload-item-image id="${preview_count}">
+    var previewBox = `<li class="sell-upload-item-image id="image-${preview_count}">
                         <figure class="sell-upload-figure portrait">
                           <img src="${src}">
                         </figure>
@@ -33,32 +33,27 @@ $(function(){
                     </ul>
                   </div>`
 
-  // 画像一覧"images"を渡すとプレビューを描画する関数
+  // プレビューを描画する関数
   function renderingPreview(images,preview_count){
-    // console.log("画像の総数(描画されていない画像含む):" + images.length)
-    // console.log("描画済みの画像の数:" + preview_count)
     $.each(images, function(index,value){
-      // console.log("preview_count - 1 = " + (preview_count - 1))
-      // console.log("index = " + index)
       // 未描画の画像のみプレビューに追加
       if ((preview_count - 1) < index){
         var src = URL.createObjectURL(value)
         // 1~4枚目の画像までは普通にプレビューを表示
-        // 5枚目の画像が存在した場合、drop_boxはhave-item-0に戻る
-        // 6~9枚目の画像は新しいulタグ内に挿入する。
-        // 10枚目の画像が存在した場合、drop_boxは消える
         if (0 <= preview_count && preview_count <= 3 ){
           $("#images1").append(buildImagePreviewBox(preview_count,src))
           $("#preview-upper").removeClass("have-item-" + preview_count)
           $("#preview-upper").addClass("have-item-" + (preview_count + 1))
           $(".sell-upload-drop-label").removeClass("have-item-" + preview_count)
           $(".sell-upload-drop-label").addClass("have-item-" + (preview_count + 1))
+        // 5枚目の画像が存在した場合、drop_boxはhave-item-0に戻る
         } else if (preview_count == 4) {
           $("#images1").append(buildImagePreviewBox(preview_count,src))
           $("#preview-upper").removeClass("have-item-4")
           $("#preview-upper").addClass("have-item-5")
           $(".sell-upload-drop-label").removeClass("have-item-4")
           $(".sell-upload-drop-label").addClass("have-item-0")
+        // 6~9枚目の画像は新しいulタグ内に挿入する。
         } else if (5 <= preview_count && preview_count <= 8) {
           if (!$("#images2").length){
             $(".sell-upload-items-container").append(images2)
@@ -68,6 +63,7 @@ $(function(){
           $("#preview-lower").addClass("have-item-" + ((preview_count - 5) + 1))
           $(".sell-upload-drop-label").removeClass("have-item-" + (preview_count - 5))
           $(".sell-upload-drop-label").addClass("have-item-" + ((preview_count - 5) + 1))
+        // 10枚目の画像が存在した場合、drop_boxは消える
         } else {
           $("#images2").append(buildImagePreviewBox(preview_count,src))
           $("#preview-lower").removeClass("have-item-4")
@@ -90,18 +86,10 @@ $(function(){
       images.push(value)
     })
 
-    // preview_count += file.length
-
-    // console.log(preview_count)
-
     // 画像が1つでも存在していればプレビュー一覧を描画
     if (images.length){
-      // 描画済みのプレビュー一覧を削除
-      // $("#images1").empty()
-      // $("#images2").empty()
       // プレビュー一覧を描画
       preview_count = renderingPreview(images,preview_count)
-      console.log(preview_count)
     }
   })
 
