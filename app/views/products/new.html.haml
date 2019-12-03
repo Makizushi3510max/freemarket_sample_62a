@@ -9,7 +9,7 @@
         %div{"data-reactroot" => ""}
           .sell-container-inner
             %h2.single-head 商品の情報を入力
-            = form_with model: @product, url: products_path, method: :post, remote: true do |f|
+            = form_with model: @product, id: "sell-form", url: products_path, method: :post, remote: true do |f|
               .sell-upload
                 %h3.sell-upload__head
                   出品画像
@@ -113,10 +113,10 @@
                     %li.clearfix
                       .l-left
                         販売手数料 (10%)
-                      .l-right -
+                      .l-right#sales_commission -
                     %li.clearfix.bold
                       .l-left 販売利益
-                      .l-right -
+                      .l-right#sales_profit -
               .modal{:role => "dialog", :tabindex => "-1"}
                 .modal-inner
               .sell-content.sell-btn-box
@@ -138,4 +138,4 @@
                   出品する
                 %a.btn-default.btn-gray もどる
             .overlay
-  = render partial: "iFooter"
+  = render partial: "/shared/iFooter"

@@ -6,15 +6,15 @@
 .main
   %ul.slider-list
     %li.slider-slide
-      %img.slider-slide__img{:src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg"}/
+      = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg", class: "slider-slide__img"
 
     %li.slider-slide
-      %img.slider-slide__img{:src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-sale-fee-free-034ec8d0642f5714a26822988195b62c.png"}/
+      = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-sale-fee-free-034ec8d0642f5714a26822988195b62c.png", class: "slider-slide__img"
 
     %li.slider-slide.slide-visible
       .sc-dliRfk.lnMXqm
         .sc-kLIISr.fqOIIb
-          %img.sc-iqzUVk.jAEZMX{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png"}/
+          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png", alt: "", class: "sc-iqzUVk jAEZMX"
           .sc-qrIAp.PkUrY
             .sc-jtggT.bqsQJl
               スマホで
@@ -26,10 +26,10 @@
               %br>/
               購入時も安心な独自システムのアプリです
             .sc-iGrrsa.heyozC
-              %a{:href => "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", :rel => "noopener noreferrer", :target => "_blank"}
-                %img.sc-ipZHIp.sc-bmyXtO.gxiFBJ{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg"}/
-              %a{:href => "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", :rel => "noopener noreferrer", :target => "_blank"}
-                %img.sc-ipZHIp.sc-dEoRIm.jcELSQ{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg"}/
+              = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", rel: "noopener noreferrer", target: "_blank" do
+                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", alt: "", class: "sc-ipZHIp sc-bmyXtO gxiFBJ"
+              = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", rel: "noopener noreferrer", target: "_blank" do
+                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg", alt: "", class: "sc-ipZHIp sc-dEoRIm jcELSQ"
 
           
   .main__top
@@ -50,33 +50,39 @@
       .main__main__connect__new
         %h3.main__main__connect__new__text レディース新着アイテム
         .main__main__connect__new__motto
-          %a.main__main__connect__new__motto__details{:href => "#"} もっと見る ＞
+          = link_to root_path, class: "main__main__connect__new__motto__details" do
+            もっと見る 
+            = fa_icon "chevron-right"
 
     .main__main__product
       %div
 
         %ul.main__main__product__div__box
-          - @ladies.first(10).each do |ladie|
+          - @ladies.first(10).each do |lady|
             %li.main__main__product__div__box__item
-              = link_to "/products/#{ladie.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do     
+              = link_to "/products/#{lady.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do     
                 %div.main__main__product__box__item__div
                   .main__main__product__box__item__div__link
                     .fugure.main__main__product__box__item__div__link__figure
                       %figcaption.main__main__product__box__item__div__link__figure__figcaption
                         %span.main__main__product__box__item__div__link__figure__figcaption__span 
-                          = ladie.name
+                          = lady.name
                       .main__main__product__box__item__link__figure__figcaption__style
                         %span.main__main__product__box__item__link__figure__figcaption__style__span
-                          ¥
-                          = ladie.price
-                        = image_tag ladie.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                          = "¥#{lady.price.to_s(:delimited, delimiter: ',')}"
+                        = image_tag lady.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                        - unless lady.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
   .main__main
     .main__main__connect
       .main__main__connect__new
         %h3.main__main__connect__new__text メンズ新着アイテム
         .main__main__connect__new__motto
-          %a.main__main__connect__new__motto__details{:href => "#"} もっと見る ＞
+          = link_to root_path, class: "main__main__connect__new__motto__details" do
+            もっと見る
+            = fa_icon "chevron-right"
 
     .main__main__product
       %div
@@ -93,9 +99,11 @@
                           = men.name
                       .main__main__product__box__item__link__figure__figcaption__style
                         %span.main__main__product__box__item__link__figure__figcaption__style__span
-                          ¥
-                          = men.price
+                          = "¥#{men.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag men.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                        - unless men.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
        
 
   .main__main
@@ -103,7 +111,9 @@
       .main__main__connect__new
         %h3.main__main__connect__new__text 家電・スマホ・カメラ新着アイテム
         .main__main__connect__new__motto
-          %a.main__main__connect__new__motto__details{:href => "#"} もっと見る ＞
+          = link_to root_path, class: "main__main__connect__new__motto__details" do
+            もっと見る 
+            = fa_icon "chevron-right"
 
     .main__main__product
       %div
@@ -120,16 +130,20 @@
                           = electronic.name
                       .main__main__product__box__item__link__figure__figcaption__style
                         %span.main__main__product__box__item__link__figure__figcaption__style__span 
-                          ¥
-                          = electronic.price
+                          = "¥#{electronic.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag electronic.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                        - unless electronic.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
   .main__main
     .main__main__connect
       .main__main__connect__new
         %h3.main__main__connect__new__text おもちゃ・ホビー・グッズ新着アイテム
         .main__main__connect__new__motto
-          %a.main__main__connect__new__motto__details{:href => "#"} もっと見る ＞
+          = link_to root_path, class: "main__main__connect__new__motto__details" do
+            もっと見る 
+            = fa_icon "chevron-right"
 
     .main__main__product
       %div
@@ -145,10 +159,12 @@
                         %span.main__main__product__box__item__div__link__figure__figcaption__span
                           = toy.name
                       .main__main__product__box__item__link__figure__figcaption__style
-                        %span.main__main__product__box__item__link__figure__figcaption__style__span 
-                          ¥
-                          = toy.price
+                        %span.main__main__product__box__item__link__figure__figcaption__style__span
+                          = "¥#{toy.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag toy.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                        - unless toy.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
             
 
@@ -170,7 +186,9 @@
       .main__foot__connect__new
         %h3.main__foot__connect__new__text シャネル新着アイテム
         .main__foot__connect__new__motto
-          %a.main__foot__connect__new__motto__details{:href => "#"} もっと見る ＞
+          = link_to root_path, class: "main__foot__connect__new__motto__details" do
+            もっと見る 
+            = fa_icon "chevron-right"
     
     .main__foot__product
       %div                  
@@ -191,7 +209,9 @@
       .main__foot__connect__new
         %h3.main__foot__connect__new__text ルイヴィトン新着アイテム
         .main__foot__connect__new__motto
-          %a.main__foot__connect__new__motto__details{:href => "#"} もっと見る ＞
+          = link_to root_path, class: "main__foot__connect__new__motto__details" do
+            もっと見る 
+            = fa_icon "chevron-right"
     
     .main__foot__product
       %div                  
@@ -212,7 +232,9 @@
       .main__foot__connect__new
         %h3.main__foot__connect__new__text シュプリーム新着アイテム
         .main__foot__connect__new__motto
-          %a.main__foot__connect__new__motto__details{:href => "#"} もっと見る ＞
+          = link_to root_path, class: "main__foot__connect__new__motto__details" do
+            もっと見る 
+            = fa_icon "chevron-right"
     
     .main__foot__product
       %div                  
@@ -233,7 +255,9 @@
       .main__foot__connect__new
         %h3.main__foot__connect__new__text ナイキ新着アイテム
         .main__foot__connect__new__motto
-          %a.main__foot__connect__new__motto__details{:href => "#"} もっと見る ＞
+          = link_to root_path, class: "main__foot__connect__new__motto__details" do
+            もっと見る 
+            = fa_icon "chevron-right"
     
     .main__foot__product
       %div                  
@@ -256,7 +280,7 @@
     =link_to new_product_path(current_user) do
       .exhibit__link__circle
         .exhibit__link__circle__text 出品
-        %svg.exhibit__link__circle__text__svg{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 18 16", :width => "18"}
+        %svg.exhibit__link__circle__text__svg{"aria-hidden": "true", height: "16", viewbox: "0 0 18 16", width: "18"}
           = fa_icon "camera-retro"
 
 %aside.footer-img

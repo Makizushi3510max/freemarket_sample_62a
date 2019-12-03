@@ -2,7 +2,7 @@
   %header.single__header
     %h1.logo
       = link_to root_path do
-        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2651893653", class: "logo__image"
+        = image_tag "logos/fmarket_logo_red.svg", class: "logo__image"
     %nav.signup-bar
       %ol.clearfix.progress-bar
         %li.active.active-last
@@ -85,4 +85,4 @@
               = link_to root_path, target: "_blank" do
                 本人情報の登録について
                 = fa_icon "chevron-right"
-  = render partial: "signup/iFooter"
+  = render partial: "shared/iFooter"

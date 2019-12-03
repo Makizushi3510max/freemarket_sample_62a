@@ -2,7 +2,7 @@
   %header.single__header
     %h1.logo
       = link_to root_path do
-        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2651893653", class: "logo__image"
+        = image_tag "logos/fmarket_logo_red.svg", class: "logo__image"
     %nav.signup-bar
       %ol.clearfix.progress-bar
         %li.active
@@ -40,4 +40,4 @@
                 電話番号の確認が必要な理由
                 = fa_icon "chevron-right"
                 -# %i.icon-arrow-right
-  = render partial: "iFooter"
+  = render partial: "shared/iFooter"
