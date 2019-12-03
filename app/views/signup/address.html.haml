@@ -2,7 +2,7 @@
   %header.single__header
     %h1.logo
       = link_to root_path do
-        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2651893653", class: "logo__image"
+        = image_tag "logos/fmarket_logo_red.svg", class: "logo__image"
     %nav.signup-bar
       %ol.clearfix.progress-bar
         %li.active
@@ -65,4 +65,4 @@
             %span.form__any 任意
             = f.telephone_field :phone_number, class: "input-default", placeholder: "例) 09012345678"
           %button.btn-default.btn-red{type: "submit"} 次へ進む
-  = render partial: "iFooter"
+  = render partial: "shared/iFooter"
