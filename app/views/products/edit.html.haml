@@ -48,7 +48,15 @@
                     %div
                       .select-wrap
                         = fa_icon "chevron-down"
-                        = f.collection_select(:root_category_id, @categories.roots, :id, :name, {prompt: "---"}, {class: "select-default"})
+                        = f.collection_select(:root_category_id, @categories.roots, :id, :name, {prompt: "---", selected: @product.category.parent.parent.id}, {class: "select-default"})
+                    %div
+                      .select-wrap
+                        = fa_icon "chevron-down"
+                        = f.collection_select(:child_category_id, @product.category.parent.siblings, :id, :name, {prompt: "---", selected: @product.category.parent.id}, {class: "select-default"})
+                    %div
+                      .select-wrap
+                        = fa_icon "chevron-down"
+                        = f.collection_select(:grandchild_category_id, @product.category.siblings, :id, :name, {prompt: "---", selected: @product.category.id}, {class: "select-default"})
                   .form-group
                     %label
                       サイズ
