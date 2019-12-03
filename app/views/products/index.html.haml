@@ -6,15 +6,15 @@
 .main
   %ul.slider-list
     %li.slider-slide
-      %img.slider-slide__img{:src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg"}/
+      = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg", class: "slider-slide__img"
 
     %li.slider-slide
-      %img.slider-slide__img{:src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-sale-fee-free-034ec8d0642f5714a26822988195b62c.png"}/
+      = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-sale-fee-free-034ec8d0642f5714a26822988195b62c.png", class: "slider-slide__img"
 
     %li.slider-slide.slide-visible
       .sc-dliRfk.lnMXqm
         .sc-kLIISr.fqOIIb
-          %img.sc-iqzUVk.jAEZMX{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png"}/
+          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png", alt: "", class: "sc-iqzUVk jAEZMX"
           .sc-qrIAp.PkUrY
             .sc-jtggT.bqsQJl
               スマホで
@@ -26,10 +26,10 @@
               %br>/
               購入時も安心な独自システムのアプリです
             .sc-iGrrsa.heyozC
-              %a{:href => "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", :rel => "noopener noreferrer", :target => "_blank"}
-                %img.sc-ipZHIp.sc-bmyXtO.gxiFBJ{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg"}/
-              %a{:href => "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", :rel => "noopener noreferrer", :target => "_blank"}
-                %img.sc-ipZHIp.sc-dEoRIm.jcELSQ{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg"}/
+              = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", rel: "noopener noreferrer", target: "_blank" do
+                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", alt: "", class: "sc-ipZHIp sc-bmyXtO gxiFBJ"
+              = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", rel: "noopener noreferrer", target: "_blank" do
+                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg", alt: "", class: "sc-ipZHIp sc-dEoRIm jcELSQ"
 
           
   .main__top
