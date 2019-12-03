@@ -11,8 +11,8 @@
     }
 
     var buildSelectBox_Children = `
-      <div>
-        <div class='select-wrap' id="wrap-child">
+      <div id="wrap-child">
+        <div class='select-wrap'>
           <i class="fa fa-chevron-down"></i>
           <select class="select-default" name="product[child_category_id]" id="product_child_category_id">
           <option value="">---</option>
@@ -38,8 +38,8 @@
     }
 
     var buildSelectBox_GrandChildren = `
-      <div>
-        <div class='select-wrap' id="wrap-grandchild">
+      <div id="wrap-grandchild">
+        <div class='select-wrap'>
           <i class="fa fa-chevron-down"></i>
           <select class="select-default" name="product[grandchild_category_id]" id="product_grandchild_category_id">
           <option value="">---</option>
@@ -82,8 +82,8 @@
 
   // id: "product_child_category_id"のセレクトボックスが選択されると発火
   $(document).on("change", "#product_child_category_id",function(e){
-    if ($('#product_child_category_id').length){
-      $('#product_child_category_id').remove();
+    if ($('#wrap-grandchild').length){
+      $('#wrap-grandchild').remove();
     }
     var selected_category_child = $('#product_child_category_id').val();
 
