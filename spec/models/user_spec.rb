@@ -90,5 +90,18 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
     end
+    # passwordが128文字以下であれば登録できること
+    it "is valid with a password that has less than 128 characters " do
+      user = build(:user, password: "aaa00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+      user.valid?
+      expect(user).to be_valid
+    end
+    # passwordが129文字以上であれば登録できないこと
+    it "is invalid with a password that has more than 129 characters " do
+      user = build(:user, password: "aaa000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+      user.valid?
+      expect(user.errors[:password]).to include("is too long (maximum is 128 characters)")
+    end
+    
   end
 end
