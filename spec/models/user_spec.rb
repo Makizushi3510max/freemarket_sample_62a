@@ -24,7 +24,12 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("can't be blank")
     end
-    last_namが空では登録できない
-    
+    # last_nameが空では登録できない
+    it "is invalid without a last_name" do
+      user = build(:user, last_name: nil)
+      user.valid?
+      expect(user.errors[:last_name]).to include("can't be blank")
+    end
+
   end
 end
