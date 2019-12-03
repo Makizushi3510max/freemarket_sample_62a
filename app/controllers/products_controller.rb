@@ -92,6 +92,9 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def purchase
   end
 
