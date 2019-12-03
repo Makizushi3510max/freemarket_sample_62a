@@ -371,14 +371,15 @@
             padding: 0 0 100%;
             .lazyloaded.is-higher-height {
               top: 50%;
-              -webkit-transform: translate(0, -10%);
               top: 0;
               right: 0;
               bottom: 0;
               left: 0;
               z-index: 1;
               width: auto;
-              // height: auto;
+            }
+            img {
+              height: 220px;
             }
             .items-box__sold-out div{
               position: absolute;
@@ -476,7 +477,9 @@
               left: 0;
               z-index: 1;
               width: auto;
-              // height: auto;
+            }
+            img {
+              height: 220px;
             }
             .items-box__sold-out div{
               position: absolute;
