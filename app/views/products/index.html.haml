@@ -71,6 +71,9 @@
                         %span.main__main__product__box__item__link__figure__figcaption__style__span
                           = "¥#{lady.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag lady.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                        - unless lady.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
   .main__main
     .main__main__connect
@@ -78,7 +81,7 @@
         %h3.main__main__connect__new__text メンズ新着アイテム
         .main__main__connect__new__motto
           = link_to root_path, class: "main__main__connect__new__motto__details" do
-            もっと見る 
+            もっと見る
             = fa_icon "chevron-right"
 
     .main__main__product
@@ -98,6 +101,9 @@
                         %span.main__main__product__box__item__link__figure__figcaption__style__span
                           = "¥#{men.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag men.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                        - unless men.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
        
 
   .main__main
@@ -126,6 +132,9 @@
                         %span.main__main__product__box__item__link__figure__figcaption__style__span 
                           = "¥#{electronic.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag electronic.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                        - unless electronic.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
   .main__main
     .main__main__connect
@@ -153,6 +162,9 @@
                         %span.main__main__product__box__item__link__figure__figcaption__style__span
                           = "¥#{toy.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag toy.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                        - unless toy.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
             
 
