@@ -9,7 +9,7 @@
         %div{"data-reactroot" => ""}
           .sell-container-inner
             %h2.single-head 商品の情報を入力
-            = form_with model: @product, url: products_path, method: :post, remote: true do |f|
+            = form_with model: @product, url: product_path, method: :patch, remote: true do |f|
               .sell-upload
                 %h3.sell-upload__head
                   出品画像
