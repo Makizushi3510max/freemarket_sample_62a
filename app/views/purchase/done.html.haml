@@ -15,7 +15,6 @@
         .buy-content__inner
           %h3.buy-item-image
             = image_tag @product.images[0],{class: 'lazyload'}
-            -# = image_tag 'https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459', alt: '', class: 'lazyload'
           %p.buy-item-name.bold #{@product.name}
       %section.buy-content.buy-user-info.buy-item
         .buy-content__inner
