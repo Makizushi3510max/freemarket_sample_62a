@@ -66,28 +66,12 @@ class ProductsController < ApplicationController
     end
   end
 
-  def post_image
-    # binding.pry
-    # i = params.require(:images_length).to_i - 1
-    # for num in 0..i do
-    #   # puts %I(image#{num})
-    #   session[:images].push(params.require(%I(image#{num})))
-    # end
-    # binding.pry
-    # respond_to do |format|
-    #   format.json
-    # end
-  end
-
   def create
-    # Product.create(product_params)
     i = params.require(:images_length).to_i - 1
     for num in 0..i do
-      # puts %I(image#{num})
       session[:images].push(params.require(%I(image#{num})))
     end
-    # binding.pry
-    @product = Product.create(
+    @product = Product.new(
       name:             product_params[:name],
       description:      product_params[:description],
       condition:        product_params[:condition],
@@ -100,8 +84,12 @@ class ProductsController < ApplicationController
       seller_id:        product_params[:seller_id],
       images:           session[:images]
     )
-    session.clear
-    redirect_to products_path
+    if @product.save
+      session[:images].clear
+      render json: { status: 200 }
+    else
+      render json: { status: 500 }
+    end
   end
 
   def purchase
