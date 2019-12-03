@@ -122,9 +122,21 @@ describe User do
     end
     # first_nameが21文字以上であれば登録できないこと
     it "is invalid with a first_name that has more than 21 characters " do
-      user = build(:user, first_name: "あああああああああああああああああああああ")
+      user = build(:user, first_name: "ひひひひひひひひひひひひひひひひひひひひひ")
       user.valid?
       expect(user.errors[:first_name]).to include("is too long (maximum is 20 characters)")
+    end
+    # last_name_kanaが20文字以下であれば登録できること
+    it "is valid with a last_name_kana that has less than 20 characters " do
+      user = build(:user, last_name_kana: "アアアアアアアアアアアアアアアアアアアア")
+      user.valid?
+      expect(user).to be_valid
+    end
+    # last_name_kanaが21文字以上であれば登録できないこと
+    it "is invalid with a last_name_kana that has more than 21 characters " do
+      user = build(:user, last_name_kana: "アアアアアアアアアアアアアアアアアアアアア")
+      user.valid?
+      expect(user.errors[:last_name_kana]).to include("is too long (maximum is 20 characters)")
     end
     
   end
