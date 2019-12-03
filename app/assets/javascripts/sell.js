@@ -171,7 +171,7 @@ $(function(){
     }
   })
 
-  $('form').submit(function(event){
+  $('#sell-form').submit(function(event){
     event.preventDefault();
 
     var formData = new FormData(this);
