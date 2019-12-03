@@ -60,5 +60,11 @@ describe User do
       user.valid?
       expect(user.errors[:phone_number]).to include("can't be blank")
     end
+    # nicknameが21文字以上であれば登録できないこと
+    it "is invalid with a nickname that has more than 21 characters " do
+      user = build(:user, nickname: "aaaaaaaaaaaaaaaaaaaaa")
+      user.valid?
+      expect(user.errors[:nickname]).to include("is too long (maximum is 20 characters)")
+    end
   end
 end
