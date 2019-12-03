@@ -98,6 +98,29 @@ class ProductsController < ApplicationController
     @sizes = Size.all
   end
 
+  def update
+    i = params.require(:images_length).to_i - 1
+    for num in 0..i do
+      session[:images].push(params.require(%I(image#{num})))
+    end
+    product = Product.find(params[:id])
+    if product.seller_id == current_user.id
+      product.update(
+        name:             product_params[:name],
+        description:      product_params[:description],
+        condition:        product_params[:condition],
+        category_id:      product_params[:grandchild_category_id],
+        size_id:          product_params[:size_id],
+        shipping_cost:    product_params[:shipping_cost],
+        shipping_area:    product_params[:shipping_area],
+        shipping_date:    product_params[:shipping_date],
+        price:            product_params[:price],
+        seller_id:        product_params[:seller_id],
+        images:           session[:images]
+      )
+    end
+  end
+
   def purchase
   end
 
