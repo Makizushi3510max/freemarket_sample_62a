@@ -58,20 +58,19 @@
       %div
 
         %ul.main__main__product__div__box
-          - @ladies.first(10).each do |ladie|
+          - @ladies.first(10).each do |lady|
             %li.main__main__product__div__box__item
-              = link_to "/products/#{ladie.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do     
+              = link_to "/products/#{lady.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do     
                 %div.main__main__product__box__item__div
                   .main__main__product__box__item__div__link
                     .fugure.main__main__product__box__item__div__link__figure
                       %figcaption.main__main__product__box__item__div__link__figure__figcaption
                         %span.main__main__product__box__item__div__link__figure__figcaption__span 
-                          = ladie.name
+                          = lady.name
                       .main__main__product__box__item__link__figure__figcaption__style
                         %span.main__main__product__box__item__link__figure__figcaption__style__span
-                          ¥
-                          = ladie.price
-                        = image_tag ladie.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
+                          = "¥#{lady.price.to_s(:delimited, delimiter: ',')}"
+                        = image_tag lady.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
 
   .main__main
     .main__main__connect
@@ -97,8 +96,7 @@
                           = men.name
                       .main__main__product__box__item__link__figure__figcaption__style
                         %span.main__main__product__box__item__link__figure__figcaption__style__span
-                          ¥
-                          = men.price
+                          = "¥#{men.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag men.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
        
 
@@ -126,8 +124,7 @@
                           = electronic.name
                       .main__main__product__box__item__link__figure__figcaption__style
                         %span.main__main__product__box__item__link__figure__figcaption__style__span 
-                          ¥
-                          = electronic.price
+                          = "¥#{electronic.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag electronic.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
 
   .main__main
@@ -153,9 +150,8 @@
                         %span.main__main__product__box__item__div__link__figure__figcaption__span
                           = toy.name
                       .main__main__product__box__item__link__figure__figcaption__style
-                        %span.main__main__product__box__item__link__figure__figcaption__style__span 
-                          ¥
-                          = toy.price
+                        %span.main__main__product__box__item__link__figure__figcaption__style__span
+                          = "¥#{toy.price.to_s(:delimited, delimiter: ',')}"
                         = image_tag toy.images[0], class:"main__main__product__box__item__link__figure__figcaption__style__img"
 
             
@@ -272,7 +268,7 @@
     =link_to new_product_path(current_user) do
       .exhibit__link__circle
         .exhibit__link__circle__text 出品
-        %svg.exhibit__link__circle__text__svg{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 18 16", :width => "18"}
+        %svg.exhibit__link__circle__text__svg{"aria-hidden": "true", height: "16", viewbox: "0 0 18 16", width: "18"}
           = fa_icon "camera-retro"
 
 %aside.footer-img

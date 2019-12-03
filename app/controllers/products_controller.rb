@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
         @ladies << product
       end
       if product.category.parent.parent.id == 417
-        # Ladie.where(parent: parent).order(created_at: :desc).limit(30)
         @mens << product
       end
 
