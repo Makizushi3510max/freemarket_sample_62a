@@ -2,7 +2,7 @@
   %header.single__header
     %h1
       = link_to root_path do
-        = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?210491352', alt: 'mercari'
+        = image_tag 'logos/fmarket_logo_red.svg', alt: 'mercari'
   %main.single__main
     %section.l-single__container.buy-item-container
       .transact-attention
@@ -15,21 +15,20 @@
         .buy-content__inner
           %h3.buy-item-image
             = image_tag @product.images[0],{class: 'lazyload'}
-            -# = image_tag 'https://static.mercdn.net/thumb/photos/m64288562813_1.jpg?1572861459', alt: '', class: 'lazyload'
           %p.buy-item-name.bold #{@product.name}
       %section.buy-content.buy-user-info.buy-item
         .buy-content__inner
           %p.buy-price-ja.bold
             = "¥" + @product.price.to_s
             %span.item-shipping-fee.f14.bold
-              = @product.shipping_cost
+              = @product.ship_cost.name
       %section.buy-content.buy-user-info
         .buy-content__inner
           %h3 配送先
           %address.buy-user-info-text
             = "〒" + @address.postal_code
             %br/
-            = @address.prefecture
+            = @address.pref.name
             = @address.city_name
             = @address.block_number
             = @address.building_name if @address.building_name
@@ -65,4 +64,4 @@
           評価後に取引は完了です。
         = link_to '/mypages/current_user.id', class: 'bold' do
           マイページへもどる
-  = render "products/iFooter"
+  = render "shared/iFooter"

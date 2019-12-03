@@ -53,4 +53,6 @@ class Address < ApplicationRecord
   # validates :phone_number,
   #   presence: true,
   #   format: { with: VALID_PHONE_NUMBER_REGEX }
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :pref, class_name: "Prefecture", foreign_key: "prefecture"
 end
