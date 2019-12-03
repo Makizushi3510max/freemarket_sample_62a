@@ -22,14 +22,14 @@
           %p.buy-price-ja.bold
             = "¥" + @product.price.to_s
             %span.item-shipping-fee.f14.bold
-              = @product.shipping_cost
+              = @product.ship_cost.name
       %section.buy-content.buy-user-info
         .buy-content__inner
           %h3 配送先
           %address.buy-user-info-text
             = "〒" + @address.postal_code
             %br/
-            = @address.prefecture
+            = @address.pref.name
             = @address.city_name
             = @address.block_number
             = @address.building_name if @address.building_name
