@@ -103,9 +103,7 @@ $(function(){
 
   // fileが変更されると発火
   $(document).on("change", "#product_images",function(e){
-    var file = e.target.files;  // ファイルを配列に格納
-    // var fd = new FormData($(this)[0]);
-    // console.log($(this))
+    var file = e.target.files;  // ファイルをまとめて取得
     // 新しく追加されたファイルをimagesの末尾に追加
     $.each(file, function(index,value){
       images.push(value)
