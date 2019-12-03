@@ -102,6 +102,18 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("is too long (maximum is 128 characters)")
     end
+    # last_nameが20文字以下であれば登録できること
+    it "is valid with a last_name that has less than 20 characters " do
+      user = build(:user, last_name: "ああああああああああああああああああああ")
+      user.valid?
+      expect(user).to be_valid
+    end
+    # last_nameが21文字以上であれば登録できないこと
+    it "is invalid with a last_name that has more than 21 characters " do
+      user = build(:user, last_name: "あああああああああああああああああああああ")
+      user.valid?
+      expect(user.errors[:last_name]).to include("is too long (maximum is 20 characters)")
+    end
     
   end
 end
