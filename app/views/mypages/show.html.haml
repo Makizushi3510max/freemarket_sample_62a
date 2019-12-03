@@ -5,10 +5,9 @@
 .mypage.clearfix
   .mypage__content
     %section.user-icon
-      %a{:href => "https://www.mercari.com/jp/u/407546974/"}
+      = link_to '#' do
         %figure
-          %img{:alt => "", :height => "60", :src => "//static.mercdn.net/images/member_photo_noimage_thumb.png", :width => "60"}/
-        -# %h2.bold 高野和樹
+          = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png', alt: '', height: '60', width: '60'
         = current_user.nickname
         .mypage-number
           %div
@@ -21,13 +20,13 @@
       %ul.mypage-tabs
         %li.active
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-notification"}
+            = link_to '#' do
               お知らせ
               %span.hidden-large.nav-number
                 1
-        %li
+        %li.tab
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-todo"}
+            = link_to '#' do
               やることリスト
               %span.hidden-large.nav-number
                 1
@@ -44,7 +43,8 @@
               -#     %span 4 時間前
               -# %i.icon-arrow-right
           %li.mypage-go-list
-            %a{:href => "/jp/mypage/notification/"} 一覧を見る
+            = link_to '#' do
+              一覧を見る
         -# %ul.mypage-item-list.tab-pane
         -#   %li
         -#     %a.mypage-item-link{:href => "https://www.mercari.com/jp/help_center/article/759/"}
@@ -79,11 +79,11 @@
       %ul.mypage-tabs
         %li.active
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-transaction-now"}
+            = link_to '#' do
               取引中
         %li
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-transaction-old"}
+            = link_to '#' do
               過去の取引
       .tab-content
         %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
