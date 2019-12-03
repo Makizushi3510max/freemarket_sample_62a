@@ -54,6 +54,11 @@ describe User do
       user.valid?
       expect(user.errors[:date_of_birth]).to include("can't be blank")
     end
-
+    # phone_numberが空では登録できない
+    it "is invalid without a phone_number" do
+      user = build(:user, phone_number: nil)
+      user.valid?
+      expect(user.errors[:phone_number]).to include("can't be blank")
+    end
   end
 end
