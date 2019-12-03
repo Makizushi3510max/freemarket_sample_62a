@@ -1,15 +1,30 @@
 require 'rails_helper'
 describe User do
   describe '#create' do
+    # nickname, email, password, last_name, first_name, last_name_kana, first_name_kana, date_of_birth, phone_numberが存在すれば登録できる
+    it "is valid with a nickname, email, password, last_name, first_name, last_name_kana, first_name_kana, date_of_birth, phone_number" do
+      user = build(:user)
+      expect(user).to be_valid
+    end
+    # ニックネームが空では登録できない
     it "is invalid without a nickname" do
-      user = build(:user, nickname: "")
+      user = build(:user, nickname: nil)
       user.valid?
       expect(user.errors[:nickname]).to include("can't be blank")
     end
+    # emailが空では登録できない
     it "is invalid without a email" do
-      user = build(:user, email: "")
+      user = build(:user, email: nil)
       user.valid?
       expect(user.errors[:email]).to include("can't be blank")
     end
+    # passwordが空では登録できない
+    it "is invalid without a password" do
+      user = build(:user, password: nil)
+      user.valid?
+      expect(user.errors[:password]).to include("can't be blank")
+    end
+    last_namが空では登録できない
+    
   end
 end
