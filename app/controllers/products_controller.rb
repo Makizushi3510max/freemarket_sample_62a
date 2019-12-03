@@ -95,6 +95,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @categories = Category.all
     @sizes = Size.all
+    gon.product_id = @product.id
   end
 
   def update

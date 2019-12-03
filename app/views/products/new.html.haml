@@ -9,7 +9,7 @@
         %div{"data-reactroot" => ""}
           .sell-container-inner
             %h2.single-head 商品の情報を入力
-            = form_with model: @product, id: "sell-form", url: products_path, method: :post, remote: true do |f|
+            = form_with model: @product, id: "product-new-form", url: products_path, method: :post, remote: true do |f|
               .sell-upload
                 %h3.sell-upload__head
                   出品画像
@@ -19,13 +19,6 @@
                   .sell-upload-items-container
                     #preview-upper.sell-upload-items.have-item-0
                       %ul#images1.sell-upload-items-images
-                        -# 以下をjsで表示する
-                        -# %li.sell-upload-item-image
-                        -#   %figure.sell-upload-figure.portrait
-                        -#     = image_tag "/images/product_images/Green.jpg"
-                        -#   .sell-upload-button
-                        -#     %a.edit-button 編集
-                        -#     %a.delete-button 削除
                   = f.label :images, class: 'sell-upload-drop-label have-item-0' do
                     .sell-upload-drop-box
                       = f.file_field :images, multiple: true, style: "display: none;" , class: "sell-upload-drop-file"

@@ -55,6 +55,12 @@
 
   // id: "product_root_category_id"のセレクトボックスが選択されると発火
   $(document).on("change", "#product_root_category_id",function(e){
+    if ($('#wrap-grandchild').length){
+      $('#wrap-grandchild').remove();
+    }
+    if ($('#wrap-grandchild').length){
+      $('#wrap-grandchild').remove();
+    }
     var selected_category_root = $('#product_root_category_id').val();
 
     $.ajax({
@@ -76,6 +82,9 @@
 
   // id: "product_child_category_id"のセレクトボックスが選択されると発火
   $(document).on("change", "#product_child_category_id",function(e){
+    if ($('#product_child_category_id').length){
+      $('#product_child_category_id').remove();
+    }
     var selected_category_child = $('#product_child_category_id').val();
 
     $.ajax({

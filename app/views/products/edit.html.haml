@@ -9,7 +9,7 @@
         %div{"data-reactroot" => ""}
           .sell-container-inner
             %h2.single-head 商品の情報を入力
-            = form_with model: @product, url: product_path, method: :patch, remote: true do |f|
+            = form_with model: @product, id: "product-edit-form", url: product_path, method: :patch, remote: true do |f|
               .sell-upload
                 %h3.sell-upload__head
                   出品画像
@@ -50,11 +50,11 @@
                         = fa_icon "chevron-down"
                         = f.collection_select(:root_category_id, @categories.roots, :id, :name, {prompt: "---", selected: @product.category.parent.parent.id}, {class: "select-default"})
                     %div
-                      .select-wrap
+                      .select-wrap#wrap-child
                         = fa_icon "chevron-down"
                         = f.collection_select(:child_category_id, @product.category.parent.siblings, :id, :name, {prompt: "---", selected: @product.category.parent.id}, {class: "select-default"})
                     %div
-                      .select-wrap
+                      .select-wrap#wrap-grandchild
                         = fa_icon "chevron-down"
                         = f.collection_select(:grandchild_category_id, @product.category.siblings, :id, :name, {prompt: "---", selected: @product.category.id}, {class: "select-default"})
                   .form-group
@@ -139,4 +139,4 @@
                   出品する
                 %a.btn-default.btn-gray もどる
             .overlay
-  = render partial: "iFooter"
+  = render partial: "/shared/iFooter"

@@ -169,7 +169,7 @@ $(function(){
     }
   })
 
-  $('#sell-form').submit(function(event){
+  $('#product-new-form').submit(function(event){
     event.preventDefault();
 
     var formData = new FormData(this);
@@ -193,4 +193,27 @@ $(function(){
     })
   })
 
+  $('#product-edit-form').submit(function(event){
+    event.preventDefault();
+
+    var formData = new FormData(this);
+    $.each(images, function(index,image){
+      formData.append('image' + index,image,image.name)
+    })
+    formData.append('images_length', images.length)
+    $.ajax({
+      url: "/products/" + gon.product_id ,
+      type: "PATCH",
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(){
+      window.location.href = '/';
+    })
+    .fail(function(){
+      alert("error")
+    })
+  })
 })
