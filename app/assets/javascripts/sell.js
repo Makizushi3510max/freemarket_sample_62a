@@ -180,6 +180,7 @@ $(function(){
       formData.append('image' + index,image,image.name)
     })
     formData.append('images_length', images.length)
+    // formData.submit();
     $.ajax({
       url: "/products",
       type: "POST",
@@ -188,38 +189,13 @@ $(function(){
       processData: false,
       contentType: false
     })
+    .done(function(){
+      window.location.href = '/';
+    })
+    .fail(function(){
+      alert("error")
+    })
   })
-
-  // 出品時に画像一覧を送信する
-  // $(document).on("submit", "#sell-submit", function(e){
-  //   e.preventDefault();
-  //   console.log(this)
-  //   var form = $(this).parents('form');
-  //   console.log(form)
-  //   console.log("hoge")
-    // var formData = new FormData();
-  //   // console.log(formData)
-  //   // src = URL.createObjectURL(images[0])
-  //   // console.log(src)
-    // $.each(images, function(index,image){
-    //   formData.append('image' + index,image,image.name)
-    // })
-  //   formData.append('images_length', images.length)
-  //   // formData
-  //   // console.log(formData)
-  //   // console.log(images[0].name)
-  //   // var url = $(this).attr('action');
-    // $.ajax({
-    //   url: "/products/post_image",
-    //   type: "POST",
-    //   data: formData,
-    //   dataType: 'json',
-    //   processData: false,
-    //   contentType: false
-    // })
-  // })
-
-
 
   // カテゴリー選択後に、対応するセレクトボックスを表示させる機能
   function buildSelectBox_Children(category_children){
