@@ -48,6 +48,12 @@ describe User do
       user.valid?
       expect(user.errors[:first_name_kana]).to include("can't be blank")
     end
+    # date_of_birthが空では登録できない
+    it "is invalid without a date_of_birth" do
+      user = build(:user, date_of_birth: nil)
+      user.valid?
+      expect(user.errors[:date_of_birth]).to include("can't be blank")
+    end
 
   end
 end
