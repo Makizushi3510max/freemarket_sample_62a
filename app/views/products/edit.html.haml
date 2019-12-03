@@ -1,0 +1,134 @@
+.single__container
+  %header.single__header
+    %h1
+      = link_to root_path do
+        = image_tag "logos/fmarket_logo_red.svg"
+  %main.single__main
+    %section.l-single__container.buy-item-container
+      #sell-container
+        %div{"data-reactroot" => ""}
+          .sell-container-inner
+            %h2.single-head 商品の情報を入力
+            = form_with model: @product, url: products_path, method: :post, remote: true do |f|
+              .sell-upload
+                %h3.sell-upload__head
+                  出品画像
+                  %span.form-require 必須
+                %p 最大10枚までアップロードできます
+                .sell-dropbox-container.clearfix.state-image-number-10
+                  .sell-upload-items-container
+                    #preview-upper.sell-upload-items.have-item-0
+                      %ul#images1.sell-upload-items-images
+                  = f.label :images, class: 'sell-upload-drop-label have-item-0' do
+                    .sell-upload-drop-box
+                      = f.file_field :images, multiple: true, style: "display: none;" , class: "sell-upload-drop-file"
+                      %pre.visible-pc
+                        :preserve
+                          ドラッグアンドドロップ
+                          またはクリックしてファイルをアップロード
+              .sell-content
+                .form-group
+                  %label
+                    商品名
+                    %span.form-group__require 必須
+                  %div
+                    = f.text_field :name, class: "input-default", placeholder: "商品名（必須 40文字まで)"
+                .form-group
+                  %label
+                    商品の説明
+                    %span.form-group__require 必須
+                  = f.text_area :description, class: "textarea-default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+              .sell-content.clearfix
+                %h3.sell-sub-head 商品の詳細
+                .sell-form-box
+                  .form-group.category
+                    %label
+                      カテゴリー
+                      %span.form-group__require 必須
+                    %div
+                      .select-wrap
+                        = fa_icon "chevron-down"
+                        = f.collection_select(:root_category_id, @categories.roots, :id, :name, {prompt: "---"}, {class: "select-default"})
+                  .form-group
+                    %label
+                      サイズ
+                      %span.form-group__require 必須
+                    %div
+                      .select-wrap
+                        = fa_icon "chevron-down"
+                        = f.collection_select(:size_id, @sizes, :id, :name, {prompt: "---"}, {class: "select-default"})
+                  .form-group
+                    %label
+                      商品の状態
+                      %span.form-group__require 必須
+                    .select-wrap
+                      = fa_icon "chevron-down"
+                      = f.collection_select :condition, Condition.all, :id, :name, {prompt: "---"}, {class: "select-default"}
+              .sell-content.clearfix
+                %h3.sell-sub-head 配送について
+                %a.form-question{:href => "/jp/help_center/article/68/", :target => "_blank"} ?
+                .sell-form-box
+                  .form-group
+                    %label
+                      配送料の負担
+                      %span.form-group__require 必須
+                    .select-wrap
+                      = fa_icon "chevron-down"
+                      = f.collection_select :shipping_cost, Shipping_cost.all, :id, :name, {prompt: "---"}, {class: "select-default"}
+                  .form-group
+                    %label
+                      発送元の地域
+                      %span.form-group__require 必須
+                    .select-wrap
+                      = fa_icon "chevron-down"
+                      = f.collection_select :shipping_area, Prefecture.all, :id, :name, {prompt: "---"}, {class: "select-default"}
+                  .form-group
+                    %label
+                      発送までの日数
+                      %span.form-group__require 必須
+                    .select-wrap
+                      = fa_icon "chevron-down"
+                      = f.collection_select :shipping_date, Shipping_date.all, :id, :name, {prompt: "---"}, {class: "select-default"}
+              .sell-content.clearfix
+                %h3.sell-sub-head 販売価格(300〜9,999,999)
+                %a.form-question{:href => "/jp/help_center/article/64/", :target => "_blank"} ?
+                .sell-form-box
+                  %ul.sell-price
+                    %li.form-group
+                      .clearfix
+                        %label.l-left
+                          価格
+                          %span.form-group__require 必須
+                        .l-right.sell-price-input
+                          ¥
+                          %div
+                            = f.number_field :price, class: "input-default", min:300, max:9999999, placeholder: "例）300", value: ""
+                    %li.clearfix
+                      .l-left
+                        販売手数料 (10%)
+                      .l-right -
+                    %li.clearfix.bold
+                      .l-left 販売利益
+                      .l-right -
+              .modal{:role => "dialog", :tabindex => "-1"}
+                .modal-inner
+              .sell-content.sell-btn-box
+                %div
+                  %p
+                    %a{:href => "/jp/help_center/getting_started/prohibited_items/", :target => "_blank"} 禁止されている出品
+                    、
+                    %a{:href => "/jp/help_center/getting_started/prohibited_conduct/", :target => "_blank"} 行為
+                    を必ずご確認ください。
+                  %p
+                    またブランド品でシリアルナンバー等がある場合はご記載ください。
+                    %a{:href => "/jp/help_center/getting_started/counterfeit_goods/", :target => "_blank"} 偽ブランドの販売
+                    は犯罪であり処罰される可能性があります。
+                  %p
+                    また、出品をもちまして
+                    %a{:href => "/jp/seller_terms/"} 加盟店規約
+                    に同意したことになります。
+                %button.btn-default.btn-red#sell-submit{:type => "submit"}
+                  出品する
+                %a.btn-default.btn-gray もどる
+            .overlay
+  = render partial: "iFooter"
