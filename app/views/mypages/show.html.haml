@@ -60,16 +60,14 @@
       %ul.mypage-tabs
         %li.mypagetab.active
           %h3
-            = link_to '#' do
-              取引中
+            取引中
         %li.mypagetab
           %h3
-            = link_to '#' do
-              過去の取引
+            過去の取引
       .tab-content
-        %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
+        %ul.mypage-tab-transaction.mypage-item-list.tab-pane.active
           %li.mypage-item-not-found.bold 取引中の商品がありません
-        %ul#mypage-tab-transaction-old.mypage-item-list.tab-pane
+        %ul.mypage-tab-transaction.mypage-item-list.tab-pane
           %li.mypage-item-not-found.bold 過去に取引した商品がありません
   .mypage-side
     %nav.mypage-nav
