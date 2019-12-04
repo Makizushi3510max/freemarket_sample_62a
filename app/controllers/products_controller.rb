@@ -108,7 +108,8 @@ class ProductsController < ApplicationController
 
   def update
     # binding.pry
-    i = params.require(:images_length).to_i - 1
+    session[:images] = []
+    i =  + (params.require(:images_length).to_i - 1)
     for num in 0..i do
       session[:images].push(params.require(%I(image#{num})))
     end

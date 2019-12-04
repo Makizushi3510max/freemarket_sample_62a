@@ -111,6 +111,7 @@ $(function(){
     // 新しく追加されたファイルをimagesの末尾に追加
     $.each(file, function(index,value){
       images.push(value)
+      // temp_files.push(value)
     })
 
     // 画像が1つでも存在していればプレビュー一覧を描画
@@ -199,8 +200,8 @@ $(function(){
   })
 
   // 商品編集の時
-  $('#product-edit-form').submit(function(event_edit){
-    event_edit.preventDefault();
+  $('#product-edit-form').submit(function(event){
+    event.preventDefault();
 
     var formData = new FormData(this);
     $.each(images, function(index,image){
