@@ -1,7 +1,7 @@
 $(function(){
-  $("#product_price").keyup(function(){
+  function previewPrices(){
     // 入力された価格に応じ、手数料と販売利益を変数にセット
-    let input_price = $(this).val();
+    let input_price = $("#product_price").val();
     let commission = Math.floor(input_price * 0.1);
     let profit = input_price - commission;
 
@@ -13,5 +13,13 @@ $(function(){
       $("#sales_commission").text("-");
       $("#sales_profit").text("-");
     }
+  };
+
+  $("#product_price").load(function(){
+    console.log("fireeee");
+  });
+
+  $("#product_price").keyup(function(){
+    previewPrices();
   });
 });
