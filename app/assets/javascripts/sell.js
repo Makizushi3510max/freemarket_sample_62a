@@ -9,6 +9,13 @@ $(function(){
   var temp_files = []
   // プレビュー中の画像の数を格納する変数
   var preview_count = 0
+  // DBから削除される予定の画像IDを保管する配列
+  var delete_image_num = []
+
+  var flag = false
+
+  var hoge = []
+  var fuga = []
 
   // プレビューのhtmlを生成
   function buildImagePreviewBox(preview_count,src){
@@ -28,16 +35,18 @@ $(function(){
                     <ul class="sell-upload-items-images" id="images2">
                     </ul>
                   </div>`
-
+  
   // プレビューを描画する関数
-  function renderingPreview(images, preview_count, registered_flag){
+  function renderingPreview(images, preview_count){
     $.each(images, function(index,value){
       // 未描画の画像のみプレビューに追加
       if ((preview_count - 1) < index){
-        if (registered_flag == false) {
-          var src = URL.createObjectURL(value)
-        } else {
+        // 入力値がblob urlだった場合はsrcにそのままblob urlを使用する
+        if(value.length){
           var src = value
+        // 違ったらblob urlを生成する
+        } else {
+          var src = URL.createObjectURL(value)
         }
         // 1~4枚目の画像までは普通にプレビューを表示
         if (0 <= preview_count && preview_count <= 3 ){
@@ -112,11 +121,12 @@ $(function(){
     $.each(file, function(index,value){
       images.push(value)
     })
+    console.log("画像を追加したときのimages.length = " + images.length)
 
     // 画像が1つでも存在していればプレビュー一覧を描画
     if (images.length){
       // プレビュー一覧を描画
-      preview_count = renderingPreview(images,preview_count,false)
+      preview_count = renderingPreview(images,preview_count)
     }
   })
 
@@ -124,13 +134,35 @@ $(function(){
   $(document).on("click", ".delete-button", function(e){
     // 削除ボタンが押されたら配列の何番目なのかを取得する
     target_image = Number($(this).attr("id").split("-")[2])
+    // console.log(target_image)
+    // console.log(registered_images.length)
 
+    if (target_image < registered_images.length){
+      // fuga = hoge
+      // console.log("登録済み画像は削除されました")
+      // delete_image_num.push(target_image)
+      // delete_image_num.sort()
+      // console.log("削除予定の画像番号 = " + delete_image_num)
+      // 登録済み画像の配列から削除ボタンが押された画像を削除する
+      registered_images.splice(target_image,1)
+      hoge.splice(target_image,1)
+      // console.log("fuga" + fuga)
+      // console.log("残ってる画像hoge" + hoge)
+
+      // var result = fuga.filter(item => 
+      //   hoge.indexOf(item) == -1
+      // );  
+      // console.log("削除予定の画像" + result);
+    }
+    
     // 削除ボタンが押された画像以降全てのプレビューを一度削除
     for(var i = target_image; i < 10; i++){
       $("#image-" + i).remove()
     }
+    console.log("削除ボタンが押された時のtarget_image = " + target_image)
+    console.log("削除ボタンが押されたときのimages.length = " + images.length)
 
-    // 削除ボタンが押された画像が配列の最後尾だった場合
+    // 削除ボタンが押された画像が配列の最後尾だった場合フラグを立てておく
     if(target_image == images.length - 1){
       flag = true
     }
@@ -141,6 +173,7 @@ $(function(){
     // 削除された画像以降の画像を描画しなおす
     preview_count = renderingPreview(images,target_image)
 
+    // 削除ボタンが押された画像が配列の最後尾だった場合、クラス名の整合性を取る為に以下の処理が必要
     if(flag == true){
       if(images.length < 5){
         $("#preview-upper").removeClass (function (index, className) {
@@ -170,6 +203,7 @@ $(function(){
         });
         $(".sell-upload-drop-label").addClass("have-item-" + (preview_count - 5))
       }
+      flag = false
     }
   })
 
@@ -213,6 +247,7 @@ $(function(){
       formData.append('image' + index,image,image.name)
     })
     formData.append('images_length', temp_files.length)
+    formData.append('remain_image_num', hoge)
     $.ajax({
       url: "/products/" + gon.product_id ,
       type: "PATCH",
@@ -237,12 +272,14 @@ $(function(){
     // 登録済み画像をimagesに追加
     $.each(registered_images, function(index,value){
       images.push(value)
+      console.log(value.length)
+      hoge.push(index)
     })
 
     // 画像が1つでも存在していればプレビュー一覧を描画
     if (images.length){
       // プレビュー一覧を描画
-      preview_count = renderingPreview(images,preview_count,true)
+      preview_count = renderingPreview(images,preview_count)
     }
   });
 })
