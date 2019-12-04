@@ -28,8 +28,8 @@
         %ul.header__content__cg
           .header__content__category
             = fa_icon "list-ul"
-            .text カテゴリーから探す
-            -# = link_to "#".collection_select(:root_category_id, @category_roots, :id, :name, {class: "menu-default"})
+            %span.text カテゴリーから探す
+            -# .select
 
         %ul.header__content__bd
           %a.header__content__brand{:href => "/jp/brand/"}

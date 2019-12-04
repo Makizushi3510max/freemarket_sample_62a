@@ -84,8 +84,6 @@ $(function(){
         $(".sell-upload-drop-label").addClass("have-item-5")
       }
     })
-
-
   })
 
 
