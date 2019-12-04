@@ -1,4 +1,3 @@
-
   // カテゴリー選択後に、対応するセレクトボックスを表示させる機能
   function buildSelectBox_Children(category_children){
     // 子カテゴリーのセレクトボックスのオプションを生成
@@ -53,7 +52,7 @@
     });
   };
 
-  // id: "product_root_category_id"のセレクトボックスが選択されると発火
+  // ルートカテゴリのセレクトボックスが選択されると発火
   $(document).on("change", "#product_root_category_id",function(e){
     if ($('#wrap-grandchild').length){
       $('#wrap-grandchild').remove();
@@ -80,7 +79,7 @@
     })
   })
 
-  // id: "product_child_category_id"のセレクトボックスが選択されると発火
+  // 子カテゴリのセレクトボックスが選択されると発火
   $(document).on("change", "#product_child_category_id",function(e){
     if ($('#wrap-grandchild').length){
       $('#wrap-grandchild').remove();
