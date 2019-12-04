@@ -5,10 +5,9 @@
 .mypage.clearfix
   .mypage__content
     %section.user-icon
-      %a{:href => "https://www.mercari.com/jp/u/407546974/"}
+      = link_to '#' do
         %figure
-          %img{:alt => "", :height => "60", :src => "//static.mercdn.net/images/member_photo_noimage_thumb.png", :width => "60"}/
-        -# %h2.bold 高野和樹
+          = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png', alt: '', height: '60', width: '60'
         = current_user.nickname
         .mypage-number
           %div
@@ -19,45 +18,27 @@
             %span.bold 0
     %section.mypage-tab
       %ul.mypage-tabs
-        %li.active
+        %li.tab.active
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-notification"}
-              お知らせ
-              %span.hidden-large.nav-number
-                1
-        %li
+            お知らせ
+            %span.hidden-large.nav-number
+              1
+        %li.tab
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-todo"}
-              やることリスト
-              %span.hidden-large.nav-number
-                1
+            やることリスト
+            %span.hidden-large.nav-number
+              1
       .tab-content
-        %ul.mypage-item-list.tab-pane.active
-          -# %li
-          -#   %a.mypage-item-link{"data-modal" => "banner", "data-open" => "modal", :href => ""}
-              -# %figure
-              -#   %img.lazyload{:alt => "", "data-src" => "https://static.mercdn.net/images/mercari_profile.png"}/
-              -# .mypage-item-body
-              -#   .mypage-item-text 【1,000円分のポイントが必ずもらえる】新規登録者限定キャンペーン開催中！
-              -#   %time
-              -#     %i.icon-time
-              -#     %span 4 時間前
-              -# %i.icon-arrow-right
+        %ul.mypage-item-list.tab-pane.show
+          %li
           %li.mypage-go-list
-            %a{:href => "/jp/mypage/notification/"} 一覧を見る
-        -# %ul.mypage-item-list.tab-pane
-        -#   %li
-        -#     %a.mypage-item-link{:href => "https://www.mercari.com/jp/help_center/article/759/"}
-        -#       %figure
-        -#         %img.lazyload{:alt => "", "data-src" => "//static.mercdn.net/images/mercari_profile.png"}/
-        -#       .mypage-item-body
-        -#         .mypage-item-text ご登録のメールアドレスに認証メールを送りました。メールに記載のURLをクリックして、メールアドレスを認証してください。
-        -#         %time
-        -#           %i.icon-time
-        -#           %span 22 時間前
-        -#       %i.icon-arrow-right
-        -#   %li.mypage-go-list
-        -#     %a{:href => "/jp/mypage/todo/"} 一覧を見る
+            = link_to '#' do
+              一覧を見る
+        %ul.mypage-item-list.tab-pane
+          %li
+          %li.mypage-go-list
+            = link_to '#' do
+              一覧を見る
     -# %aside.modal{"data-close" => "modal", "data-modal" => "banner"}
     -#   .modal-inner.modal-banner
     -#     .modal-inner__eye-catch
@@ -77,18 +58,16 @@
     %section.mypage-tab-container
       %h2.mypage-tab-head 購入した商品
       %ul.mypage-tabs
-        %li.active
+        %li.mypagetab.active
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-transaction-now"}
-              取引中
-        %li
+            取引中
+        %li.mypagetab
           %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-transaction-old"}
-              過去の取引
+            過去の取引
       .tab-content
-        %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
+        %ul.mypage-tab-transaction.mypage-item-list.tab-pane.active
           %li.mypage-item-not-found.bold 取引中の商品がありません
-        %ul#mypage-tab-transaction-old.mypage-item-list.tab-pane
+        %ul.mypage-tab-transaction.mypage-item-list.tab-pane
           %li.mypage-item-not-found.bold 過去に取引した商品がありません
   .mypage-side
     %nav.mypage-nav

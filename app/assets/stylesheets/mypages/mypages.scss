@@ -164,19 +164,23 @@ a:hover {
       h3{  
         font-size: 22px;
         display: block;
-        // margin-block-start: 1em;
-        // margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
         font-weight: bold;
+        position: relative;
+        display: block;
+        color: #333;
+        font-size: 16px;
+        line-height: 72px;
+        .hidden-large{
+          display: none;
+        }
       }
         
     }
     li.active{
       background: #fff;
-      a{
-        border-top:2px solid #ea352d;  
-      }
+      border-top:2px solid #ea352d;  
       .nav-number{
         position: absolute;
         top: 50%;
@@ -192,19 +196,9 @@ a:hover {
         transform: translate(0, -50%);
       }
     }
-    a{
-      position: relative;
-      display: block;
-      color: #333;
-      font-size: 16px;
-      line-height: 72px;
-      .hidden-large{
-        display: none;
-      }
-    }
   }
   .tab-content{
-    .mypage-item-list.active{
+    .mypage-item-list.show{
       display: block;
       .mypage-go-list{
         padding: 16px;
@@ -353,27 +347,23 @@ a:hover {
       vertical-align: top;
       h3{
         font-weight: bold;
+        position: relative;
+        display: block;
+        color: #333;
+        font-size: 16px;
+        line-height: 72px;
       }
     }
-    a{
-      position: relative;
-      display: block;
-      color: #333;
-      font-size: 16px;
-      line-height: 72px;
-    }  
     li.active{
       background-color: #fff;
-      a{
-        border-top: 2px solid #ea352d;
-      }
+      border-top: 2px solid #ea352d;
     }  
   }
   .tab-content{
     .mypage-item-list{
       .mypage-item-not-found{
         padding: 160px 0 60px;
-        background: url(https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?79784477);
+        background: url(logos/logo_gray.svg);
         background-repeat: no-repeat;
         background-position: center 40px;
         background-size: 78px 85px;
