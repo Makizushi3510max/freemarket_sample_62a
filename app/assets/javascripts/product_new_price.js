@@ -15,8 +15,8 @@ $(function(){
     }
   };
 
-  $("#product_price").load(function(){
-    console.log("fireeee");
+  $("#product_price").ready(function(){
+    previewPrices();
   });
 
   $("#product_price").keyup(function(){
