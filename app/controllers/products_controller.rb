@@ -99,18 +99,21 @@ class ProductsController < ApplicationController
     gon.images = []
     if @product.images.present?
       @product.images.each_with_index do |image, i|
-        gon.images.push(image.blob)
+        # gon.images.push(image.blob)
+        gon.images.push(rails_blob_path(image))
       end
     end
     # gon.images = @product.images[0].blob
   end
 
   def update
+    # binding.pry
     i = params.require(:images_length).to_i - 1
     for num in 0..i do
       session[:images].push(params.require(%I(image#{num})))
     end
     product = Product.find(params[:id])
+    # binding.pry
     if product.seller_id == current_user.id
       product.update(
         name:             product_params[:name],
@@ -126,6 +129,8 @@ class ProductsController < ApplicationController
         images:           session[:images]
       )
     end
+    session[:images].clear
+    render json: { status: 200 }
   end
 
   def purchase
