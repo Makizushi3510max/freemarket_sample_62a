@@ -18,46 +18,27 @@
             %span.bold 0
     %section.mypage-tab
       %ul.mypage-tabs
-        %li.active
+        %li.tab.active
           %h3
-            = link_to '#' do
-              お知らせ
-              %span.hidden-large.nav-number
-                1
+            お知らせ
+            %span.hidden-large.nav-number
+              1
         %li.tab
           %h3
-            = link_to '#' do
-              やることリスト
-              %span.hidden-large.nav-number
-                1
+            やることリスト
+            %span.hidden-large.nav-number
+              1
       .tab-content
-        %ul.mypage-item-list.tab-pane.active
-          -# %li
-          -#   %a.mypage-item-link{"data-modal" => "banner", "data-open" => "modal", :href => ""}
-              -# %figure
-              -#   %img.lazyload{:alt => "", "data-src" => "https://static.mercdn.net/images/mercari_profile.png"}/
-              -# .mypage-item-body
-              -#   .mypage-item-text 【1,000円分のポイントが必ずもらえる】新規登録者限定キャンペーン開催中！
-              -#   %time
-              -#     %i.icon-time
-              -#     %span 4 時間前
-              -# %i.icon-arrow-right
+        %ul.mypage-item-list.tab-pane.show
+          %li
           %li.mypage-go-list
             = link_to '#' do
               一覧を見る
-        -# %ul.mypage-item-list.tab-pane
-        -#   %li
-        -#     %a.mypage-item-link{:href => "https://www.mercari.com/jp/help_center/article/759/"}
-        -#       %figure
-        -#         %img.lazyload{:alt => "", "data-src" => "//static.mercdn.net/images/mercari_profile.png"}/
-        -#       .mypage-item-body
-        -#         .mypage-item-text ご登録のメールアドレスに認証メールを送りました。メールに記載のURLをクリックして、メールアドレスを認証してください。
-        -#         %time
-        -#           %i.icon-time
-        -#           %span 22 時間前
-        -#       %i.icon-arrow-right
-        -#   %li.mypage-go-list
-        -#     %a{:href => "/jp/mypage/todo/"} 一覧を見る
+        %ul.mypage-item-list.tab-pane
+          %li
+          %li.mypage-go-list
+            = link_to '#' do
+              一覧を見る
     -# %aside.modal{"data-close" => "modal", "data-modal" => "banner"}
     -#   .modal-inner.modal-banner
     -#     .modal-inner__eye-catch
@@ -77,11 +58,11 @@
     %section.mypage-tab-container
       %h2.mypage-tab-head 購入した商品
       %ul.mypage-tabs
-        %li.active
+        %li.mypagetab.active
           %h3
             = link_to '#' do
               取引中
-        %li
+        %li.mypagetab
           %h3
             = link_to '#' do
               過去の取引
