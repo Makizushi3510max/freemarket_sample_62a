@@ -1,4 +1,5 @@
 $(function(){
+  //header__content__categoryにホバーしたら発火
   $(document).on("mouseover",".header__content__category", function(e) {
 
     $.ajax({
@@ -7,43 +8,30 @@ $(function(){
       dataType: "json"
     })
     .done(function(category_roots){
-      // console.log(category_roots)
-      // category_roots.forEach(function(root) {
-      //   console.log(root)
-      // });
-      buildSelectBox_Children(category_roots);
+      //ajax成功時ルートカテゴリのリストを表示する関数を呼び出す
+      buildCategoryList_Root(category_roots);
     })
     .fail(function(){
       console.log('error');
     })
-    // カテゴリー選択後に、対応するセレクトボックスを表示させる機能
-    function buildSelectBox_Children(category_roots){
+
+    // カテゴリー選択後に、対応するリストを表示させる関数
+    function buildCategoryList_Root(category_roots){
       category_roots.forEach(function(root) {
-        console.log(root);
-        $(".header__content__category").append(buildSelectBox_Children_Options(root))
+        //header__content__categoryの下に生成したhtmlを追加
+        $(".header__content__category").append(buildCategoryBox_Root(root));
       });
 
-      // 子カテゴリーのセレクトボックスのオプションを生成
-      function buildSelectBox_Children_Options(root){
-        var optionHtml = `<div>
+      //ルートカテゴリーのリストを生成
+      function buildCategoryBox_Root(root){
+        var optionHtml = `<div id="product_root_category_id">
                            ${root.name}
                          </div>`
-
         return optionHtml;
       };
-      // var buildSelectBox_Children = `
-      // <div>
-      //   <div class='header__content__category' id="wrap-grandchild">
-      //   </div>
-      // </div>`
-  
-      // $(".header__content__cg").append(buildSelectBox_Children);
-  
-      // category_roots.forEach(function(root) {
-      //   $("#product_root_category_id").append(buildSelectBox_Children_Options(root))
-      // });
     };
-  
+    
+  ///////////////////////////////////////////////////////////////
     // カテゴリー選択後に、対応するセレクトボックスを表示させる機能
     function buildSelectBox_GrandChildren(category_grandchildren){
       // 孫カテゴリーのセレクトボックスのオプションを生成
@@ -86,7 +74,7 @@ $(function(){
         buildSelectBox_Children(category_children)
       })
       .fail(function(){
-        console.log('error');
+        // console.log('error');
       })
     })
   
@@ -107,7 +95,7 @@ $(function(){
         buildSelectBox_GrandChildren(category_grandchildren)
       })
       .fail(function(){
-        console.log('error');
+        // console.log('error');
       })
     })
   })
