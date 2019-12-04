@@ -366,6 +366,7 @@
           .items-box-photo {
             width: 220px;
             height: 220px;
+            background: #fff;
             overflow: hidden;
             position: relative;
             padding: 0 0 100%;
@@ -379,7 +380,9 @@
               width: auto;
             }
             img {
+              display: block;
               height: 220px;
+              margin: 0 auto;
             }
             .items-box__sold-out div{
               position: absolute;
@@ -466,6 +469,7 @@
           .items-box-photo {
             width: 220px;
             height: 220px;
+            background: #fff;
             overflow: hidden;
             position: relative;
             padding: 0 0 100%;
@@ -479,7 +483,9 @@
               width: auto;
             }
             img {
+              display: block;
               height: 220px;
+              margin: 0 auto;
             }
             .items-box__sold-out div{
               position: absolute;
