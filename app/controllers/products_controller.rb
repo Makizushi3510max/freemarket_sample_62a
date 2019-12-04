@@ -101,18 +101,42 @@ class ProductsController < ApplicationController
       @product.images.each_with_index do |image, i|
         # gon.images.push(image.blob)
         gon.images.push(rails_blob_path(image))
+        # session[:images].push(image)
+        # session[:images].push(image)
       end
     end
+    # binding.pry
     # gon.images = @product.images[0].blob
   end
 
   def update
+    @images = []
+    product = Product.find(params[:id])
+    remain_image_num = []
+    if params.require(:remain_image_num).split(",").present?
+      params.require(:remain_image_num).split(",").each_with_index do |num, i|
+        remain_image_num.push(num.to_i)
+      end
+    end
+    # remain_image_num.each_with_index do |num, i|
+    #   binding.pry
+    #   if session[:images][i] != (num - 1)
+    #     session[:images].delete_at(i)
+    #   end
+    # end
     # binding.pry
+    # for num in 0..(remain_image_num.length) do
+    #   @images << product.images[num]
+    # end
+    remain_image_num.each_with_index do |num, i|
+      # @images << product.images[num].blob
+    end
+    # binding.pry
+
     i = params.require(:images_length).to_i - 1
     for num in 0..i do
-      session[:images].push(params.require(%I(image#{num})))
+      @images.push(params.require(%I(image#{num})))
     end
-    product = Product.find(params[:id])
     # binding.pry
     if product.seller_id == current_user.id
       product.update(
@@ -125,11 +149,10 @@ class ProductsController < ApplicationController
         shipping_area:    product_params[:shipping_area],
         shipping_date:    product_params[:shipping_date],
         price:            product_params[:price],
-        seller_id:        product_params[:seller_id],
-        images:           session[:images]
+        seller_id:        product_params[:seller_id]
       )
     end
-    session[:images].clear
+    # session[:images].clear
     render json: { status: 200 }
   end
 
