@@ -5,8 +5,8 @@ $(function(){
     let commission = Math.floor(input_price * 0.1);
     let profit = input_price - commission;
 
-    // 価格が300円未満の場合、手数料と利益を表示しない
-    if(input_price >= 300){
+    // 適正な価格が入力されている場合、手数料と利益を表示する
+    if(input_price >= 300 && input_price <= 9999999){
       $("#sales_commission").text("¥" + commission.toLocaleString());
       $("#sales_profit").text("¥" + profit.toLocaleString());
     } else{
