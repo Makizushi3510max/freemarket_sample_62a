@@ -9,7 +9,7 @@
         %div{"data-reactroot" => ""}
           .sell-container-inner
             %h2.single-head 商品の情報を入力
-            = form_with model: @product, id: "product-new-form", url: products_path, method: :post, remote: true do |f|
+            = form_with model: @product, id: "product-edit-form", url: product_path, method: :patch, local: true do |f|
               .sell-upload
                 %h3.sell-upload__head
                   出品画像
@@ -19,6 +19,15 @@
                   .sell-upload-items-container
                     #preview-upper.sell-upload-items.have-item-0
                       %ul#images1.sell-upload-items-images
+                    -# %div{class: "sell-upload-items have-item-#{@product.images.length}", id: "preview-upper"}
+                    -#   %ul#images1.sell-upload-items-images
+                    -#     - @product.images.each_with_index do |image,index|
+                    -#       %li.sell-upload-item-image{:id => "image-#{index}"}
+                    -#         %figure.sell-upload-figure.portrait
+                    -#           = image_tag (rails_blob_path(image))
+                    -#         .sell-upload-button
+                    -#           %a.edit-button 編集
+                    -#           %a.delete-button{:id => "delete-button-#{index}"} 削除
                   = f.label :images, class: 'sell-upload-drop-label have-item-0' do
                     .sell-upload-drop-box
                       = f.file_field :images, multiple: true, style: "display: none;" , class: "sell-upload-drop-file"
@@ -48,7 +57,15 @@
                     %div
                       .select-wrap
                         = fa_icon "chevron-down"
-                        = f.collection_select(:root_category_id, @categories.roots, :id, :name, {prompt: "---"}, {class: "select-default"})
+                        = f.collection_select(:root_category_id, @categories.roots, :id, :name, {prompt: "---", selected: @product.category.parent.parent.id}, {class: "select-default"})
+                    %div#wrap-child
+                      .select-wrap
+                        = fa_icon "chevron-down"
+                        = f.collection_select(:child_category_id, @product.category.parent.siblings, :id, :name, {prompt: "---", selected: @product.category.parent.id}, {class: "select-default"})
+                    %div#wrap-grandchild
+                      .select-wrap
+                        = fa_icon "chevron-down"
+                        = f.collection_select(:grandchild_category_id, @product.category.siblings, :id, :name, {prompt: "---", selected: @product.category.id}, {class: "select-default"})
                   .form-group
                     %label
                       サイズ
@@ -102,7 +119,7 @@
                         .l-right.sell-price-input
                           ¥
                           %div
-                            = f.number_field :price, class: "input-default", min:300, max:9999999, placeholder: "例）300", value: ""
+                            = f.number_field :price, class: "input-default", min:300, max:9999999, placeholder: "例）300", value: @product.price
                     %li.clearfix
                       .l-left
                         販売手数料 (10%)

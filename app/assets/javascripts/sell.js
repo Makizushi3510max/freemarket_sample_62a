@@ -30,11 +30,15 @@ $(function(){
                   </div>`
 
   // プレビューを描画する関数
-  function renderingPreview(images,preview_count){
+  function renderingPreview(images, preview_count, registered_flag){
     $.each(images, function(index,value){
       // 未描画の画像のみプレビューに追加
       if ((preview_count - 1) < index){
-        var src = URL.createObjectURL(value)
+        if (registered_flag == false) {
+          var src = URL.createObjectURL(value)
+        } else {
+          var src = value
+        }
         // 1~4枚目の画像までは普通にプレビューを表示
         if (0 <= preview_count && preview_count <= 3 ){
           $("#images1").append(buildImagePreviewBox(preview_count,src))
@@ -103,18 +107,17 @@ $(function(){
 
   // fileが変更されると発火
   $(document).on("change", "#product_images",function(e){
-    var file = e.target.files;  // ファイルを配列に格納
-    // var fd = new FormData($(this)[0]);
-    // console.log($(this))
+    var file = e.target.files;  // ファイルをまとめて取得
     // 新しく追加されたファイルをimagesの末尾に追加
     $.each(file, function(index,value){
       images.push(value)
+      // temp_files.push(value)
     })
 
     // 画像が1つでも存在していればプレビュー一覧を描画
     if (images.length){
       // プレビュー一覧を描画
-      preview_count = renderingPreview(images,preview_count)
+      preview_count = renderingPreview(images,preview_count,false)
     }
   })
 
@@ -171,7 +174,8 @@ $(function(){
     }
   })
 
-  $('#sell-form').submit(function(event){
+  // 商品新規登録の時
+  $('#product-new-form').submit(function(event){
     event.preventDefault();
 
     var formData = new FormData(this);
@@ -195,4 +199,51 @@ $(function(){
     })
   })
 
+  // 商品編集の時
+  $('#product-edit-form').submit(function(event){
+    event.preventDefault();
+
+    var formData = new FormData(this);
+    $.each(images, function(index,image){
+      if ((registered_images.length - 1) < index){
+        // formData.append('image' + index,image,image.name)
+        temp_files.push(image)
+      }
+    })
+    $.each(temp_files, function(index,image){
+      formData.append('image' + index,image,image.name)
+    })
+    formData.append('images_length', temp_files.length)
+    $.ajax({
+      url: "/products/" + gon.product_id ,
+      type: "PATCH",
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(){
+      window.location.href = '/';
+    })
+    .fail(function(){
+      alert("error")
+    })
+  })
+
+  // 商品編集画面を読み込んだ時に実行
+  $("#product-edit-form").ready(function(){
+    // Railsコントローラから渡されたblobをregistered_imagesに格納
+    registered_images = gon.images
+
+    // 登録済み画像をimagesに追加
+    $.each(registered_images, function(index,value){
+      images.push(value)
+    })
+
+    // 画像が1つでも存在していればプレビュー一覧を描画
+    if (images.length){
+      // プレビュー一覧を描画
+      preview_count = renderingPreview(images,preview_count,true)
+    }
+  });
 })

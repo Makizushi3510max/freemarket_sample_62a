@@ -1,4 +1,3 @@
-
   // カテゴリー選択後に、対応するセレクトボックスを表示させる機能
   function buildSelectBox_Children(category_children){
     // 子カテゴリーのセレクトボックスのオプションを生成
@@ -11,8 +10,8 @@
     }
 
     var buildSelectBox_Children = `
-      <div>
-        <div class='select-wrap' id="wrap-child">
+      <div id="wrap-child">
+        <div class='select-wrap'>
           <i class="fa fa-chevron-down"></i>
           <select class="select-default" name="product[child_category_id]" id="product_child_category_id">
           <option value="">---</option>
@@ -38,8 +37,8 @@
     }
 
     var buildSelectBox_GrandChildren = `
-      <div>
-        <div class='select-wrap' id="wrap-grandchild">
+      <div id="wrap-grandchild">
+        <div class='select-wrap'>
           <i class="fa fa-chevron-down"></i>
           <select class="select-default" name="product[grandchild_category_id]" id="product_grandchild_category_id">
           <option value="">---</option>
@@ -53,8 +52,14 @@
     });
   };
 
-  // id: "product_root_category_id"のセレクトボックスが選択されると発火
+  // ルートカテゴリのセレクトボックスが選択されると発火
   $(document).on("change", "#product_root_category_id",function(e){
+    if ($('#wrap-grandchild').length){
+      $('#wrap-grandchild').remove();
+    }
+    if ($('#wrap-grandchild').length){
+      $('#wrap-grandchild').remove();
+    }
     var selected_category_root = $('#product_root_category_id').val();
 
     $.ajax({
@@ -74,8 +79,11 @@
     })
   })
 
-  // id: "product_child_category_id"のセレクトボックスが選択されると発火
+  // 子カテゴリのセレクトボックスが選択されると発火
   $(document).on("change", "#product_child_category_id",function(e){
+    if ($('#wrap-grandchild').length){
+      $('#wrap-grandchild').remove();
+    }
     var selected_category_child = $('#product_child_category_id').val();
 
     $.ajax({

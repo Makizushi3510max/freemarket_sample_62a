@@ -93,7 +93,7 @@
         - else
           = f.submit "売り切れました", class: "item-main__price__buy-btn buy-btn--gray", disabled: true
     - else
-      = link_to "変更する", root_path, class: "item-main__price__buy-btn"
+      = link_to "変更する", edit_product_path, class: "item-main__price__buy-btn"
       .item-box__text__center or
       = link_to "出品を一旦停止する", "#", class: "item-main__price__buy-btn buy-btn--gray"
       = link_to "この商品を削除する", "/products/#{@product.id}", method: :delete, class: "item-main__price__buy-btn buy-btn--gray"

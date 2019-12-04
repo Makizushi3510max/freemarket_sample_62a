@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post 'pay'      => 'purchase#pay'
   get  'done'     => 'purchase#done'
 
-  resources :products, only: [:index, :new, :create, :show, :destroy] do
+  resources :products do
     collection do
       get 'get_category_roots'
       get 'get_category_children'

@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load", function() {
+$(function() {
   $('.slider-list').slick({
     // ドットにクラスを追加
     // ドットの有無
