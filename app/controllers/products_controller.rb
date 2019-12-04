@@ -96,6 +96,13 @@ class ProductsController < ApplicationController
     @categories = Category.all
     @sizes = Size.all
     gon.product_id = @product.id
+    gon.images = []
+    if @product.images.present?
+      @product.images.each_with_index do |image, i|
+        gon.images.push(image.blob)
+      end
+    end
+    # gon.images = @product.images[0].blob
   end
 
   def update
