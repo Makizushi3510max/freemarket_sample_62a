@@ -9,15 +9,15 @@ class ProductsController < ApplicationController
       if product.category.parent.parent.id == 1
         @ladies << product
       end
-      if product.category.parent.parent.id == 417
+      if product.category.parent.parent.id == 200
         @mens << product
       end
 
-      if product.category.parent.parent.id == 1181
+      if product.category.parent.parent.id == 893
         @electronics << product
       end
 
-      if product.category.parent.parent.id == 946
+      if product.category.parent.parent.id == 680
         @toys << product 
       end
     end
