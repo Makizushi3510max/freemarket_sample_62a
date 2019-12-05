@@ -65,6 +65,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def get_brand
+    
+  end
+
   def create
     i = params.require(:images_length).to_i - 1
     for num in 0..i do
