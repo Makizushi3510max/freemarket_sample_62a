@@ -66,7 +66,11 @@ class ProductsController < ApplicationController
   end
 
   def get_brands
-    # render json: {status: 200}
+    # @users = User.search(params[:keyword], current_user.id)
+    @brands = Brand.where('name LIKE ?', "%#{params[:keyword]}%").limit(20)
+    respond_to do |format|
+      format.json
+    end
   end
 
   def create
