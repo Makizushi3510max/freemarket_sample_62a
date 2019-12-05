@@ -32,3 +32,7 @@ CSV.foreach("db/csv/root_categories.csv") do |row_root|
   i += 1
 end
 
+
+CSV.foreach("db/csv/brands.csv") do |row_brand|
+  brand = Brand.create(name: row_brand[0])
+end

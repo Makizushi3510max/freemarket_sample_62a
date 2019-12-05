@@ -9,7 +9,7 @@
         %div{"data-reactroot" => ""}
           .sell-container-inner
             %h2.single-head 商品の情報を入力
-            = form_with model: @product, id: "product-new-form", url: products_path, method: :post, remote: true do |f|
+            = form_with model: @product, id: "product-new-form", url: products_path, method: :post, local: true do |f|
               .sell-upload
                 %h3.sell-upload__head
                   出品画像
@@ -57,6 +57,27 @@
                       .select-wrap
                         = fa_icon "chevron-down"
                         = f.collection_select(:size_id, @sizes, :id, :name, {prompt: "---"}, {class: "select-default"})
+                  .form-group.form-suggest-container
+                    %label
+                      ブランド
+                      %span.form-group__any 任意
+                    %div
+                      .input-wrap
+                        = f.text_field :brand_name, class: "input-default", placeholder: "例) シャネル"
+                        %div
+                          %ul.sell-brand-suggest.form-suggest-list
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
+                            -# %li ほげほげ
                   .form-group
                     %label
                       商品の状態

@@ -9,15 +9,15 @@ class ProductsController < ApplicationController
       if product.category.parent.parent.id == 1
         @ladies << product
       end
-      if product.category.parent.parent.id == 417
+      if product.category.parent.parent.id == 200
         @mens << product
       end
 
-      if product.category.parent.parent.id == 1181
+      if product.category.parent.parent.id == 893
         @electronics << product
       end
 
-      if product.category.parent.parent.id == 946
+      if product.category.parent.parent.id == 680
         @toys << product 
       end
     end
@@ -65,6 +65,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def get_brands
+    @brands = Brand.where('name LIKE ?', "%#{params[:keyword]}%").limit(20)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def create
     i = params.require(:images_length).to_i - 1
     for num in 0..i do
@@ -75,6 +82,7 @@ class ProductsController < ApplicationController
       description:      product_params[:description],
       condition:        product_params[:condition],
       category_id:      product_params[:grandchild_category_id],
+      brand_id:         product_params[:brand_id],
       size_id:          product_params[:size_id],
       shipping_cost:    product_params[:shipping_cost],
       shipping_area:    product_params[:shipping_area],
@@ -99,28 +107,25 @@ class ProductsController < ApplicationController
     gon.images = []
     if @product.images.present?
       @product.images.each_with_index do |image, i|
-        # gon.images.push(image.blob)
         gon.images.push(rails_blob_path(image))
       end
     end
-    # gon.images = @product.images[0].blob
   end
 
   def update
-    # binding.pry
     session[:images] = []
     i =  + (params.require(:images_length).to_i - 1)
     for num in 0..i do
       session[:images].push(params.require(%I(image#{num})))
     end
     product = Product.find(params[:id])
-    # binding.pry
     if product.seller_id == current_user.id
       product.update(
         name:             product_params[:name],
         description:      product_params[:description],
         condition:        product_params[:condition],
         category_id:      product_params[:grandchild_category_id],
+        brand_id:         product_params[:brand_id],
         size_id:          product_params[:size_id],
         shipping_cost:    product_params[:shipping_cost],
         shipping_area:    product_params[:shipping_area],
@@ -143,6 +148,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :condition, :grandchild_category_id, :size_id, :shipping_cost, :shipping_area, :shipping_date, :price, images: []).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition, :grandchild_category_id, :brand_id, :size_id, :shipping_cost, :shipping_area, :shipping_date, :price, images: []).merge(seller_id: current_user.id)
   end
 end
