@@ -66,7 +66,6 @@ class ProductsController < ApplicationController
   end
 
   def get_brands
-    # @users = User.search(params[:keyword], current_user.id)
     @brands = Brand.where('name LIKE ?', "%#{params[:keyword]}%").limit(20)
     respond_to do |format|
       format.json
@@ -108,22 +107,18 @@ class ProductsController < ApplicationController
     gon.images = []
     if @product.images.present?
       @product.images.each_with_index do |image, i|
-        # gon.images.push(image.blob)
         gon.images.push(rails_blob_path(image))
       end
     end
-    # gon.images = @product.images[0].blob
   end
 
   def update
-    # binding.pry
     session[:images] = []
     i =  + (params.require(:images_length).to_i - 1)
     for num in 0..i do
       session[:images].push(params.require(%I(image#{num})))
     end
     product = Product.find(params[:id])
-    # binding.pry
     if product.seller_id == current_user.id
       product.update(
         name:             product_params[:name],
