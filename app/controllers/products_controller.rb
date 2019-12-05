@@ -73,9 +73,10 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @images = []
     i = params.require(:images_length).to_i - 1
     for num in 0..i do
-      session[:images].push(params.require(%I(image#{num})))
+      @images.push(params.require(%I(image#{num})))
     end
     @product = Product.new(
       name:             product_params[:name],
@@ -89,10 +90,9 @@ class ProductsController < ApplicationController
       shipping_date:    product_params[:shipping_date],
       price:            product_params[:price],
       seller_id:        product_params[:seller_id],
-      images:           session[:images]
+      images:           @images
     )
     if @product.save
-      session[:images].clear
       render json: { status: 200 }
     else
       render json: { status: 500 }
@@ -113,10 +113,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    session[:images] = []
+    @images = []
+    # session[:images] = []
     i =  + (params.require(:images_length).to_i - 1)
     for num in 0..i do
-      session[:images].push(params.require(%I(image#{num})))
+      @images.push(params.require(%I(image#{num})))
     end
     product = Product.find(params[:id])
     if product.seller_id == current_user.id
@@ -132,10 +133,10 @@ class ProductsController < ApplicationController
         shipping_date:    product_params[:shipping_date],
         price:            product_params[:price],
         seller_id:        product_params[:seller_id],
-        images:           session[:images]
+        images:           @images
       )
     end
-    session[:images].clear
+    # session[:images].clear
     render json: { status: 200 }
   end
 
