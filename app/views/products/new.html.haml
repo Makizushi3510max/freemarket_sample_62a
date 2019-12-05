@@ -59,6 +59,13 @@
                         = f.collection_select(:size_id, @sizes, :id, :name, {prompt: "---"}, {class: "select-default"})
                   .form-group
                     %label
+                      ブランド
+                      %span.form-group__any 任意
+                    %div
+                      .select-wrap
+                        = f.text_field :brand_id, class: "input-default", placeholder: "例) シャネル"
+                  .form-group
+                    %label
                       商品の状態
                       %span.form-group__require 必須
                     .select-wrap
