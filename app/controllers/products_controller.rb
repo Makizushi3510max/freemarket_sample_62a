@@ -65,8 +65,8 @@ class ProductsController < ApplicationController
     end
   end
 
-  def get_brand
-    
+  def get_brands
+    # render json: {status: 200}
   end
 
   def create

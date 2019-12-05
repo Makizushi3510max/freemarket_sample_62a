@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get 'get_category_roots'
       get 'get_category_children'
       get 'get_category_grandchildren'
+      get 'get_brands'
       post 'post_image'
     end
   end
