@@ -83,6 +83,7 @@ class ProductsController < ApplicationController
       description:      product_params[:description],
       condition:        product_params[:condition],
       category_id:      product_params[:grandchild_category_id],
+      brand_id:         product_params[:brand_id],
       size_id:          product_params[:size_id],
       shipping_cost:    product_params[:shipping_cost],
       shipping_area:    product_params[:shipping_area],
@@ -151,6 +152,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :condition, :grandchild_category_id, :size_id, :shipping_cost, :shipping_area, :shipping_date, :price, images: []).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition, :grandchild_category_id, :brand_id, :size_id, :shipping_cost, :shipping_area, :shipping_date, :price, images: []).merge(seller_id: current_user.id)
   end
 end
