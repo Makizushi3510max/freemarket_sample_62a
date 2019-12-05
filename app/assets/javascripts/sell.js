@@ -121,6 +121,46 @@ $(function(){
     }
   })
 
+  $(document).ready(function(){
+    $(".sell-upload-drop-box").on("dragenter", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      // console.log("DragEnter");
+    })
+    $(".sell-upload-drop-box").on("dragover", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      // console.log("DragOver");
+    })
+    $(".sell-upload-drop-box").on("dragleave", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      // console.log("DragLeave");
+    })
+    $(".sell-upload-drop-box").on("drop", function(_e){
+      var e = _e
+      if(_e.originalEvent){
+        e = _e.originalEvent;
+      }
+      e.stopPropagation();
+      e.preventDefault();
+
+      var dt = e.dataTransfer;
+      var files = dt.files;
+      // handleFiles(files);
+      // console.log(files)
+      $.each(files, function(index,value){
+        images.push(value)
+        // temp_files.push(value)
+      })
+      // 画像が1つでも存在していればプレビュー一覧を描画
+      if (images.length){
+        // プレビュー一覧を描画
+        preview_count = renderingPreview(images,preview_count,false)
+      }
+    })
+  })
+
   // 画像の削除機能
   $(document).on("click", ".delete-button", function(e){
     // 削除ボタンが押されたら配列の何番目なのかを取得する
