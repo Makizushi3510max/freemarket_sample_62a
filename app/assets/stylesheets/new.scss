@@ -196,7 +196,41 @@
         font-size: 12px;
         vertical-align: top;
       }
-  
+    }
+    .form-suggest-container{
+      position: relative;
+      .input-wrap{
+        width: 400px;
+        .fa{
+          position: absolute;
+          right: 16px;
+          top: 50%;
+          z-index: 2;
+          color: #888;
+          font-size: 8px;
+          transform: translate(0, -50%);
+        }
+        .sell-brand-suggest{
+          overflow: auto;
+          position: absolute;
+          left: 0;
+          right: 0;
+          z-index: 10;
+          max-height: 280px;
+          background: #fff;
+          box-shadow: 0 0 4px 0 rgba(0,0,0,0.64)
+        }
+        .form-suggest-list{
+          // float: right;
+          width: 400px;
+          display: inline-block;
+          li{
+            cursor: pointer;
+            padding: 16px 8px;
+            font-size: 14px;
+          }
+        }
+      }
     }
     .textarea-default{
       margin: 8px 0 0;
