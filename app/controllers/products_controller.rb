@@ -130,6 +130,7 @@ class ProductsController < ApplicationController
         description:      product_params[:description],
         condition:        product_params[:condition],
         category_id:      product_params[:grandchild_category_id],
+        brand_id:         product_params[:brand_id],
         size_id:          product_params[:size_id],
         shipping_cost:    product_params[:shipping_cost],
         shipping_area:    product_params[:shipping_area],
