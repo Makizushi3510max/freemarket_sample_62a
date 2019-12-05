@@ -2,9 +2,9 @@ require "csv"
 
 #ユーザー生成
 
-User.create(nickname:         "てすと",
+User.create(nickname:         "出品用アカウント",
             password:         "1234abcd",
-            email:            "test@test.com",
+            email:            "hoge@hoge.com",
             date_of_birth:    "1996-11-20",
             last_name:        "てすと",
             first_name:       "たろう",
@@ -13,8 +13,16 @@ User.create(nickname:         "てすと",
             phone_number:     "12312341234"
 )
 
-
-
+User.create(nickname:         "購入用アカウント",
+            password:         "1234abcd",
+            email:            "fuga@fuga.com",
+            date_of_birth:    "1996-11-20",
+            last_name:        "てすと",
+            first_name:       "たろう",
+            last_name_kana:   "テスト",
+            first_name_kana:  "タロウ",
+            phone_number:     "12312341234"
+)
 
 i = 0
 CSV.foreach("db/csv/root_categories.csv") do |row_root|
@@ -32,7 +40,11 @@ CSV.foreach("db/csv/root_categories.csv") do |row_root|
   i += 1
 end
 
+CSV.foreach("db/csv/sizes/0.csv") do |row_size|
+  size = Size.create(name: row_size[0])
+end
 
 CSV.foreach("db/csv/brands.csv") do |row_brand|
   brand = Brand.create(name: row_brand[0])
 end
+
