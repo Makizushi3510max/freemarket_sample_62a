@@ -121,6 +121,27 @@ $(function(){
     }
   })
 
+
+
+  $(document).ready(function(){
+    $(document).on("dragenter", ".sell-upload-drop-box", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+    });
+    $(document).on("dragover", ".sell-upload-drop-box", function(e){
+      e.stopPropagation();
+      e.preventDefault();
+    });
+    // ドラッグアンドドロップされると発火
+    $(document).on("drop", ".sell-upload-drop-box",function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      // var fileData = e.originalEvent.dataTransfer.file
+      // console.log(fileData)
+      console.log(e)
+    })
+  })
+
   // 画像の削除機能
   $(document).on("click", ".delete-button", function(e){
     // 削除ボタンが押されたら配列の何番目なのかを取得する
