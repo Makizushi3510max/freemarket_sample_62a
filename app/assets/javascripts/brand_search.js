@@ -9,22 +9,20 @@ $(function(){
       data: {keyword: input},
       dataType: "json"
     })
-    .done(function(){
-      console.log("success")
-      // $("#brand-search-result").empty();
-      // if (brands.length !== 0){
-      //   brands.forEach(function(brand){
-      //     addUser(brand);
-      //   });
-      // } else if (input.length == 0){
-      //   return false;
-      // } else {
-      //   addNoUser();
-      // }
+    .done(function(brands){
+      // console.log("success")
+      // console.log(data)
+      $(".form-suggest-list").empty();
+      if (brands.length !== 0){
+        brands.forEach(function(brand){
+          $(".form-suggest-list").append(`<li id="${brand.id}">${brand.name}</li>`)
+        });
+      } else if (input.length == 0){
+        return false;
+      }
     })
     .fail(function(){
       console.log("error")
-      // alert("ユーザ検索に失敗");
     });
   })
 })
