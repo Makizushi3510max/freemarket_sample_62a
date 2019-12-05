@@ -92,3 +92,4 @@ gem 'dotenv-rails'
 gem "gretel"
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'gon'
+gem 'ransack'
