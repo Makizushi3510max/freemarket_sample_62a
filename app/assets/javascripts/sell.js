@@ -123,35 +123,21 @@ $(function(){
 
   $(document).ready(function(){
     $(".sell-upload-drop-box").on("dragenter", function(e){
-      e.stopPropagation();
       e.preventDefault();
-      // console.log("DragEnter");
     })
     $(".sell-upload-drop-box").on("dragover", function(e){
-      e.stopPropagation();
       e.preventDefault();
-      // console.log("DragOver");
     })
-    $(".sell-upload-drop-box").on("dragleave", function(e){
-      e.stopPropagation();
-      e.preventDefault();
-      // console.log("DragLeave");
-    })
-    $(".sell-upload-drop-box").on("drop", function(_e){
-      var e = _e
-      if(_e.originalEvent){
-        e = _e.originalEvent;
-      }
+    $(".sell-upload-drop-box").on("drop", function(e){
       e.stopPropagation();
       e.preventDefault();
 
-      var dt = e.dataTransfer;
+      var dt = e.originalEvent.dataTransfer;
       var files = dt.files;
-      // handleFiles(files);
-      // console.log(files)
+      
+      // images配列の最後尾に画像を追加
       $.each(files, function(index,value){
         images.push(value)
-        // temp_files.push(value)
       })
       // 画像が1つでも存在していればプレビュー一覧を描画
       if (images.length){
