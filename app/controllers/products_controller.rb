@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
     @mens  = []
     @electronics = []
     @toys = []
+    @chanels = []
+    @vuittons = []
+    @supremes = []
+    @nikes = []
     @products.each do |product|
       if product.category.parent.parent.id == 1
         @ladies << product
