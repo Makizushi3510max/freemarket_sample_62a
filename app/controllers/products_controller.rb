@@ -23,9 +23,10 @@ class ProductsController < ApplicationController
     end
   end
 
-  def get_category_root
+  def get_category_roots
     @category_roots = Category.all.roots
-    respond to do |format|
+    # binding.pry
+    respond_to do |format|
       format.json
     end
   end

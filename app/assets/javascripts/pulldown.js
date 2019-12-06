@@ -1,97 +1,126 @@
 $(function(){
-  $('header__content__category').hover(function() {
-    console.log('ttt')
-  // カテゴリー選択後に、対応するセレクトボックスを表示させる機能
-  function hover(category_children){
-    // 子カテゴリーのセレクトボックスのオプションを生成
-    function buildSelectBox_Children_Options(child){
-      var optionHtml =`
-        <option value="${child.id}">
-          ${child.name}
-        </option>`
-    return optionHtml;    
-    }
+  //header__content__categoryにホバーしたら発火
+  $(document).on("mouseover",".category__select", function(e) {
+    $.ajax({
+      url: "/products/get_category_roots",
+      type: "GET",
+      dataType: "json"
+    })
+    .done(function(category_roots){
+      //ajax成功時ルートカテゴリのリストを表示する関数を呼び出す
+      buildCategoryList_Root(category_roots);
+    })
+    .fail(function(){
+      console.log('error');
+    })
 
-    var buildSelectBox_Children = `
-    <div>
-      <div class='parents-parent' id="wrap-grandchild">
-        <select class="menu-default" name="product[grandchild_category_id]" id="product_grandchild_category_id">
-      <option value="">---</option>
-    </div>
-  </div>`
+    // カテゴリー選択後に、対応するリストを表示させる関数
+    function buildCategoryList_Root(category_roots){
+      category_roots.forEach(function(root){
+        //header__content__categoryの下に生成したhtmlを追加
+        $(".product-category__root").append(buildCategoryBox_Root(root));
+      });
 
-  $(".form-group.category").append(buildSelectBox_Children)
-
-  category_children.forEach(function(child) {
-    $("#product_child_category_id").append(buildSelectBox_Children_Options(child))
+      //ルートカテゴリーのリストを生成
+      function buildCategoryBox_Root(root){
+        var optionHtml = `<li id="product_root_category_id" value="${root.id}">
+                            ${root.name}
+                            <ul></ul>
+                          </li>`
+        return optionHtml;
+      };
+    };
   });
-  };
 
-  // カテゴリー選択後に、対応するセレクトボックスを表示させる機能
-  function buildSelectBox_GrandChildren(category_grandchildren){
-    // 孫カテゴリーのセレクトボックスのオプションを生成
-    function buildSelectBox_GrandChildren_Options(grandchild){
-      var optionHtml =`
-        <option value="${grandchild.id}">
-          ${grandchild.name}
-        </option>`
-    return optionHtml;
-    }
 
-    var buildSelectBox_GrandChildren = `
-      <div>
-        <div class='parents-parent' id="wrap-grandchild">
-          <select class="menu-default" name="product[grandchild_category_id]" id="product_grandchild_category_id">
-          <option value="">---</option>
-        </div>
-      </div>`
+  $(document).on("mouseover","#product_root_category_id", function(e) {
+    $(".product-category__grandchildren").empty();
+    $(".product-category__children").empty();
+    $("#product_root_category_id.active").removeClass("active");
 
-    $(".form-group.category").append(buildSelectBox_GrandChildren)
-
-    category_grandchildren.forEach(function(grandchild) {
-      $("#product_grandchild_category_id").append(buildSelectBox_GrandChildren_Options(grandchild))
-    });
-  };
-
-  // id: "product_root_category_id"のセレクトボックスが選択されると発火
-  $(document).on("change", "#product_root_category_id",function(e){
-    var selected_category_root = $('#product_root_category_id').val();
-
+    var selected_category_root = $(this).val();
+    $("#product_root_category_id").removeClass("active");
+    $(this).addClass("active");
+    // console.log(selected_category_root);
     $.ajax({
       url: "/products/get_category_children",
       type: "GET",
-      data: { root_category_id: selected_category_root },
+      data: {root_category_id: selected_category_root},
       dataType: "json"
     })
     .done(function(category_children){
-      $("#wrap-child").remove()
-      $("#wrap-grandchild").remove()
-      buildSelectBox_Children(category_children)
+      //ajax成功時ルートカテゴリのリストを表示する関数を呼び出す
+      buildCategoryList_Children(category_children);
     })
     .fail(function(){
       console.log('error');
     })
-  })
 
-  // id: "product_child_category_id"のセレクトボックスが選択されると発火
-  $(document).on("change", "#product_child_category_id",function(e){
-    var selected_category_child = $('#product_child_category_id').val();
+    function buildCategoryList_Children(category_children){
+      category_children.forEach(function(children) {
+        //header__content__categoryの下に生成したhtmlを追加
+        $(".product-category__children").append(buildCategoryBox_children(children));
+      });
 
+      //ルートカテゴリーのリストを生成
+      function buildCategoryBox_children(children){
+        var optionHtml = `<li id="product_children_category_id" value="${children.id}">
+                            ${children.name}
+                          </li>`
+        return optionHtml;
+      };
+    };
+  });
+
+
+  $(document).on("mouseover","#product_children_category_id", function(e) {
+    $(".product-category__grandchildren").empty();
+    $("#product_children_category_id.active").removeClass("active");
+
+    var selected_category_children = $(this).val();
+    $("#product_children_category_id").removeClass("active");
+    $(this).addClass("active");
+    // console.log(selected_category_root);
     $.ajax({
       url: "/products/get_category_grandchildren",
       type: "GET",
-      data: { child_category_id: selected_category_child },
+      data: {child_category_id: selected_category_children},
       dataType: "json"
     })
     .done(function(category_grandchildren){
-      // console.log(category_grandchildren)
-      // $("#wrap-child").remove()
-      $("#wrap-grandchild").remove()
-      buildSelectBox_GrandChildren(category_grandchildren)
+      //ajax成功時ルートカテゴリのリストを表示する関数を呼び出す
+      buildCategoryList_Children(category_grandchildren);
     })
     .fail(function(){
       console.log('error');
     })
+
+    function buildCategoryList_Children(category_grandchildren){
+      category_grandchildren.forEach(function(grandchildren) {
+        //header__content__categoryの下に生成したhtmlを追加
+        $(".product-category__grandchildren").append(buildCategoryBox_grandchildren(grandchildren));
+      });
+
+      //ルートカテゴリーのリストを生成
+      function buildCategoryBox_grandchildren(grandchildren){
+        var optionHtml = `<li id="product_grandchildren_category_id" value="${grandchildren.id}">
+                            ${grandchildren.name}
+                          </li>`
+        return optionHtml;
+      };
+    };
   })
-})
+
+
+  $(document).on("mouseover","#product_grandchildren_category_id", function(e) {
+    $("#product_grandchildren_category_id.active").removeClass("active");
+    $(this).addClass("active");
+  }).on("mouseleave",".product-category__grandchildren", function(e){
+    $(".product-category__grandchildren").empty();
+  });
+
+  $(document).on("mouseleave",".product-category", function(e) {
+    $(".product-category div").empty();
+  });
+
 })
