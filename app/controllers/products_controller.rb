@@ -24,6 +24,22 @@ class ProductsController < ApplicationController
       if product.category.parent.parent.id == 680
         @toys << product 
       end
+
+      if product.brand.name == "シャネル"
+        @chanels << product
+      end
+
+      if product.brand.name == "ルイ ヴィトン"
+        @vuittons << product
+      end
+
+      if product.brand.name == "シュプリーム"
+        @supremes << product
+      end
+
+      if product.brand.name == "ナイキ"
+        @nikes << product
+      end
     end
   end
 
