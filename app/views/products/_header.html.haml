@@ -29,7 +29,6 @@
           .header__content__category
             = fa_icon "list-ul"
             %span.text カテゴリーから探す
-            -# .select
 
         %ul.header__content__bd
           %a.header__content__brand{:href => "/jp/brand/"}
@@ -71,3 +70,7 @@
               %a.signin-btn
                 = link_to user_session_path do
                   %span.text ログイン
+    .product-category
+      .product-category__root
+      .product-category__children
+      .product-category__grandchildren
