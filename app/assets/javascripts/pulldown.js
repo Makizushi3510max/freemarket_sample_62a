@@ -1,6 +1,6 @@
 $(function(){
   //header__content__categoryにホバーしたら発火
-  $(document).on("mouseover",".header__content__category", function(e) {
+  $(document).on("mouseover",".category__select", function(e) {
 
     $.ajax({
       url: "/products/get_category_roots",
@@ -17,7 +17,7 @@ $(function(){
 
     // カテゴリー選択後に、対応するリストを表示させる関数
     function buildCategoryList_Root(category_roots){
-      category_roots.forEach(function(root) {
+      category_roots.forEach(function(root){
         //header__content__categoryの下に生成したhtmlを追加
         $(".header__content__category").append(buildCategoryBox_Root(root));
       });
@@ -33,33 +33,34 @@ $(function(){
     
   ///////////////////////////////////////////////////////////////
     // カテゴリー選択後に、対応するセレクトボックスを表示させる機能
-    function buildSelectBox_GrandChildren(category_grandchildren){
+    function buildSelectBox_GrandChildren(category_grandroots){
       // 孫カテゴリーのセレクトボックスのオプションを生成
       function buildSelectBox_GrandChildren_Options(grandchild){
-        var optionHtml =`
-          <option value="${grandchild.id}">
-            ${grandchild.name}
-          </option>`
-      return optionHtml;
+        // var optionHtml =`<option value="${grandchild.id}">
+        //                    ${grandchild.name}
+        //                  </option>`
+        var optionHtml = `<div id="product_root_category_id">
+                           ${grandchild.name}
+                          </div>`
+        return optionHtml;
       }
   
-      var buildSelectBox_GrandChildren = `
-        <div>
-          <div class='parents-parent' id="wrap-grandchild">
-            <select class="menu-default" name="product[grandchild_category_id]" id="product_grandchild_category_id">
-            <option value="">---</option>
-          </div>
-        </div>`
+      // var buildSelectBox_GrandChildren = `
+      //   <div>
+      //     <div class='parents-parent' id="wrap-grandchild">
+      //       <select class="menu-default" name="product[grandchild_category_id]" id="product_grandchild_category_id">
+      //       <option value="">---</option>
+      //     </div>
+      //   </div>`
   
-      $(".form-group.category").append(buildSelectBox_GrandChildren)
-  
-      category_grandchildren.forEach(function(grandchild) {
-        $("#product_grandchild_category_id").append(buildSelectBox_GrandChildren_Options(grandchild))
+      $(".header__content__categor").append(buildSelectBox_GrandChildren)
+      category_grandroots.forEach(function(grandroot){
+        $("#product_root_category_id").append(buildCategoryBox_GrandRoot(grandroot))
       });
     };
   
     // id: "product_root_category_id"のセレクトボックスが選択されると発火
-    $(document).on("change", "#product_root_category_id",function(e){
+    $(document).on("mouseover", "#product_root_category_id",function(e){
       var selected_category_root = $('#product_root_category_id').val();
   
       $.ajax({

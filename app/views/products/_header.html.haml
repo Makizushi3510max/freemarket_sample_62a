@@ -28,13 +28,27 @@
         %ul.header__content__cg
           .header__content__category
             = fa_icon "list-ul"
-            %span.text カテゴリーから探す
+            %span.category__select.text カテゴリーから探す
             -# .select
 
         %ul.header__content__bd
-          %a.header__content__brand{:href => "/jp/brand/"}
+          %li.header__content__brand
             = fa_icon "tags"
-            %span.header__content__brand__text ブランドから探す
+            %a.header__content.text{:href => "#"} ブランドから探す
+            %ul.pc-header-nav-parent-wrap
+              %li.pc-header-nav-parent
+                %a.nav-brand{:href => "#"} シャネル
+              %li.pc-header-nav-parent
+                %a.nav-brand{:href => "#"} ナイキ
+              %li.pc-header-nav-parent
+                %a.nav-brand{:href => "#"} ルイ ヴィトン
+              %li.pc-header-nav-parent
+                %a.nav-brand{:href => "#"} シュプリーム
+              %li.pc-header-nav-parent
+                %a.nav-brand{:href => "#"} アディダス
+              %li.pc-header-nav-parent
+                %a.nav-brand{:href => "#"} ブランド一覧
+          
       .header__uzer
         %ul.account
           - if user_signed_in?
@@ -43,18 +57,27 @@
                 %svg.like__box__logo{"aria-hidden" => "true", :height => "15", :viewbox => "0 0 16 15", :width => "16"}
                 = fa_icon "heart-o"
                 %span.like__box__text いいね！一覧
-            %li.notice
-              %a.notice__box{:href => "#"}
-                %svg.notice__box__logo{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 14 16", :width => "14"}
+
+
+                
+            %ul.notice
+              %li.notice__box
                 = fa_icon "bell-o"
-                %span.notice__box__text お知らせ
-            %li.things
-              %a.things__box{:href => "#"}
-                %svg.things__box__logo{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 21 16", :width => "21"}
+                %a.notice__box.text{:href => "#"} お知らせ
+                %ul.pc-header-nav-parent-wrap
+                  %li.pc-header-nav-parent
+                    = image_tag "logos/logo_red.svg", alt: "mercari", height: "45", width: "70"
+                    %a.nav-brand 事務所からの個人メッセージ「ログイン通知」
+                  = fa_icon "clock-o"
+                  .pc-header-nav_text 1時間前
+
+
+            %ul.things
+              %li.things__box
                 = fa_icon "check"
-                %span.things__box__text やることリスト
-                .sc-ibxdXY.fVKnBn
-                  .sc-bYSBpT-text 現在、やることリストは多分ありません
+                %a.things__box__text{:href => "#"} やることリスト
+                %ul.sc-ibxdXY.fVKnBn
+                  %li.sc-bYSBpT-text 現在、やることリストは多分ありません
                   
             %li.mypage-link
               %a.mypage-link__box__img
