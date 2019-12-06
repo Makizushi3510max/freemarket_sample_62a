@@ -10,35 +10,37 @@ class ProductsController < ApplicationController
     @supremes = []
     @nikes = []
     @products.each do |product|
-      if product.category.parent.parent.id == 1
+      if product.category.parent.parent.name == "レディース"
         @ladies << product
       end
-      if product.category.parent.parent.id == 200
+      if product.category.parent.parent.name == "メンズ"
         @mens << product
       end
 
-      if product.category.parent.parent.id == 893
+      if product.category.parent.parent.name == "家電・スマホ・カメラ"
         @electronics << product
       end
 
-      if product.category.parent.parent.id == 680
+      if product.category.parent.parent.name == "おもちゃ・ホビー・グッズ"
         @toys << product 
       end
 
-      if product.brand.name == "シャネル"
-        @chanels << product
-      end
-
-      if product.brand.name == "ルイ ヴィトン"
-        @vuittons << product
-      end
-
-      if product.brand.name == "シュプリーム"
-        @supremes << product
-      end
-
-      if product.brand.name == "ナイキ"
-        @nikes << product
+      unless product.brand.nil?
+        if product.brand.name == "シャネル"
+          @chanels << product
+        end
+  
+        if product.brand.name == "ルイ ヴィトン"
+          @vuittons << product
+        end
+  
+        if product.brand.name == "シュプリーム"
+          @supremes << product
+        end
+  
+        if product.brand.name == "ナイキ"
+          @nikes << product
+        end  
       end
     end
   end

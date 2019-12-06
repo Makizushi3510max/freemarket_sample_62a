@@ -194,15 +194,22 @@
       %div                  
 
         %ul.main__foot__product__div__box
-          %li.main__foot__product__div__box__item
-            %div.main__foot__product__box__item__div
-              %a.main__foot__product__box__item__div__link{:href => "#"}
-                %figure.main__foot__product__box__item__div__link__figure
-                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                    %span.main__foot__product__box__item__div__link__figure__figcaption__span 
-                  .main__foot__product__box__item__link__figure__figcaption__style
-                    %span.main__foot__product__box__item__link__figure__figcaption__style__span
-                    %img.main__foot__product__box__item__link__figure__figcaption__style__img
+          - @chanels.first(10).each do |chanel|
+            %li.main__foot__product__div__box__item
+              = link_to "/products/#{chanel.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
+                %div.main__foot__product__box__item__div
+                  .main__foot__product__box__item__div__link
+                    %figure.main__foot__product__box__item__div__link__figure
+                      %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                        %span.main__foot__product__box__item__div__link__figure__figcaption__span
+                          = chanel.name
+                      .main__foot__product__box__item__link__figure__figcaption__style
+                        %span.main__foot__product__box__item__link__figure__figcaption__style__span
+                          = "¥#{chanel.price.to_s(:delimited, delimiter: ',')}"
+                        = image_tag chanel.images[0], class:"main__foot__product__box__item__link__figure__figcaption__style__img"
+                        - unless chanel.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
   .main__foot
     .main__foot__connect
@@ -217,15 +224,22 @@
       %div                  
 
         %ul.main__foot__product__div__box
-          %li.main__foot__product__div__box__item
-            %div.main__foot__product__box__item__div
-              %a.main__foot__product__box__item__div__link{:href => "#"}
-                %figure.main__foot__product__box__item__div__link__figure
-                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                    %span.main__foot__product__box__item__div__link__figure__figcaption__span 
-                  .main__foot__product__box__item__link__figure__figcaption__style
-                    %span.main__foot__product__box__item__link__figure__figcaption__style__span 
-                    %img.main__foot__product__box__item__link__figure__figcaption__style__img
+          - @vuittons.first(10).each do |vuitton|
+            %li.main__foot__product__div__box__item
+              = link_to "/products/#{vuitton.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
+                %div.main__foot__product__box__item__div
+                  .main__foot__product__box__item__div__link
+                    %figure.main__foot__product__box__item__div__link__figure
+                      %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                        %span.main__foot__product__box__item__div__link__figure__figcaption__span
+                          = vuitton.name
+                      .main__foot__product__box__item__link__figure__figcaption__style
+                        %span.main__foot__product__box__item__link__figure__figcaption__style__span
+                          = "¥#{vuitton.price.to_s(:delimited, delimiter: ',')}"
+                        = image_tag vuitton.images[0], class:"main__foot__product__box__item__link__figure__figcaption__style__img"
+                        - unless vuitton.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
   .main__foot
     .main__foot__connect
@@ -240,15 +254,22 @@
       %div                  
 
         %ul.main__foot__product__div__box
-          %li.main__foot__product__div__box__item
-            %div.main__foot__product__box__item__div
-              %a.main__foot__product__box__item__div__link{:href => "#"}
-                %figure.main__foot__product__box__item__div__link__figure
-                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                    %span.main__foot__product__box__item__div__link__figure__figcaption__span 
-                  .main__foot__product__box__item__link__figure__figcaption__style
-                    %span.main__foot__product__box__item__link__figure__figcaption__style__span 
-                    %img.main__foot__product__box__item__link__figure__figcaption__style__img
+          - @supremes.first(10).each do |supreme|
+            %li.main__foot__product__div__box__item
+              = link_to "/products/#{supreme.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
+                %div.main__foot__product__box__item__div
+                  .main__foot__product__box__item__div__link
+                    %figure.main__foot__product__box__item__div__link__figure
+                      %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                        %span.main__foot__product__box__item__div__link__figure__figcaption__span
+                          = supreme.name
+                      .main__foot__product__box__item__link__figure__figcaption__style
+                        %span.main__foot__product__box__item__link__figure__figcaption__style__span
+                          = "¥#{supreme.price.to_s(:delimited, delimiter: ',')}"
+                        = image_tag supreme.images[0], class:"main__foot__product__box__item__link__figure__figcaption__style__img"
+                        - unless supreme.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
 
   .main__foot
     .main__foot__connect
@@ -263,15 +284,22 @@
       %div                  
 
         %ul.main__foot__product__div__box
-          %li.main__foot__product__div__box__item
-            %div.main__foot__product__box__item__div
-              %a.main__foot__product__box__item__div__link{:href => "#"}
-                %figure.main__foot__product__box__item__div__link__figure
-                  %figcaption.main__foot__product__box__item__div__link__figure__figcaption
-                    %span.main__foot__product__box__item__div__link__figure__figcaption__span 
-                  .main__foot__product__box__item__link__figure__figcaption__style
-                    %span.main__foot__product__box__item__link__figure__figcaption__style__span 
-                    %img.main__foot__product__box__item__link__figure__figcaption__style__img
+          - @nikes.first(10).each do |nike|
+            %li.main__foot__product__div__box__item
+              = link_to "/products/#{nike.id}", class: "main__main__product__div__box__item", data:{turbolinks: false} do
+                %div.main__foot__product__box__item__div
+                  %a.main__foot__product__box__item__div__link
+                    %figure.main__foot__product__box__item__div__link__figure
+                      %figcaption.main__foot__product__box__item__div__link__figure__figcaption
+                        %span.main__foot__product__box__item__div__link__figure__figcaption__span
+                          = nike.name
+                      .main__foot__product__box__item__link__figure__figcaption__style
+                        %span.main__foot__product__box__item__link__figure__figcaption__style__span
+                          = "¥#{nike.price.to_s(:delimited, delimiter: ',')}"
+                        = image_tag nike.images[0], class:"main__foot__product__box__item__link__figure__figcaption__style__img"
+                        - unless nike.buyer_id.nil?
+                          .product-box__sold-out
+                            %div SOLD
   
   .air__box
 
