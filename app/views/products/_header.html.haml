@@ -29,11 +29,29 @@
           .header__content__category
             = fa_icon "list-ul"
             %span.category__select.text
-            カテゴリーから探す
-              .product-category
-      .product-category__root
-      .product-category__children
-      .product-category__grandchildren
+              カテゴリーから探す
+            %ul.header__menu-box--left__parents 
+              %li.header__menu-box--left__parents__parent 
+                = link_to "レディース"
+                %ul.header__menu-box--left__children 
+                  = render partial: "header_child", collection: @category_children1, as: "category"
+              %li.header__menu-box--left__parents__parent 
+                = link_to "メンズ"
+                %ul.header__menu-box--left__children 
+                  = render partial: "header_child", collection: @category_children2, as: "category"
+              %li.header__menu-box--left__parents__parent 
+                = link_to "ベビー・キッズ"
+                %ul.header__menu-box--left__children 
+                  = render partial: "header_child", collection: @category_children3, as: "category"
+              %li.header__menu-box--left__parents__parent 
+                = link_to "インテリア・住まい・小物"
+                %ul.header__menu-box--left__children 
+                  = render partial: "header_child", collection: @category_children4, as: "category"
+              %li.header__menu-box--left__parents__parent 
+                = link_to "本・音楽・ゲーム"
+                %ul.header__menu-box--left__children 
+                  = render partial: "header_child", collection: @category_children5, as: "category"
+                  
 
         %ul.header__content__bd
           %li.header__content__brand

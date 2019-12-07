@@ -77,7 +77,6 @@
         display: flex;
         margin-left: -3px;
         &__cg {
-          display: flex;
           cursor: pointer;
           height: 44px;
           position: relative;
@@ -104,8 +103,119 @@
               font-size: 13px;
               color: black;
             }
-
+            &:hover {
+              color: blue;
+              ul {
+                li {
+                  display: block;
+                  height: 44px;
+                }
+              }
+            }
+            ul {
+              position: absolute;
+              top: 44px;
+              z-index: 1000;
+              font-weight: normal;
+              li {
+                width: 220px;
+                height: 0;
+                display: none;
+                background-color: white;
+                &:hover {
+                  color: blue;
+                  .header__menu-box--left__children {
+                    &__child {
+                      display: block;
+                      height: 30px;
+                    }
+                  }
+                }
+                a {
+                  // @include dropMenu_aTag(44px);
+                  &:hover {
+                    background-color: red;
+                    color: white;
+                  }
+                }
+                .header__menu-box--left__children {
+                  position: absolute;
+                  top: 0;
+                  left: 220px;
+                  z-index: 1000;
+                  height: 616px;
+                  background-color: white;
+                  border-right: 1px solid gray;
+                  &__child {
+                    width: 220px;
+                    height: 0;
+                    display: none;
+                    background-color: white;
+                    &:hover {
+                      color: blue;
+                      .header__menu-box--left__grand-children {
+                        &__grand-child {
+                          display: block;
+                          height: 30px;
+                        }
+                      }
+                    }
+                    a {
+                      // @include dropMenu_aTag(30px);
+                      font-size: 14px;
+                      &:hover {
+                        background-color: #f3f3f3;
+                      }
+                    }
+                    .header__menu-box--left__grand-children {
+                      position: absolute;
+                      top: 0;
+                      left: 220px;
+                      z-index: 1000;
+                      height: 616px;
+                      background-color: white;
+                      border-right: 1px solid gray;
+  
+                      &__grand-child {
+                        width: 300px;
+                        height: 0;
+                        display: none;
+                        background-color: white;
+                        a {
+                          // @include dropMenu_aTag(30px);
+                          font-size: 14px;
+                          &:hover {
+                            background-color: #f3f3f3;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            // .product-category{
+            //   display: flex;
+            //   list-style: none;
+            //   font-size: 14px;
+            //   font-weight: 400;
+            //   &__root{
+            //     background-color: #fff;
+            //     width: 224px;
+            //     line-height: 44px;
+            //     text-decoration: none;
+            //     box-shadow: 1px 0 0 0 #eee inset;
+            //   }
+            //   &__children{
+            //     background-color: #fff;
+            //     box-shadow: 1px 0 0 0 #eee inset;
+            //   }
+            //   &__grandchildren{
+            //     background-color: #fff;
+            //     box-shadow: 1px 0 0 0 #eee inset;
+            //   }
+            // }  
           }
+        }
           &:hover {
             .text {
               color: #0099e8;
@@ -499,28 +609,6 @@
               color: #fff;
           }
         }
-      }
-    }
-    .product-category{
-      display: flex;
-      width: 768px;
-      list-style: none;
-      font-size: 14px;
-      font-weight: 400;
-      &__root{
-        background-color: #fff;
-        width: 224px;
-        line-height: 44px;
-        text-decoration: none;
-        box-shadow: 1px 0 0 0 #eee inset;
-      }
-      &__children{
-        background-color: #fff;
-        box-shadow: 1px 0 0 0 #eee inset;
-      }
-      &__grandchildren{
-        background-color: #fff;
-        box-shadow: 1px 0 0 0 #eee inset;
       }
     }
     #product_root_category_id{
