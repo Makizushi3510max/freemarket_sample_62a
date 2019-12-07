@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  post 'confirm'  => 'purchase#confirm'
+  get 'confirm'  => 'purchase#confirm'
   post 'pay'      => 'purchase#pay'
   get  'done'     => 'purchase#done'
 

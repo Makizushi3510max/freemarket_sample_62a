@@ -4,12 +4,13 @@ class PurchaseController < ApplicationController
 
   def confirm
     card = Card.where(user_id: current_user.id).first
-
-
+    # binding.pry
     if card.blank?
+      session[:product_id] = params[:product_id]
       redirect_to card_registration_mypages_path
     else
-      @product = Product.find(params[:product_id])
+      session[:product_id] = params[:product_id] if params[:product_id] = nil
+      @product = Product.find(session[:product_id])
       @address = Address.where(user_id: current_user.id).first  
       card_info
     end
@@ -44,6 +45,7 @@ class PurchaseController < ApplicationController
   def done
     @product = Product.find(params[:product_id])
     @address = Address.where(user_id: current_user.id).first
+    session[:product_id].clear
     card_info
   end
 
