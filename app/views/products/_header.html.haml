@@ -28,8 +28,12 @@
         %ul.header__content__cg
           .header__content__category
             = fa_icon "list-ul"
-            %span.category__select.text カテゴリーから探す
-            -# .select
+            %span.category__select.text
+            カテゴリーから探す
+              .product-category
+      .product-category__root
+      .product-category__children
+      .product-category__grandchildren
 
         %ul.header__content__bd
           %li.header__content__brand
@@ -94,7 +98,3 @@
               %a.signin-btn
                 = link_to user_session_path do
                   %span.text ログイン
-    .product-category
-      .product-category__root
-      .product-category__children
-      .product-category__grandchildren
