@@ -33,7 +33,7 @@ class MypagesController < ApplicationController
         customer_id:      customer.id,
         card_id:          customer.default_card
       )
-      redirect_to purchase_index_path
+      redirect_to confirm_path
     end
   end
 
