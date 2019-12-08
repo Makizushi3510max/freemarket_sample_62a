@@ -17,10 +17,10 @@
         -#     = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post
         = link_to user_facebook_omniauth_authorize_path, method: :post, id: "facebook-login", class: "btn-default btn-sns btn-sns-facebook" do
           = fa_icon "facebook-official", class: "btn__icon"
-          Facebookで登録する
+          Facebookでログイン
         = link_to user_google_oauth2_omniauth_authorize_path, method: :post, id: "google-login", class: "btn-default btn-sns btn-sns-google" do
           = fa_icon "google", class: "btn__icon"
-          Googleで登録する
+          Googleでログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .login__inner
           .form__group

@@ -93,7 +93,8 @@
         .item-main__price__buy-btn.buy-btn--gray
           = link_to "売り切れました", disabled: true
     - else
-      = link_to "変更する", edit_product_path
+      .item-main__price__buy-btn
+        = link_to "変更する", edit_product_path
       .item-box__text__center or
       .item-main__price__buy-btn.buy-btn--gray
         = link_to "出品を一旦停止する", "#"
