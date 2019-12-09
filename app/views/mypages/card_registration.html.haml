@@ -2,12 +2,12 @@
   %header.single__header
     %h1
       = link_to root_path do
-        = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?210491352', alt: 'mercari'
+        = image_tag = image_tag "logos/fmarket_logo_red.svg", alt: 'mercari', alt: 'Fmarket'
   %main.single__main
     %section.l-single__container
       %h2.l-single__head.registration 支払い方法
-      %form.l-single__inner.registration-form{action: "#"}
-      = form_with model: @card, url: card_registration_mypages_path, method: :post, local: true, html: { name: 'inputForm' } do |f|
+      -# %form.l-single__inner.registration-form{action: "#"}
+      = form_with model: @card, url: card_registration_mypages_path, class: "l-single__inner", method: :post, local: true, html: { name: 'inputForm' } do |f|
         .l-single__content
           .form__group
             = f.label :payment_card_no, "カード番号"
@@ -39,12 +39,10 @@
             %span.form__require 必須
             = f.number_field :payment_card_security_code, class: "input-default", placeholder: "カード背面4桁もしくは3桁の番号"
             %p.text-right
-              %a{href: "#", target: "_blank"}
+              = link_to "#", target: "_blank" do
                 カード背面の番号とは?
-                %i.icon-arrow-right
+                = fa_icon "chevron-right"
           .form__group
           #card_token
           = f.submit '登録する',class: "btn-default btn-red", id: "token_submit"
-          -# %p
-          -#   %button.test{type: "button",id: "test", value: "ほげほげ", style:"width: 100px; height: 100px; background-color: black;" }
   = render partial: "shared/iFooter"
