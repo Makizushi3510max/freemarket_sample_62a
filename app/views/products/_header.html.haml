@@ -28,8 +28,23 @@
         %ul.header__content__cg
           .header__content__category
             = fa_icon "list-ul"
-            %span.category__select.text カテゴリーから探す
-            -# .select
+            %span.category__select.text
+              カテゴリーから探す
+            %ul.header__menu-box--left__parents 
+              - @parents.each do |parent|
+                %li.header__menu-box--left__parents__parent
+                  = link_to "#" do
+                    = parent.name
+                  %ul.header__menu-box--left__children
+                    -parent.children.each do |child|
+                      %li.header__menu-box--left__children__child 
+                        = link_to "#" do
+                          = child.name
+                        %ul.header__menu-box--left__grand-children 
+                          -child.children.each do |grandchild|
+                            %li.header__menu-box--left__grand-children__grand-child
+                              = link_to "#" do
+                                = grandchild.name                  
 
         %ul.header__content__bd
           %li.header__content__brand
@@ -94,7 +109,3 @@
               %a.signin-btn
                 = link_to user_session_path do
                   %span.text ログイン
-    .product-category
-      .product-category__root
-      .product-category__children
-      .product-category__grandchildren

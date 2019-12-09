@@ -1,13 +1,19 @@
 class ApplicationController < ActionController::Base
+  # include CommonActions
+  # before_action :set_categories
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
-
+  before_action :set_categories
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
   end
 
+  def set_categories
+    @parents = Category.all.order("id ASC").limit(13)
+  end
+  
   private
 
   def production?
