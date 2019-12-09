@@ -214,7 +214,17 @@
             //     box-shadow: 1px 0 0 0 #eee inset;
             //   }
             // }  
-          }
+            &:hover .header__menu-box--left__parents {
+              top: 44px;
+              display: block;
+              .header__menu-box--left__parents__parent {
+                background-color: red;  
+                .a {
+                  color: #fff;  
+                }
+              }
+            }  
+          }  
         }
           &:hover {
             .text {
@@ -222,6 +232,12 @@
             }
           }
         }
+        &__cg:hover {
+          .text {
+            color: #0099e8;
+          }
+        }
+
         &__bd {
           margin: 0 auto;
           cursor: pointer;
