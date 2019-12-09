@@ -9,8 +9,13 @@ class PurchaseController < ApplicationController
       session[:product_id] = params[:product_id]
       redirect_to card_registration_mypages_path
     else
-      session[:product_id] = params[:product_id] if params[:product_id] = nil
-      @product = Product.find(session[:product_id])
+      # binding.pry
+      if session[:product_id]
+        @product = Product.find(session[:product_id])
+      else
+        # binding.pry
+        @product = Product.find(params[:product_id])
+      end
       @address = Address.where(user_id: current_user.id).first  
       card_info
     end
