@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_categories
-    @parents = Category.all.order("id ASC").limit(13)
+    @parents = Category.roots.all
   end
   
   private
